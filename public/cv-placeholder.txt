@@ -1,0 +1,4 @@
+Replace this file with your CV.
+
+The portfolio link already points here as a downloadable asset. Keep the same
+filename or update data/profile.ts if you prefer a PDF or an external CV URL.
