@@ -1,7 +1,7 @@
 import type { AnchorLink, Profile, TimelineItem } from "./types";
 
 export const siteMetadata = {
-  title: "First Surname - Portfolio",
+  title: "Timi Owolabi",
   description: "A research, projects, career, and writing portfolio built with the Hallmark Studio theme.",
   language: "en",
   mainId: "content"
@@ -28,9 +28,9 @@ export const footerLinks: AnchorLink[] = [
 ];
 
 export const profile: Profile = {
-  firstName: "First",
-  surname: "Surname",
-  fullName: "First Surname",
+  firstName: "Timi",
+  surname: "Owolabi",
+  fullName: "Timi Owolabi",
   hero: {
     eyebrow: "Research / Engineering / Writing",
     headingId: "profile-heading"
@@ -47,13 +47,13 @@ export const profile: Profile = {
     height: 840
   },
   links: [
-    { label: "Email", href: "mailto:hello@example.com" },
-    { label: "CV download", href: "/cv-placeholder.txt", download: true },
-    { label: "Google Scholar", href: "https://scholar.google.com/", external: true },
-    { label: "LinkedIn", href: "https://www.linkedin.com/", external: true },
-    { label: "GitHub", href: "https://github.com/", external: true },
-    { label: "X", href: "https://x.com/", external: true },
-    { label: "Medium", href: "https://medium.com/", external: true }
+    { label: "Email", href: "mailto:timilehin.owolabi@stu.cu.edu.ng" },
+    { label: "CV", href: "/timi-research-cv.pdf", download: true },
+    { label: "Scholar", href: "https://scholar.google.com/citations?user=mJOLhAcAAAAJ&hl=en", external: true },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/timi-owolabi/", external: true },
+    { label: "GitHub", href: "https://github.com/iitimii", external: true },
+    { label: "X", href: "https://x.com/iitiimii", external: true },
+    { label: "Medium", href: "https://medium.com/@timiiowolabi", external: true }
   ]
 };
 
