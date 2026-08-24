@@ -2,49 +2,55 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Icons } from "@/components/common/icons";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import ChipContainer from "@/components/ui/chip-container";
-import { ProjectInterface } from "@/config/projects";
+import type { Project } from "@/config/constants";
+import { cn } from "@/lib/utils";
 
 interface ProjectCardProps {
-  project: ProjectInterface;
+  project: Project;
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className="relative p-6 w-full bg-background border border-border rounded-lg h-full flex flex-col">
-      <div className="relative w-full h-[200px] flex-shrink-0">
+    <article className="flex h-full w-full flex-col rounded-lg border border-border bg-background p-5">
+      <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-border bg-muted">
         <Image
-          className="rounded-lg border border-border object-cover"
-          src={project.companyLogoImg}
-          alt="img"
+          className="object-cover"
+          src={project.image}
+          alt={`${project.title} project`}
           fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
         />
       </div>
-      <div className="pt-5 space-y-3 flex flex-col flex-grow">
-        <h5 className="text-2xl font-bold tracking-tight text-foreground">
-          {project.companyName}
-        </h5>
-        <p className="line-clamp-3 font-normal text-muted-foreground flex-grow">
-          {project.shortDescription}
+
+      <div className="flex flex-1 flex-col pt-5">
+        <p className="text-sm font-medium text-muted-foreground">
+          {project.year}
+          {project.status && project.status !== project.year
+            ? ` · ${project.status}`
+            : ""}
         </p>
-        <div className="flex gap-2 flex-wrap">
-          <ChipContainer textArr={project.category} />
-        </div>
-        <Link href={`/projects/${project.id}`} className="mt-auto">
-          <Button variant={"default"} className="mt-2 w-full sm:w-auto">
-            Read more
-            <Icons.chevronRight className="w-4 ml-1" />
-          </Button>
+        <h2 className="mt-2 text-2xl font-bold tracking-tight text-foreground">
+          {project.title}
+        </h2>
+        <p className="mt-3 flex-grow text-muted-foreground">
+          {project.summary}
+        </p>
+
+        <ChipContainer textArr={[project.kind]} />
+
+        <Link
+          href={`/projects/${project.id}`}
+          className={cn(
+            buttonVariants({ variant: "default" }),
+            "mt-2 w-full sm:w-fit"
+          )}
+        >
+          View project
+          <Icons.chevronRight className="ml-1 h-4 w-4" aria-hidden="true" />
         </Link>
       </div>
-      <div className="absolute bottom-4 right-4 p-3 rounded-full bg-background border border-border hidden md:block">
-        {project.type === "Personal" ? (
-          <Icons.userFill className="h-4 w-4" />
-        ) : (
-          <Icons.work className="h-4 w-4" />
-        )}
-      </div>
-    </div>
+    </article>
   );
 }
