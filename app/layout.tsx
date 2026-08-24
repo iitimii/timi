@@ -1,58 +1,144 @@
-import type { Metadata } from "next";
-import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
-import { profile, siteMetadata } from "@/data/profile";
-import { Analytics } from "@vercel/analytics/next";
 
-const fraunces = Fraunces({
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { Inter as FontSans } from "next/font/google";
+import localFont from "next/font/local";
+import Script from "next/script";
+
+import { Analytics } from "@/components/common/analytics";
+import { ThemeProvider } from "@/components/common/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+import { ModalProvider } from "@/providers/modal-provider";
+
+const fontSans = FontSans({
   subsets: ["latin"],
-  display: "swap",
-  variable: "--font-loaded-display",
-  axes: ["SOFT", "WONK", "opsz"],
-  style: ["normal", "italic"],
-  weight: "variable"
+  variable: "--font-sans",
 });
 
-const geist = Geist({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-loaded-body"
+// Font files can be colocated inside of `pages`
+const fontHeading = localFont({
+  src: "../assets/fonts/CalSans-SemiBold.woff2",
+  variable: "--font-heading",
 });
 
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-loaded-mono"
-});
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
 
-export const metadata: Metadata = {
-  title: siteMetadata.title,
-  description: siteMetadata.description,
-  authors: [{ name: profile.fullName }],
+export const metadata = {
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [
+    {
+      name: siteConfig.authorName,
+      url: siteConfig.url,
+    },
+  ],
+  creator: siteConfig.username,
   openGraph: {
-    title: siteMetadata.title,
-    description: siteMetadata.description,
-    type: "website"
-  }
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+    creator: `@${siteConfig.username}`,
+  },
+  icons: {
+    icon: siteConfig.iconIco,
+    shortcut: siteConfig.logoIcon,
+    apple: siteConfig.logoIcon,
+  },
+  manifest: `${siteConfig.url}/site.webmanifest`,
+  alternates: {
+    canonical: siteConfig.url,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+  },
 };
 
-export default function RootLayout({
-  children
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: RootLayoutProps) {
+  const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID;
+  if (!GA_ID) {
+    throw new Error("Missing Google Analytics ID");
+  }
+
   return (
-    <html lang={siteMetadata.language} className={`${fraunces.variable} ${geist.variable} ${geistMono.variable}`}>
-      <body>
-        <SiteHeader />
-        <main id={siteMetadata.mainId} className="page-shell">
+    <html lang="en" suppressHydrationWarning>
+      <head />
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable,
+          fontHeading.variable
+        )}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          themes={[
+            "light",
+            "dark",
+            "retro",
+            "cyberpunk",
+            "paper",
+            "aurora",
+            "synthwave",
+          ]}
+        >
           {children}
-        </main>
-        <SiteFooter />
-        <Analytics />
+          <Analytics />
+          <Toaster />
+          <ModalProvider />
+        </ThemeProvider>
+        <Script
+          src="https://convot.xyz/widget.js"
+          data-token="3vpr28Va7E8luRq8DMOStAr9tefOCVqifQ28fpp6grrKS4zflNRZQjQpmeu4os_2nuLmmh1DOshndiN5O1vvGg"
+          data-api-url="https://api.convot.xyz"
+          strategy="afterInteractive"
+        />
       </body>
+      <GoogleAnalytics gaId={GA_ID} />
     </html>
   );
 }
