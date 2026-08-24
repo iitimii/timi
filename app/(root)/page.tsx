@@ -21,7 +21,7 @@ import { siteConfig } from "@/config/site";
 import { featuredSkills } from "@/config/skills";
 import { getFeaturedBlogs } from "@/lib/blogs";
 import { cn } from "@/lib/utils";
-import profileImg from "@/public/profile-img.jpg";
+import profileImg from "@/public/timi.jpg";
 
 export const metadata: Metadata = {
   title: `${pagesConfig.home.metadata.title}`,
@@ -85,7 +85,7 @@ export default function IndexPage() {
             width={100}
             sizes="100vw"
             className="bg-primary rounded-full mb-0 h-auto md:mb-2 w-[60%] max-w-[16rem] border-8 border-primary"
-            alt="Naman Barkiya - Applied AI Engineer Portfolio"
+            alt="Timi Owolabi"
             priority
           />
           <AnimatedText
@@ -93,7 +93,7 @@ export default function IndexPage() {
             delay={0.2}
             className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl"
           >
-            Naman Barkiya
+            Timi Owolabi
           </AnimatedText>
           <AnimatedText
             as="h3"
@@ -130,7 +130,7 @@ export default function IndexPage() {
                     size: "lg",
                   })
                 )}
-                aria-label="Contact Naman Barkiya"
+                aria-label="Contact Timi Owolabi"
               >
                 <Icons.contact className="w-4 h-4 mr-2" /> Contact
               </Link>
