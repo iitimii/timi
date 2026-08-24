@@ -17,8 +17,6 @@ interface ProjectPageProps {
   }>;
 }
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
   return projects.map(({ id }) => ({ projectId: id }));
 }
@@ -137,7 +135,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   key={`${link.label}-${link.href}`}
                   href={link.href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className={buttonVariants({ variant: "outline" })}
                 >
                   {link.label === "PDF" ? "Paper" : link.label}

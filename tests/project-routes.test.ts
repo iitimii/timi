@@ -120,6 +120,7 @@ test("project detail renders source content, notes, and local media", async () =
   assert.match(markup, /The video shows the current state of the project\./);
   assert.match(markup, /aria-label="Humanoid demonstration"/);
   assert.match(markup, /href="https:\/\/github\.com\/iitimii\/Humanoid"/);
+  assert.match(markup, /rel="noopener noreferrer"/);
   assert.match(markup, /href="\/projects"/);
 });
 

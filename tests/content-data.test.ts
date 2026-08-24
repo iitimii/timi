@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync } from "node:fs";
+import { existsSync, statSync } from "node:fs";
 import test from "node:test";
 
 import { experiences } from "../config/experience";
@@ -39,6 +39,12 @@ test("all local portfolio assets exist", () => {
 
 test("social previews use the dedicated portfolio card", () => {
   assert.equal(siteConfig.ogImage, "/og-timi.png");
+});
+
+test("project card images are web-sized", () => {
+  for (const { image } of projects) {
+    assert.ok(statSync(`public${image}`).size < 5 * 1024 * 1024, image);
+  }
 });
 
 test("content identifiers are unique", () => {

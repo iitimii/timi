@@ -65,7 +65,7 @@ export const projects: Project[] = [
     ],
     technologies: ["C++", "ESP32", "PlatformIO"],
     authors: ["Timi Owolabi"],
-    image: "/projects/auto-drone.png",
+    image: "/projects/auto-drone.jpg",
     video: "/projects/auto-drone.mp4",
     links: [
       { label: "Code", href: "https://github.com/iitimii/Autonomous-Drone" },
