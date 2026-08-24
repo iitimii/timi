@@ -1,14 +1,15 @@
-import { Icons } from "@/components/common/icons";
 import type { ComponentType } from "react";
 
-interface SocialInterface {
+import { Icons } from "@/components/common/icons";
+
+export type SocialLink = {
   name: string;
   username: string;
   icon: ComponentType<{ className?: string }>;
   link: string;
-}
+};
 
-export const SocialLinks: SocialInterface[] = [
+export const SocialLinks = [
   {
     name: "GitHub",
     username: "@iitimii",
@@ -39,4 +40,4 @@ export const SocialLinks: SocialInterface[] = [
     icon: Icons.gmail,
     link: "mailto:timilehin.owolabi@stu.cu.edu.ng",
   },
-];
+] satisfies SocialLink[];
