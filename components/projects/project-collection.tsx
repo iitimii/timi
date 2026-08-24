@@ -30,7 +30,7 @@ export default function ProjectCollection() {
     <section aria-label="Project collection">
       <div
         className="flex flex-wrap gap-2 py-4"
-        role="toolbar"
+        role="group"
         aria-label="Filter projects by category"
       >
         {projectFilters.map((filter) => (

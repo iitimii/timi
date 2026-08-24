@@ -28,6 +28,11 @@ test("project collection filters expose all four views", async () => {
     await import("../components/projects/project-collection").catch(() => null);
 
   assert.ok(collection);
+  const markup = renderToStaticMarkup(
+    React.createElement(collection.default)
+  );
+  assert.match(markup, /role="group"/);
+  assert.doesNotMatch(markup, /role="toolbar"/);
   assert.deepEqual(collection.projectFilters, [
     "All",
     "Research",
