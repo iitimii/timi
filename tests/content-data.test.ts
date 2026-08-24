@@ -6,6 +6,7 @@ import { experiences } from "../config/experience";
 import { awards, education, profile, talks, teaching } from "../config/profile";
 import { projects } from "../config/projects";
 import { publications } from "../config/publications";
+import { siteConfig } from "../config/site";
 import { skillGroups } from "../config/skills";
 
 test("portfolio includes every source-backed record", () => {
@@ -40,4 +41,11 @@ test("content identifiers are unique", () => {
     const ids = records.map(({ id }) => id);
     assert.equal(new Set(ids).size, ids.length);
   }
+});
+
+test("template attribution links to the upstream portfolio repository", () => {
+  assert.equal(
+    siteConfig.links.templateRepo,
+    "https://github.com/namanbarkiya/minimal-next-portfolio"
+  );
 });
