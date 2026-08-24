@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 import PageContainer from "@/components/common/page-container";
 import Timeline from "@/components/experience/timeline";
@@ -8,14 +8,7 @@ import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: `${pagesConfig.experience.metadata.title} | Professional Experience Timeline`,
-  description: `${pagesConfig.experience.metadata.description} Explore my professional journey and career milestones in software development.`,
-  keywords: [
-    "experience timeline",
-    "professional experience",
-    "software developer experience",
-    "developer portfolio",
-    "work experience",
-  ],
+  description: pagesConfig.experience.metadata.description,
   alternates: {
     canonical: `${siteConfig.url}/experience`,
   },
