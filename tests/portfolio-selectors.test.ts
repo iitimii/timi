@@ -11,6 +11,7 @@ test("portfolio records resolve by stable ID", () => {
 
 test("date ranges preserve present roles", () => {
   assert.equal(formatDateRange("2026-01-01", "Present"), "Jan 2026 - Present");
+  assert.equal(formatDateRange("Jan 2026", "Present"), "Jan 2026 - Present");
   assert.equal(
     formatDateRange("2024-07-01", "2024-12-01"),
     "Jul 2024 - Dec 2024"
