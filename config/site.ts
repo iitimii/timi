@@ -13,7 +13,7 @@ export const siteConfig = {
     github: "https://github.com/iitimii/",
     templateRepo: "https://github.com/namanbarkiya/minimal-next-portfolio",
   },
-  ogImage: "/profile/timi.jpg",
+  ogImage: "/og-timi.png",
   iconIco: "/icons/letter-t.png",
   logoIcon: "/icons/letter-t.png",
   keywords: [

@@ -25,6 +25,7 @@ test("all local portfolio assets exist", () => {
   const assetPaths = [
     profile.image,
     profile.resume,
+    siteConfig.ogImage,
     ...projects.flatMap(({ image, video }) =>
       [image, video].filter((path): path is string => Boolean(path))
     ),
@@ -34,6 +35,10 @@ test("all local portfolio assets exist", () => {
   for (const assetPath of assetPaths) {
     assert.equal(existsSync(`public${assetPath}`), true, assetPath);
   }
+});
+
+test("social previews use the dedicated portfolio card", () => {
+  assert.equal(siteConfig.ogImage, "/og-timi.png");
 });
 
 test("content identifiers are unique", () => {
