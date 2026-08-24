@@ -7,14 +7,12 @@ import localFont from "next/font/local";
 
 import { Analytics } from "@/components/common/analytics";
 import { ThemeProvider } from "@/components/common/theme-provider";
-import { Toaster } from "@/components/ui/toaster";
 import {
   getGoogleAnalyticsId,
   globalStructuredData,
   siteConfig,
 } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { ModalProvider } from "@/providers/modal-provider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -95,9 +93,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
-  },
 };
 
 export default function RootLayout({ children }: RootLayoutProps) {
@@ -136,8 +131,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           {children}
           <Analytics />
-          <Toaster />
-          <ModalProvider />
         </ThemeProvider>
       </body>
       {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
