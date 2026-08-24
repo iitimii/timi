@@ -4,15 +4,13 @@ import PageContainer from "@/components/common/page-container";
 import Timeline from "@/components/experience/timeline";
 import { experiences } from "@/config/experience";
 import { pagesConfig } from "@/config/pages";
-import { siteConfig } from "@/config/site";
+import { buildRouteMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildRouteMetadata({
   title: `${pagesConfig.experience.metadata.title} | Professional Experience Timeline`,
   description: pagesConfig.experience.metadata.description,
-  alternates: {
-    canonical: `${siteConfig.url}/experience`,
-  },
-};
+  path: "/experience",
+});
 
 export default function ExperiencePage() {
   return (

@@ -8,6 +8,7 @@ import ProjectMedia from "@/components/projects/project-media";
 import { buttonVariants } from "@/components/ui/button";
 import ChipContainer from "@/components/ui/chip-container";
 import { projects } from "@/config/projects";
+import { buildRouteMetadata } from "@/lib/metadata";
 import { getProject } from "@/lib/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -31,10 +32,11 @@ export async function generateMetadata({
     return { title: "Project not found" };
   }
 
-  return {
+  return buildRouteMetadata({
     title: project.title,
     description: project.summary,
-  };
+    path: `/projects/${projectId}`,
+  });
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {

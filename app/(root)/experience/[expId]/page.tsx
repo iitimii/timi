@@ -10,7 +10,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import ChipContainer from "@/components/ui/chip-container";
 import { ResponsiveTabs } from "@/components/ui/responsive-tabs";
 import { experiences } from "@/config/experience";
-import { siteConfig } from "@/config/site";
+import { buildRouteMetadata } from "@/lib/metadata";
 import { formatDateRange, getExperience } from "@/lib/portfolio";
 
 interface ExperienceDetailPageProps {
@@ -33,13 +33,11 @@ export async function generateMetadata({
     return { title: "Experience Not Found" };
   }
 
-  return {
+  return buildRouteMetadata({
     title: `${experience.position} at ${experience.organization} | Experience`,
     description: experience.summary,
-    alternates: {
-      canonical: `${siteConfig.url}/experience/${expId}`,
-    },
-  };
+    path: `/experience/${expId}`,
+  });
 }
 
 export default async function ExperienceDetailPage({
