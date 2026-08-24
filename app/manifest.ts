@@ -2,34 +2,34 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Timi Owolabi | Machine Learning & Robotics",
-    short_name: "Timi Owolabi",
+    name: "Naman Barkiya | Applied AI Engineer",
+    short_name: "Naman Barkiya",
     description:
-      "Timi Owolabi's machine learning, robotics, research, and embodied AI portfolio.",
+      "Naman Barkiya - Applied AI Engineer working at the intersection of AI, data, and scalable software systems.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
     theme_color: "#000000",
     icons: [
       {
-        src: "/icons/letter-t.png",
-        sizes: "512x512",
+        src: "/favicon.ico",
+        sizes: "64x64",
         type: "image/png",
-        purpose: "any",
       },
       {
-        src: "/icons/letter-t.png",
-        sizes: "512x512",
+        src: "/favicon.ico",
+        sizes: "64x64",
         type: "image/png",
         purpose: "maskable",
       },
     ],
     categories: [
       "portfolio",
+      "ai",
+      "software engineering",
       "machine learning",
-      "robotics",
-      "research",
-      "embodied AI",
+      "developer",
+      "web development",
     ],
     lang: "en",
     dir: "ltr",

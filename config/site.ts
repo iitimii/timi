@@ -1,68 +1,40 @@
-import { profile } from "./profile";
-
 export const siteConfig = {
-  name: "Timi Owolabi - Machine Learning & Robotics",
-  authorName: "Timi Owolabi",
-  username: "iitimii",
-  twitterUsername: "iitiimii",
+  name: "Naman Barkiya - Applied AI Engineer",
+  authorName: "Naman Barkiya",
+  username: "namanbarkiya",
   description:
-    "Timi Owolabi works at the intersection of machine learning, control theory, and cognitive science to build embodied AI systems.",
-  url: "https://iitimii.github.io",
+    "Naman Barkiya - Applied AI Engineer working at the intersection of AI, data, and scalable software systems. Explore my projects, experience, and contributions in software development and AI.",
+  url: "https://nbarkiya.xyz",
   links: {
-    twitter: "https://x.com/iitiimii",
-    github: "https://github.com/iitimii/",
+    twitter: "https://x.com/namanbarkiya",
+    github: "https://github.com/namanbarkiya",
     templateRepo: "https://github.com/namanbarkiya/minimal-next-portfolio",
   },
-  ogImage: "/og-timi.png",
-  iconIco: "/icons/letter-t.png",
-  logoIcon: "/icons/letter-t.png",
+  ogImage:
+    "https://res.cloudinary.com/dvt5vkfwz/image/upload/v1767384721/naman_portfolio_og_image.png",
+  iconIco:
+    "https://res.cloudinary.com/dbfvcn3f6/image/upload/v1692357384/assets/naman-favicon.ico",
+  logoIcon:
+    "https://res.cloudinary.com/dbfvcn3f6/image/upload/v1692357294/assets/naman-logo.png",
   keywords: [
-    "Timi Owolabi",
-    "Oluwatimilehin Emmanuel Owolabi",
+    "Naman Barkiya",
+    "Applied AI Engineer",
+    "AI Engineer",
+    "Software Engineer",
+    "Full Stack Developer",
     "Machine Learning",
-    "Robotics",
-    "Embodied AI",
-    "Control Theory",
-    "Cognitive Science",
-    "Reinforcement Learning",
-    "Vision-Language-Action Models",
+    "Data Engineering",
+    "UBS",
+    "Python Developer",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript",
+    "Databricks",
+    "AI Startups",
+    "Software Development",
+    "Web Developer",
+    "Backend Developer",
+    "Frontend Developer",
+    "Tech Portfolio",
   ],
 };
-
-type AnalyticsEnvironment = Record<string, string | undefined>;
-
-export function getGoogleAnalyticsId(
-  environment: AnalyticsEnvironment = process.env
-): string | undefined {
-  return environment.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID || undefined;
-}
-
-const socialProfileUrls = profile.socialLinks
-  .map(({ href }) => href)
-  .filter((href) => !href.startsWith("mailto:"));
-
-export const globalStructuredData: Array<Record<string, unknown>> = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: profile.fullName,
-    alternateName: profile.formalName,
-    description: profile.focus,
-    email: profile.email,
-    image: `${siteConfig.url}${profile.image}`,
-    url: siteConfig.url,
-    sameAs: socialProfileUrls,
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: siteConfig.name,
-    description: siteConfig.description,
-    url: siteConfig.url,
-    author: {
-      "@type": "Person",
-      name: profile.fullName,
-      url: siteConfig.url,
-    },
-  },
-];

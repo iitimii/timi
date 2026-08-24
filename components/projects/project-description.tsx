@@ -1,15 +1,23 @@
-interface ProjectDescriptionProps {
-  paragraphs: string[];
-}
+import React from "react";
 
-export default function ProjectDescription({
-  paragraphs,
-}: ProjectDescriptionProps) {
+const ProjectDescription: React.FC<{
+  paragraphs: string[];
+  bullets: string[];
+}> = ({ paragraphs, bullets }) => {
   return (
-    <div className="space-y-4 text-muted-foreground">
-      {paragraphs.map((paragraph) => (
-        <p key={paragraph}>{paragraph}</p>
+    <div>
+      {paragraphs.map((paragraph, index) => (
+        <p className="mb-4" key={index}>
+          {paragraph}
+        </p>
       ))}
+      <ul className="list-disc pl-6 mt-4">
+        {bullets.map((bullet, index) => (
+          <li key={index}>{bullet}</li>
+        ))}
+      </ul>
     </div>
   );
-}
+};
+
+export default ProjectDescription;

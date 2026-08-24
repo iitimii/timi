@@ -4,7 +4,6 @@
 
 @layer base {
   :root {
-    color-scheme: light;
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
 
@@ -41,7 +40,6 @@
   }
 
   .dark {
-    color-scheme: dark;
     --background: 224 71% 4%;
     --foreground: 213 31% 91%;
 
@@ -77,7 +75,6 @@
   }
 
   .retro {
-    color-scheme: light;
     --background: 39 70% 90%;
     --foreground: 20 80% 20%;
 
@@ -113,7 +110,6 @@
   }
 
   .cyberpunk {
-    color-scheme: dark;
     --background: 235 85% 8%;
     --foreground: 180 100% 75%;
 
@@ -149,7 +145,6 @@
   }
 
   .aurora {
-    color-scheme: dark;
     --background: 220 40% 10%;
     --foreground: 160 100% 90%;
 
@@ -185,7 +180,6 @@
   }
 
   .synthwave {
-    color-scheme: dark;
     --background: 260 15% 10%;
     --foreground: 330 100% 90%;
 
@@ -221,7 +215,6 @@
   }
 
   .paper {
-    color-scheme: light;
     --background: 40 30% 95%;
     --foreground: 25 50% 20%;
 
@@ -272,22 +265,6 @@
     font-feature-settings:
       "rlig"1,
       "calt"1;
-  }
-
-  :focus-visible {
-    outline: 2px solid hsl(var(--ring));
-    outline-offset: 2px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }
 

@@ -1,43 +1,35 @@
-import type { ComponentType } from "react";
-
 import { Icons } from "@/components/common/icons";
 
-export type SocialLink = {
+interface SocialInterface {
   name: string;
   username: string;
-  icon: ComponentType<{ className?: string }>;
+  icon: any;
   link: string;
-};
+}
 
-export const SocialLinks = [
+export const SocialLinks: SocialInterface[] = [
   {
-    name: "GitHub",
-    username: "@iitimii",
+    name: "Github",
+    username: "@namanbarkiya",
     icon: Icons.gitHub,
-    link: "https://github.com/iitimii/",
+    link: "https://github.com/namanbarkiya",
   },
   {
     name: "LinkedIn",
-    username: "Timi Owolabi",
+    username: "Naman Barkiya",
     icon: Icons.linkedin,
-    link: "https://www.linkedin.com/in/timi-owolabi/",
+    link: "https://www.linkedin.com/in/namanbarkiya",
   },
   {
-    name: "X",
-    username: "@iitiimii",
+    name: "Twitter",
+    username: "@namanbarkiya",
     icon: Icons.twitter,
-    link: "https://x.com/iitiimii",
+    link: "https://twitter.com/namanbarkiya",
   },
   {
-    name: "Scholar",
-    username: "Timi Owolabi",
-    icon: Icons.externalLink,
-    link: "https://scholar.google.com/citations?user=mJOLhAcAAAAJ&hl=en",
-  },
-  {
-    name: "Email",
-    username: "timilehin.owolabi@stu.cu.edu.ng",
+    name: "Gmail",
+    username: "naman.barkiya02",
     icon: Icons.gmail,
-    link: "mailto:timilehin.owolabi@stu.cu.edu.ng",
+    link: "mailto:naman.barkiya02@gmail.com",
   },
-] satisfies SocialLink[];
+];

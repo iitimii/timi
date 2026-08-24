@@ -1,74 +1,85 @@
-type PageConfig = {
-  title: string;
-  description: string;
-  metadata: {
+import { ValidPages } from "./constants";
+
+type PagesConfig = {
+  [key in ValidPages]: {
     title: string;
     description: string;
+    metadata: {
+      title: string;
+      description: string;
+    };
+    // featuredDescription: string;
   };
 };
 
-type PageKey =
-  | "home"
-  | "projects"
-  | "experience"
-  | "publications"
-  | "skills"
-  | "contact";
-
-export const pagesConfig: Record<PageKey, PageConfig> = {
+export const pagesConfig: PagesConfig = {
   home: {
     title: "Home",
-    description: "Machine learning, robotics, and embodied AI research.",
+    description: "Welcome to my portfolio website.",
     metadata: {
       title: "Home",
-      description:
-        "Timi Owolabi's portfolio in machine learning, robotics, control, and embodied AI.",
-    },
-  },
-  projects: {
-    title: "Projects",
-    description:
-      "Research and engineering projects in machine learning, robotics, and control.",
-    metadata: {
-      title: "Projects",
-      description:
-        "Timi Owolabi's machine learning, robotics, and control projects.",
-    },
-  },
-  experience: {
-    title: "Experience",
-    description: "Research, engineering, leadership, and community experience.",
-    metadata: {
-      title: "Experience",
-      description:
-        "Timi Owolabi's research, engineering, leadership, and community experience.",
-    },
-  },
-  publications: {
-    title: "Publications",
-    description:
-      "Publications and manuscripts in control, machine learning, energy, and medical imaging.",
-    metadata: {
-      title: "Publications",
-      description: "Timi Owolabi's publications and research manuscripts.",
+      description: "Naman Barkiya's portfolio website.",
     },
   },
   skills: {
     title: "Skills",
-    description:
-      "Technical skills across programming, machine learning, robotics, DevOps, and cloud.",
+    description: "Key skills that define my professional identity.",
     metadata: {
       title: "Skills",
       description:
-        "Timi Owolabi's technical skills in programming, machine learning, robotics, DevOps, and cloud.",
+        "Naman Barkiya's key skills that define his professional identity.",
+    },
+  },
+  projects: {
+    title: "Projects",
+    description: "Showcasing impactful projects and technical achievements.",
+    metadata: {
+      title: "Projects",
+      description: "Naman Barkiya's projects in building web applications.",
     },
   },
   contact: {
     title: "Contact",
-    description: "Get in touch or connect through a professional profile.",
+    description: "Let's connect and explore collaborations.",
     metadata: {
       title: "Contact",
-      description: "Contact Timi Owolabi.",
+      description: "Contact Naman Barkiya.",
+    },
+  },
+  contributions: {
+    title: "Contributions",
+    description: "Open-source contributions and community involvement.",
+    metadata: {
+      title: "Contributions",
+      description:
+        "Naman Barkiya's open-source contributions and community involvement.",
+    },
+  },
+  resume: {
+    title: "Resume",
+    description: "Naman Barkiya's resume.",
+    metadata: {
+      title: "Resume",
+      description: "Naman Barkiya's resume.",
+    },
+  },
+  blogs: {
+    title: "Blogs",
+    description:
+      "Thoughts on AI, software engineering, and building in public.",
+    metadata: {
+      title: "Blogs",
+      description:
+        "Naman Barkiya's blog — thoughts on AI, software engineering, and building in public.",
+    },
+  },
+  experience: {
+    title: "Experience",
+    description: "Professional journey and career timeline.",
+    metadata: {
+      title: "Experience",
+      description:
+        "Naman Barkiya's professional journey and experience timeline.",
     },
   },
 };

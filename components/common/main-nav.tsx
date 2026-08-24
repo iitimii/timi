@@ -3,17 +3,16 @@
 import { motion } from "framer-motion";
 import { Norican } from "next/font/google";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSelectedLayoutSegment } from "next/navigation";
 import * as React from "react";
 
 import { Icons } from "@/components/common/icons";
 import { MobileNav } from "@/components/common/mobile-nav";
-import { profile } from "@/config/profile";
-import type { NavigationItem } from "@/config/routes";
+import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 interface MainNavProps {
-  items?: readonly NavigationItem[];
+  items?: any[];
   children?: React.ReactNode;
 }
 
@@ -39,6 +38,7 @@ const navItemVariants = {
 };
 
 export function MainNav({ items, children }: MainNavProps) {
+  const segment = useSelectedLayoutSegment();
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
   const pathname = usePathname();
 
@@ -55,18 +55,15 @@ export function MainNav({ items, children }: MainNavProps) {
       >
         <Link href="/" className="hidden items-center space-x-2 md:flex">
           <span className={cn(norican.className, "text-2xl")}>
-            {profile.fullName}
+            {siteConfig.authorName}
           </span>
         </Link>
       </motion.div>
       {items?.length ? (
-        <nav
-          aria-label="Primary navigation"
-          className="hidden items-center gap-6 md:flex"
-        >
+        <nav className="hidden gap-6 md:flex items-center">
           {items?.map((item, index) => (
             <motion.div
-              key={item.href}
+              key={index}
               custom={index}
               initial="hidden"
               animate="visible"
@@ -75,17 +72,13 @@ export function MainNav({ items, children }: MainNavProps) {
               whileTap={{ scale: 0.95 }}
             >
               <Link
-                href={item.href}
-                aria-current={
-                  pathname === item.href || pathname.startsWith(`${item.href}/`)
-                    ? "page"
-                    : undefined
-                }
+                href={item.disabled ? "#" : item.href}
                 className={cn(
                   "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
-                  pathname === item.href || pathname.startsWith(`${item.href}/`)
+                  item.href.startsWith(`/${segment}`)
                     ? "text-foreground"
-                    : "text-foreground/60"
+                    : "text-foreground/60",
+                  item.disabled && "cursor-not-allowed opacity-80"
                 )}
               >
                 {item.title}
@@ -95,14 +88,8 @@ export function MainNav({ items, children }: MainNavProps) {
         </nav>
       ) : null}
       <motion.button
-        type="button"
         className="flex items-center space-x-2 md:hidden"
         onClick={() => setShowMobileMenu(!showMobileMenu)}
-        aria-controls="mobile-navigation"
-        aria-expanded={showMobileMenu}
-        aria-label={
-          showMobileMenu ? "Close navigation menu" : "Open navigation menu"
-        }
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >

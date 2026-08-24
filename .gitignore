@@ -18,7 +18,6 @@
 # misc
 .DS_Store
 *.pem
-/.superpowers/
 
 # debug
 npm-debug.log*
