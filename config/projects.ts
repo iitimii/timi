@@ -68,52 +68,6 @@ export const Projects: ProjectInterface[] = [
     },
   },
   {
-    id: "quadrotor-swarms",
-    companyName: "Coordinated Control of Quadrotor Swarms",
-    type: "Professional",
-    category: ["Robotics", "Control Systems", "Research"],
-    shortDescription:
-      "Classical, adaptive, and learning-based control for quadrotor swarms using gym-pybullet-drones. Under review at IJCAI 2026.",
-    websiteLink:
-      "https://drive.google.com/file/d/1p4L1eJT4DQ-hWlWvim1cZ8-Jzl6jkgz_/view?usp=sharing",
-    githubLink:
-      "https://github.com/iitimii/Coordinated-Control-of-Multi-Quadrotor-Swarms",
-    techStack: [
-      "Python",
-      "Reinforcement Learning",
-      "Control Theory",
-      "Robotics",
-      "Simulation",
-      "NumPy",
-    ],
-    startDate: new Date("2025-01-01"),
-    endDate: new Date("2026-01-01"),
-    companyLogoImg: "/projects/quadrotor-swarms/logo.png",
-    pagesInfoArr: [
-      {
-        title: "Swarm Coordination",
-        description:
-          "Coordinated flight of multiple quadrotors under adaptive, optimal, and learning-based controllers.",
-        imgArr: [
-          "/projects/quadrotor-swarms/logo.png",
-          "/projects/quadrotor-swarms/swarm.png",
-        ],
-      },
-    ],
-    descriptionDetails: {
-      paragraphs: [
-        "Coordinated Control of Quadrotor Swarms: Classical, Adaptive, and Learning-Based Methods. Under review at IJCAI, 2026.",
-        "Adaptive, optimal, and learning-based control for quadrotor swarms using gym-pybullet-drones.",
-        "With Oluwatimilehin Owolabi, Chukwudumebi Chukwuma, Oladele Omogboyega, and Ayokunle Awelewa.",
-      ],
-      bullets: [
-        "Compared classical, adaptive, and learning-based controllers for multi-quadrotor coordination.",
-        "Built the evaluation on the gym-pybullet-drones simulation environment.",
-        "Under review at IJCAI, 2026.",
-      ],
-    },
-  },
-  {
     id: "aloha-vla",
     companyName: "ALOHA Replication with OpenVLA-OFT",
     type: "Professional",
@@ -175,7 +129,8 @@ export const Projects: ProjectInterface[] = [
     pagesInfoArr: [
       {
         title: "The Airframe",
-        description: "The drone platform used for autonomous flight experiments.",
+        description:
+          "The drone platform used for autonomous flight experiments.",
         imgArr: ["/projects/autonomous-drone/logo.jpg"],
       },
     ],
@@ -342,7 +297,8 @@ export const Projects: ProjectInterface[] = [
       "A U-Net deep learning app for segmenting brain tumors in 3D MRI scans, with a FastAPI backend and Streamlit frontend.",
     websiteLink:
       "https://medium.com/@timiiowolabi/early-brain-tumor-detection-and-classification-with-computer-vision-638a593267b2",
-    githubLink: "https://github.com/iitimii/Brain-Tumour-Segmentation-with-UNet",
+    githubLink:
+      "https://github.com/iitimii/Brain-Tumour-Segmentation-with-UNet",
     techStack: [
       "Python",
       "TensorFlow",
@@ -411,144 +367,6 @@ export const Projects: ProjectInterface[] = [
       bullets: [
         "Trained a U-Net to segment clothing items from photographs of people.",
         "Handled shirts, pants, and other garment classes.",
-      ],
-    },
-  },
-  {
-    id: "fuzzy-pid",
-    companyName: "Fuzzy-PID Controller for Tank Systems",
-    type: "Professional",
-    category: ["Control Systems", "Research"],
-    shortDescription:
-      "A Fuzzy-PID controller for single- and double-tank liquid level systems, outperforming conventional PID under nonlinearity and disturbance.",
-    websiteLink:
-      "https://journals.nipes.org/index.php/jstrissue/article/download/2506/1612",
-    techStack: ["MATLAB", "Control Theory", "Simulation"],
-    startDate: new Date("2025-01-01"),
-    endDate: new Date("2025-12-01"),
-    companyLogoImg: "/projects/fuzzy-pid/logo.png",
-    pagesInfoArr: [
-      {
-        title: "Controller Response",
-        description:
-          "Fuzzy-PID response on single- and double-tank liquid level systems.",
-        imgArr: ["/projects/fuzzy-pid/logo.png"],
-      },
-    ],
-    descriptionDetails: {
-      paragraphs: [
-        "Fuzzy-PID Controller for Liquid Level Control of Tank Systems. NIPES-Journal of Science and Technology, 2025 (Oral Presentation).",
-        "Developed and tested a Fuzzy-PID controller for single- and double-tank liquid level systems, showing improved performance over conventional PID control in handling nonlinearity, uncertainty, and multivariable disturbances.",
-        "With Ayokunle Awelewa, Kayode Ojo, Toluwa Abimbola-Oladejo, and Timilehin Owolabi.",
-      ],
-      bullets: [
-        "Designed a Fuzzy-PID controller for single- and double-tank liquid level control.",
-        "Outperformed conventional PID under nonlinearity, uncertainty, and multivariable disturbances.",
-        "Published in NIPES-Journal of Science and Technology, 2025, with an oral presentation.",
-      ],
-    },
-  },
-  {
-    id: "nn-optimization",
-    companyName: "Brute Force Search vs. Gradient Descent",
-    type: "Professional",
-    category: ["Machine Learning", "Research"],
-    shortDescription:
-      "A comparison of brute force and gradient descent optimization in neural networks, published in Engineering Research Express.",
-    websiteLink:
-      "https://iopscience.iop.org/article/10.1088/2631-8695/adc5de/meta",
-    githubLink:
-      "https://github.com/iitimii/Brute-Force-Optimization-for-Neural-Networks",
-    techStack: ["Python", "NumPy", "Deep Learning", "Simulation"],
-    startDate: new Date("2025-01-01"),
-    endDate: new Date("2025-12-01"),
-    companyLogoImg: "/projects/nn-optimization/logo.png",
-    pagesInfoArr: [
-      {
-        title: "Search vs. Gradient",
-        description:
-          "Accuracy, memory, and convergence trade-offs between the two optimizers.",
-        imgArr: ["/projects/nn-optimization/logo.png"],
-      },
-    ],
-    descriptionDetails: {
-      paragraphs: [
-        "Practical Trade-offs in Neural Network Optimization: Brute Force Search and Gradient Descent. Engineering Research Express, 2025.",
-        "This work compares brute force and gradient descent optimization in neural networks, showing that brute force achieves better accuracy and lower memory usage, while gradient descent offers faster convergence — highlighting the potential of hybrid methods for more adaptable and efficient learning.",
-        "With Tobiloba Emmanuel Somefun, Timilehin Owolabi, and Omowunmi Mary Longe.",
-      ],
-      bullets: [
-        "Compared brute force search against gradient descent for neural network training.",
-        "Found better accuracy and lower memory usage from brute force search.",
-        "Found faster convergence from gradient descent, motivating hybrid methods.",
-      ],
-    },
-  },
-  {
-    id: "radiological-imaging",
-    companyName: "Hybrid Radiological Image Enhancement",
-    type: "Professional",
-    category: ["Computer Vision", "Research"],
-    shortDescription:
-      "A hybrid image enhancement technique for radiological imaging that outperforms CLAHE and Wavelet-based methods.",
-    websiteLink:
-      "https://asric.africa/sites/default/files/2025-02/10%20ES%20Vol.%205%202024.pdf",
-    techStack: ["Python", "OpenCV", "Computer Vision", "NumPy"],
-    startDate: new Date("2024-01-01"),
-    endDate: new Date("2024-12-01"),
-    companyLogoImg: "/projects/radiological-imaging/logo.png",
-    pagesInfoArr: [
-      {
-        title: "Enhanced Scans",
-        description:
-          "Enhancement results compared against CLAHE and Wavelet-based baselines.",
-        imgArr: ["/projects/radiological-imaging/logo.png"],
-      },
-    ],
-    descriptionDetails: {
-      paragraphs: [
-        "Enhancing Radiological Imaging for Better Healthcare Outcomes Through High Performance Hybrid Approach. ASRIC Journal on Engineering Sciences, 2024.",
-        "Developed a hybrid radiological image enhancement technique combining unsharp masking, logarithmic transformation, and adaptive histogram equalization, which outperforms CLAHE and Wavelet-based methods in visual quality metrics — offering a more standardized, accurate, and cost-effective solution for medical imaging systems.",
-        "With Olumayowa Idowu, Haoji Hu, Amusa Akinwale, Abolaji Ilori, Zou Xingze, Yubin Wang, Aiyedun Rasheed, and Timilehin Owolabi.",
-      ],
-      bullets: [
-        "Combined unsharp masking, logarithmic transformation, and adaptive histogram equalization.",
-        "Outperformed CLAHE and Wavelet-based methods on visual quality metrics.",
-        "Published in the ASRIC Journal on Engineering Sciences, 2024.",
-      ],
-    },
-  },
-  {
-    id: "energy-optimization",
-    companyName: "Smart Home Energy Optimization",
-    type: "Professional",
-    category: ["Research", "Control Systems"],
-    shortDescription:
-      "A smart home automation algorithm combining appliance scheduling with real-time environmental sensing, achieving up to 68% energy savings.",
-    websiteLink:
-      "https://ieeexplore.ieee.org/abstract/document/10379321/",
-    techStack: ["Python", "Simulation", "Control Theory"],
-    startDate: new Date("2023-01-01"),
-    endDate: new Date("2023-12-01"),
-    companyLogoImg: "/projects/energy-optimization/logo.png",
-    pagesInfoArr: [
-      {
-        title: "Scheduling & Savings",
-        description:
-          "Appliance scheduling against real-time environmental sensing in simulation.",
-        imgArr: ["/projects/energy-optimization/logo.png"],
-      },
-    ],
-    descriptionDetails: {
-      paragraphs: [
-        "Energy Optimization Algorithm for Reducing Energy Consumption in a Smart Home. ICMEAS, 2023.",
-        "Developed a smart home automation algorithm that combines appliance scheduling with real-time environmental sensing to optimize electricity use, achieving up to 68% energy savings in simulations — offering a scalable solution for reducing residential energy consumption and promoting smart grid integration.",
-        "With Tobiloba Somefun, Adrian Egbewe Igho-Orere, Comfort Somefun, Nelson Elijah, Timilehin Owolabi, and Samson Ongbali.",
-      ],
-      bullets: [
-        "Combined appliance scheduling with real-time environmental sensing.",
-        "Achieved up to 68% energy savings in simulation.",
-        "Published at ICMEAS, 2023.",
       ],
     },
   },

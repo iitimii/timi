@@ -25,6 +25,10 @@ export const routesConfig: any = {
       href: "/community",
     },
     {
+      title: "Research",
+      href: "/research",
+    },
+    {
       title: "Contact",
       href: "/contact",
     },

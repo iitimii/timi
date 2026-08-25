@@ -31,13 +31,22 @@ export const pagesConfig: PagesConfig = {
     },
   },
   projects: {
-    title: "Research & Projects",
-    description:
-      "Published work and systems I have built across robotics, control, and machine learning.",
+    title: "Projects",
+    description: "Systems I have built across robotics, vision, and control.",
     metadata: {
-      title: "Research & Projects",
+      title: "Projects",
       description:
-        "Timi Owolabi's research papers and robotics projects, from quadrotor swarms to humanoid control.",
+        "Timi Owolabi's robotics and machine learning projects, from humanoid control to autonomous drones.",
+    },
+  },
+  research: {
+    title: "Research",
+    description:
+      "Publications, research interests, and what I am working towards.",
+    metadata: {
+      title: "Research",
+      description:
+        "Timi Owolabi's publications and research in robotics, control, and machine learning.",
     },
   },
   contact: {
