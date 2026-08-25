@@ -11,8 +11,8 @@ export const siteConfig = {
     templateRepo: "https://github.com/namanbarkiya/minimal-next-portfolio",
   },
   ogImage: "https://timi-iitimiis-projects.vercel.app/timi.jpg",
-  iconIco: "/letter-t.png",
-  logoIcon: "/letter-t.png",
+  iconIco: "/favicon.ico",
+  logoIcon: "/apple-touch-icon.png",
   keywords: [
     "Timi Owolabi",
     "Oluwatimilehin Owolabi",
