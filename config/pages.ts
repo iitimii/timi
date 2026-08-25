@@ -67,15 +67,6 @@ export const pagesConfig: PagesConfig = {
       description: "Contact Timi Owolabi.",
     },
   },
-  contributions: {
-    title: "Open Source",
-    description: "Robotics and machine learning code I have released publicly.",
-    metadata: {
-      title: "Open Source",
-      description:
-        "Timi Owolabi's open-source robotics and machine learning repositories.",
-    },
-  },
   resume: {
     title: "Resume",
     description: "Timi Owolabi's resume.",

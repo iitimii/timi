@@ -108,6 +108,5 @@ export type ValidPages =
   | "impact"
   | "experience"
   | "contact"
-  | "contributions"
   | "resume"
   | "blogs";
