@@ -9,152 +9,88 @@ export interface skillsInterface {
 
 export const skillsUnsorted: skillsInterface[] = [
   {
-    name: "Next.js",
+    name: "Reinforcement Learning",
     description:
-      "Effortlessly build dynamic apps with routing, layouts, loading UI, and API routes.",
+      "Train policies that learn control from interaction, for swarms, manipulators, and humanoids.",
     rating: 5,
-    icon: Icons.nextjs,
+    icon: Icons.cyberpunk,
   },
   {
-    name: "React",
+    name: "Control Theory",
     description:
-      "Craft interactive user interfaces using components, state, props, and virtual DOM.",
+      "Design classical, adaptive, optimal, and learning-based controllers for real dynamical systems.",
     rating: 5,
-    icon: Icons.react,
+    icon: Icons.settings,
   },
   {
-    name: "GraphQL",
+    name: "Robotics",
     description:
-      "Fetch data precisely with a powerful query language for APIs and runtime execution.",
+      "Build and control legged, aerial, and manipulator platforms, in simulation and on hardware.",
+    rating: 5,
+    icon: Icons.work,
+  },
+  {
+    name: "Computer Vision",
+    description:
+      "Perception for robots and medical imaging: segmentation, tracking, and action recognition.",
+    rating: 5,
+    icon: Icons.media,
+  },
+  {
+    name: "Deep Learning",
+    description:
+      "Design and train neural networks, from U-Nets for segmentation to vision-language-action models.",
+    rating: 5,
+    icon: Icons.aurora,
+  },
+  {
+    name: "Python",
+    description:
+      "My primary language for research code, training pipelines, and robot control stacks.",
+    rating: 5,
+    icon: Icons.laptop,
+  },
+  {
+    name: "Simulation",
+    description:
+      "Model and evaluate robots in MuJoCo, Gazebo, and gym-pybullet-drones before touching hardware.",
+    rating: 5,
+    icon: Icons.synthwave,
+  },
+  {
+    name: "Research",
+    description:
+      "Publish peer-reviewed work in control, optimization, and medical imaging journals.",
     rating: 4,
-    icon: Icons.graphql,
+    icon: Icons.post,
   },
   {
-    name: "Nest.js",
+    name: "Teaching & Mentorship",
     description:
-      "Create scalable and modular applications with a progressive Node.js framework.",
+      "Teach machine learning to engineers and run a student mentorship program from first principles.",
     rating: 4,
-    icon: Icons.nestjs,
+    icon: Icons.userFill,
   },
   {
-    name: "express.js",
+    name: "Git",
     description:
-      "Build web applications and APIs quickly using a fast, unopinionated Node.js framework.",
-    rating: 5,
+      "Version control and open-source collaboration across every project I release.",
+    rating: 4,
+    icon: Icons.gitHub,
+  },
+  {
+    name: "FastAPI",
+    description:
+      "Serve models behind fast, typed Python APIs for interactive demos and applications.",
+    rating: 4,
     icon: Icons.express,
   },
   {
-    name: "Node.js",
+    name: "Linux",
     description:
-      "Run JavaScript on the server side, enabling dynamic and responsive applications.",
-    rating: 5,
-    icon: Icons.nodejs,
-  },
-  {
-    name: "MongoDB",
-    description:
-      "Store and retrieve data seamlessly with a flexible and scalable NoSQL database.",
-    rating: 5,
-    icon: Icons.mongodb,
-  },
-  {
-    name: "Typescript",
-    description:
-      "Enhance JavaScript with static types, making code more understandable and reliable.",
-    rating: 5,
-    icon: Icons.typescript,
-  },
-  {
-    name: "Javascript",
-    description:
-      "Create interactive and dynamic web experiences with the versatile scripting language.",
-    rating: 5,
-    icon: Icons.javascript,
-  },
-  {
-    name: "HTML 5",
-    description:
-      "Structure web content beautifully with the latest version of HyperText Markup Language.",
+      "The environment I develop, train, and deploy robot software in.",
     rating: 4,
-    icon: Icons.html5,
-  },
-  {
-    name: "CSS 3",
-    description:
-      "Style web pages creatively with the latest iteration of Cascading Style Sheets.",
-    rating: 4,
-    icon: Icons.css3,
-  },
-  {
-    name: "React Native",
-    description:
-      "Develop cross-platform mobile apps using React for consistent and engaging experiences.",
-    rating: 4,
-    icon: Icons.react,
-  },
-  {
-    name: "Angular",
-    description:
-      "Build dynamic web apps with a TypeScript-based open-source framework by Google.",
-    rating: 3,
-    icon: Icons.angular,
-  },
-  {
-    name: "Redux",
-    description:
-      "Manage app state effectively using a predictable and centralized state container.",
-    rating: 4,
-    icon: Icons.redux,
-  },
-  {
-    name: "Socket.io",
-    description:
-      "Enable real-time, bidirectional communication between clients and servers effortlessly.",
-    rating: 3,
-    icon: Icons.socketio,
-  },
-  {
-    name: "Material UI",
-    description:
-      "Create stunning and responsive UIs with a popular React UI framework.",
-    rating: 4,
-    icon: Icons.mui,
-  },
-
-  {
-    name: "Tailwind CSS",
-    description:
-      "Design beautiful, modern websites faster with a utility-first CSS framework.",
-    rating: 5,
-    icon: Icons.tailwindcss,
-  },
-  {
-    name: "AWS",
-    description:
-      "Utilize Amazon Web Services to build and deploy scalable, reliable, and secure applications.",
-    rating: 3,
-    icon: Icons.amazonaws,
-  },
-  {
-    name: "Bootstrap",
-    description:
-      "Quickly create responsive and appealing web designs using a popular CSS framework.",
-    rating: 2,
-    icon: Icons.bootstrap,
-  },
-  {
-    name: "MySQL",
-    description:
-      "Manage and organize relational databases efficiently for data-driven applications.",
-    rating: 2,
-    icon: Icons.mysql,
-  },
-  {
-    name: "Netlify",
-    description:
-      "Manage and organize relational databases efficiently for data-driven applications.",
-    rating: 4,
-    icon: Icons.netlify,
+    icon: Icons.paper,
   },
 ];
 

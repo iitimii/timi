@@ -60,7 +60,25 @@ export type ValidSkills =
   | "FastAPI"
   | "SQL"
   | "NoSQL"
-  | "Framer Motion";
+  | "Framer Motion"
+  | "C++"
+  | "JAX"
+  | "MuJoCo"
+  | "ROS 2"
+  | "Gazebo"
+  | "NumPy"
+  | "OpenCV"
+  | "Streamlit"
+  | "MATLAB"
+  | "Linux"
+  | "Machine Learning"
+  | "Reinforcement Learning"
+  | "Deep Learning"
+  | "Computer Vision"
+  | "Control Theory"
+  | "Model Predictive Control"
+  | "Robotics"
+  | "Simulation";
 
 export type ValidCategory =
   | "Full Stack"
@@ -69,7 +87,13 @@ export type ValidCategory =
   | "UI/UX"
   | "Web Dev"
   | "Mobile Dev"
-  | "3D Modeling";
+  | "3D Modeling"
+  | "Robotics"
+  | "Machine Learning"
+  | "Reinforcement Learning"
+  | "Computer Vision"
+  | "Control Systems"
+  | "Research";
 
 export type ValidExpType = "Personal" | "Professional";
 

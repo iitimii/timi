@@ -7,39 +7,81 @@ export interface contributionsInterface {
 
 export const contributionsUnsorted: contributionsInterface[] = [
   {
-    repo: "minimal-next-portfolio",
+    repo: "Humanoid",
     contibutionDescription:
-      "Open-source Next.js portfolio template. Trusted and forked by developers worldwide (130+ GitHub stars).",
-    repoOwner: "namanbarkiya",
-    link: "https://github.com/namanbarkiya/minimal-next-portfolio",
+      "World models, vision-language-action models, and continual learning on an H1 humanoid robot. Ongoing.",
+    repoOwner: "iitimii",
+    link: "https://github.com/iitimii/Humanoid",
   },
   {
-    repo: "niya-saas-template",
+    repo: "Coordinated-Control-of-Multi-Quadrotor-Swarms",
     contibutionDescription:
-      "Modern Next.js SaaS template. Production-ready starter for devs and AI startups (30+ GitHub stars).",
-    repoOwner: "namanbarkiya",
-    link: "https://github.com/namanbarkiya/niya-saas-template",
+      "Classical, adaptive, and learning-based control for quadrotor swarms on gym-pybullet-drones. Under review at IJCAI 2026.",
+    repoOwner: "iitimii",
+    link: "https://github.com/iitimii/Coordinated-Control-of-Multi-Quadrotor-Swarms",
   },
   {
-    repo: "autogen",
+    repo: "Affordable-3D-Printed-Manipulator",
     contibutionDescription:
-      "Improved the gallery component to showcase the community work.",
-    repoOwner: "Microsoft",
-    link: "https://github.com/microsoft/autogen/pull/1445",
+      "Open-source 6-DOF 3D-printed robotic arm matching WidowX 250 S performance at 2.5% of the cost.",
+    repoOwner: "iitimii",
+    link: "https://github.com/iitimii/Affordable-3D-Printed-Manipulator",
   },
   {
-    repo: "creativecommons",
+    repo: "aloha-vla",
     contibutionDescription:
-      "Closed Issue: Fixed navbar issue on the main website of creative common.",
-    repoOwner: "Creative Commons",
-    link: "https://github.com/creativecommons/creativecommons.github.io-source/pull/738",
+      "Replication of Stanford's ALOHA bimanual manipulation setup in simulation with OpenVLA-OFT.",
+    repoOwner: "iitimii",
+    link: "https://github.com/iitimii/aloha-vla",
   },
   {
-    repo: "creativecommons",
+    repo: "robot_arm",
     contibutionDescription:
-      "Added section for 'Other Opportunities' on main page.",
-    repoOwner: "Creative Commons",
-    link: "https://github.com/creativecommons/creativecommons.github.io-source/pull/719",
+      "VisionPick: vision-based pick-and-place learned with JAX and MuJoCo Playground.",
+    repoOwner: "iitimii",
+    link: "https://github.com/iitimii/robot_arm",
+  },
+  {
+    repo: "Autonomous-Drone",
+    contibutionDescription:
+      "Autonomous drone platform with onboard perception and control.",
+    repoOwner: "iitimii",
+    link: "https://github.com/iitimii/Autonomous-Drone",
+  },
+  {
+    repo: "ROS2-AutonomousRobotCar",
+    contibutionDescription:
+      "TurtleBot simulated in Gazebo with PID motion control and Extended Kalman Filter localization on ROS 2.",
+    repoOwner: "iitimii",
+    link: "https://github.com/iitimii/ROS2-AutonomousRobotCar",
+  },
+  {
+    repo: "Brute-Force-Optimization-for-Neural-Networks",
+    contibutionDescription:
+      "Code for the Engineering Research Express paper comparing brute force search and gradient descent.",
+    repoOwner: "iitimii",
+    link: "https://github.com/iitimii/Brute-Force-Optimization-for-Neural-Networks",
+  },
+  {
+    repo: "Brain-Tumour-Segmentation-with-UNet",
+    contibutionDescription:
+      "U-Net app for segmenting brain tumors in 3D MRI scans, with a FastAPI backend and Streamlit frontend.",
+    repoOwner: "iitimii",
+    link: "https://github.com/iitimii/Brain-Tumour-Segmentation-with-UNet",
+  },
+  {
+    repo: "Cam-Ai",
+    contibutionDescription:
+      "AI camera system for real-time person tracking, action recognition, and emergency alerts.",
+    repoOwner: "iitimii",
+    link: "https://github.com/iitimii/Cam-Ai",
+  },
+  {
+    repo: "Semantic-Segmentation-for-Clothing",
+    contibutionDescription:
+      "ClothSegNet: U-Net model that segments clothing items from images of people.",
+    repoOwner: "iitimii",
+    link: "https://github.com/iitimii/Semantic-Segmentation-for-Clothing",
   },
 ];
 

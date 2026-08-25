@@ -18,24 +18,26 @@ export const pagesConfig: PagesConfig = {
     description: "Welcome to my portfolio website.",
     metadata: {
       title: "Home",
-      description: "Naman Barkiya's portfolio website.",
+      description: "Timi Owolabi's portfolio website.",
     },
   },
   skills: {
     title: "Skills",
-    description: "Key skills that define my professional identity.",
+    description: "The tools and disciplines I build robots and models with.",
     metadata: {
       title: "Skills",
       description:
-        "Naman Barkiya's key skills that define his professional identity.",
+        "Timi Owolabi's core skills across robotics, machine learning, and control.",
     },
   },
   projects: {
-    title: "Projects",
-    description: "Showcasing impactful projects and technical achievements.",
+    title: "Research & Projects",
+    description:
+      "Published work and systems I have built across robotics, control, and machine learning.",
     metadata: {
-      title: "Projects",
-      description: "Naman Barkiya's projects in building web applications.",
+      title: "Research & Projects",
+      description:
+        "Timi Owolabi's research papers and robotics projects, from quadrotor swarms to humanoid control.",
     },
   },
   contact: {
@@ -43,43 +45,42 @@ export const pagesConfig: PagesConfig = {
     description: "Let's connect and explore collaborations.",
     metadata: {
       title: "Contact",
-      description: "Contact Naman Barkiya.",
+      description: "Contact Timi Owolabi.",
     },
   },
   contributions: {
-    title: "Contributions",
-    description: "Open-source contributions and community involvement.",
+    title: "Open Source",
+    description: "Robotics and machine learning code I have released publicly.",
     metadata: {
-      title: "Contributions",
+      title: "Open Source",
       description:
-        "Naman Barkiya's open-source contributions and community involvement.",
+        "Timi Owolabi's open-source robotics and machine learning repositories.",
     },
   },
   resume: {
     title: "Resume",
-    description: "Naman Barkiya's resume.",
+    description: "Timi Owolabi's resume.",
     metadata: {
       title: "Resume",
-      description: "Naman Barkiya's resume.",
+      description: "Timi Owolabi's resume.",
     },
   },
   blogs: {
     title: "Blogs",
     description:
-      "Thoughts on AI, software engineering, and building in public.",
+      "Notes on robotics, machine learning, and building embodied systems.",
     metadata: {
       title: "Blogs",
       description:
-        "Naman Barkiya's blog — thoughts on AI, software engineering, and building in public.",
+        "Timi Owolabi's writing on robotics, machine learning, and embodied AI.",
     },
   },
   experience: {
     title: "Experience",
-    description: "Professional journey and career timeline.",
+    description: "Research, teaching, and leadership roles.",
     metadata: {
       title: "Experience",
-      description:
-        "Naman Barkiya's professional journey and experience timeline.",
+      description: "Timi Owolabi's research, teaching, and leadership roles.",
     },
   },
 };

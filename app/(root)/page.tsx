@@ -26,7 +26,7 @@ import profileImg from "@/public/timi.jpg";
 export const metadata: Metadata = {
   title: `${pagesConfig.home.metadata.title}`,
   description:
-    "Naman Barkiya - Applied AI Engineer working at the intersection of AI, data, and scalable software systems. Explore my projects, experience, and contributions.",
+    "Timi Owolabi - Robotics and machine learning researcher working on reinforcement learning, vision-language-action models, and learning-based control. Explore my research, projects, and open-source work.",
   alternates: {
     canonical: siteConfig.url,
   },
@@ -41,7 +41,7 @@ export default function IndexPage() {
     name: siteConfig.authorName,
     url: siteConfig.url,
     image: siteConfig.ogImage,
-    jobTitle: "Applied AI Engineer",
+    jobTitle: "Robotics and Machine Learning Researcher",
     sameAs: [siteConfig.links.github, siteConfig.links.twitter],
   };
 
@@ -49,7 +49,7 @@ export default function IndexPage() {
   const softwareSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Next.js Portfolio Template",
+    name: "Timi Owolabi Portfolio",
     applicationCategory: "DeveloperApplication",
     operatingSystem: "Web",
     offers: {
@@ -100,12 +100,13 @@ export default function IndexPage() {
             delay={0.4}
             className="font-heading text-base sm:text-xl md:text-xl lg:text-2xl"
           >
-            Applied AI Engineer
+            Robotics &amp; Machine Learning Researcher
           </AnimatedText>
           <div className="mt-4 max-w-[42rem] text-center">
             <p className="leading-normal text-muted-foreground text-sm sm:text-base">
-              Software engineer working at the intersection of AI, data, and
-              scalable software systems.
+              Unifying machine learning, control theory, and cognitive science
+              to build embodied AI systems that think, remember, and learn
+              continuously.
             </p>
           </div>
 
