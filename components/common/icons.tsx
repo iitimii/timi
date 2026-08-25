@@ -50,6 +50,7 @@ import {
   SiCss3,
   SiExpress,
   SiGmail,
+  SiGooglescholar,
   SiGraphql,
   SiHtml5,
   SiJavascript,
@@ -128,6 +129,7 @@ export const Icons = {
   gmail: SiGmail,
   twitter: SiX,
   linkedin: SiLinkedin,
+  scholar: SiGooglescholar,
   userFill: BiSolidUser,
   work: HiBriefcase,
   gitHub: ({ ...props }: LucideProps) => (
