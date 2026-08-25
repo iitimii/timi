@@ -20,10 +20,7 @@ export default function MarketingLayout({ children }: MarketingLayoutProps) {
             </div>
           </MainNav>
           <nav className="flex items-center gap-1">
-            {/* Six icons plus the toggle need ~240px, which does not fit
-                beside the mobile menu button on a narrow phone. Below this
-                width the same row renders inside the mobile menu instead. */}
-            <HeaderLinks className="hidden min-[480px]:flex" />
+            <HeaderLinks />
             <ModeToggle />
           </nav>
         </div>

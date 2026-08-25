@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 
@@ -7,7 +8,6 @@ import { AnimatedSection } from "@/components/common/animated-section";
 import { AnimatedText } from "@/components/common/animated-text";
 import { ClientPageWrapper } from "@/components/common/client-page-wrapper";
 import { Icons } from "@/components/common/icons";
-import { OrbitHero, OrbitItem } from "@/components/common/orbit-hero";
 import ExperienceCard from "@/components/experience/experience-card";
 import ProjectCard from "@/components/projects/project-card";
 import PublicationCard from "@/components/research/publication-card";
@@ -15,12 +15,8 @@ import SkillsCard from "@/components/skills/skills-card";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { experiences } from "@/config/experience";
 import { pagesConfig } from "@/config/pages";
-import { Projects, featuredProjects } from "@/config/projects";
-import {
-  featuredPublications,
-  publications,
-  publicationsSection,
-} from "@/config/research";
+import { featuredProjects } from "@/config/projects";
+import { featuredPublications, publicationsSection } from "@/config/research";
 import { siteConfig } from "@/config/site";
 import { featuredSkills } from "@/config/skills";
 import { getFeaturedBlogs } from "@/lib/blogs";
@@ -35,39 +31,6 @@ export const metadata: Metadata = {
     canonical: siteConfig.url,
   },
 };
-
-const projectOrbit: OrbitItem[] = Projects.map((project) => ({
-  id: project.id,
-  title: project.companyName,
-  image: project.companyLogoImg as string,
-  href: `/projects/${project.id}`,
-}));
-
-const publicationOrbit: OrbitItem[] = publications.map((publication) => ({
-  id: publication.id,
-  title: publication.title,
-  image: publication.image,
-  href: "/research",
-}));
-
-// Interleaved so both kinds of work show up on both rings. The first six ride
-// the inner ring; the rest ride the outer one.
-const orbitItems: OrbitItem[] = [
-  projectOrbit[0],
-  publicationOrbit[0],
-  projectOrbit[1],
-  projectOrbit[3],
-  projectOrbit[4],
-  projectOrbit[2],
-  publicationOrbit[1],
-  projectOrbit[6],
-  publicationOrbit[2],
-  projectOrbit[5],
-  publicationOrbit[3],
-  projectOrbit[7],
-  publicationOrbit[4],
-  projectOrbit[8],
-].filter(Boolean);
 
 export default function IndexPage() {
   const featuredBlogs = getFeaturedBlogs();
@@ -116,10 +79,14 @@ export default function IndexPage() {
 
       <section className="space-y-6 pb-8 pt-6 mb-0 md:pb-12 md:py-20 lg:py-32 h-screen flex items-center">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center -mt-20">
-          <OrbitHero
-            profileImage={profileImg}
-            profileAlt="Timi Owolabi"
-            items={orbitItems}
+          <Image
+            src={profileImg}
+            height={100}
+            width={100}
+            sizes="100vw"
+            className="bg-primary rounded-full mb-0 h-auto md:mb-2 w-[60%] max-w-[16rem] border-8 border-primary"
+            alt="Timi Owolabi"
+            priority
           />
           <AnimatedText
             as="h1"
