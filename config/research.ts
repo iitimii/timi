@@ -261,6 +261,14 @@ export const publications: PublicationInterface[] = [
   },
 ];
 
+export const publicationsSection = {
+  title: "Publications",
+  description:
+    "Peer-reviewed and under-review work in control, robotics, and machine learning.",
+};
+
+export const featuredPublications = publications.slice(0, 3);
+
 export const news: NewsItem[] = [
   {
     date: "Jun 2026",
