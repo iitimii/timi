@@ -86,10 +86,11 @@ export const pagesConfig: PagesConfig = {
   },
   experience: {
     title: "Experience",
-    description: "Research, teaching, and leadership roles.",
+    description: "Platform, AI, and machine learning engineering roles.",
     metadata: {
       title: "Experience",
-      description: "Timi Owolabi's research, teaching, and leadership roles.",
+      description:
+        "Timi Owolabi's experience across platform engineering, AI infrastructure, and machine learning.",
     },
   },
 };

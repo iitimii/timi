@@ -8,12 +8,12 @@ import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: `${pagesConfig.experience.metadata.title} | Professional Experience Timeline`,
-  description: `${pagesConfig.experience.metadata.description} Explore my professional journey and career milestones in software development.`,
+  description: `${pagesConfig.experience.metadata.description} Explore my professional journey across platform engineering, AI infrastructure, and machine learning.`,
   keywords: [
     "experience timeline",
     "professional experience",
-    "software developer experience",
-    "developer portfolio",
+    "machine learning engineer experience",
+    "platform engineering",
     "work experience",
   ],
   alternates: {
