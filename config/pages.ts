@@ -49,6 +49,16 @@ export const pagesConfig: PagesConfig = {
         "Timi Owolabi's publications and research in robotics, control, and machine learning.",
     },
   },
+  impact: {
+    title: "Impact",
+    description:
+      "Teaching, mentorship, and outreach work beyond research and engineering.",
+    metadata: {
+      title: "Impact",
+      description:
+        "Timi Owolabi's teaching, mentorship, and community outreach work.",
+    },
+  },
   contact: {
     title: "Contact",
     description: "Let's connect and explore collaborations.",

@@ -105,6 +105,7 @@ export type ValidPages =
   | "skills"
   | "projects"
   | "research"
+  | "impact"
   | "experience"
   | "contact"
   | "contributions"
