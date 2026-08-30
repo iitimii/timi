@@ -31,6 +31,22 @@ bun run lint
 bun run build
 ```
 
+Note that `bun run build` targets Cloudflare and writes `.output/`. It does not
+populate `.vercel/output/`, so never deploy `--prebuilt` straight after it.
+
+## Deployment
+
+Pushes to `main` deploy to production automatically via the Vercel Git
+integration; other branches get preview deployments.
+
+To deploy by hand, build for the Vercel target first so the correct output
+directory is produced:
+
+```sh
+vercel build --prod
+vercel deploy --prebuilt --prod
+```
+
 ## Contact
 
 - GitHub: [github.com/iitimii](https://github.com/iitimii)
