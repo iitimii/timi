@@ -338,34 +338,27 @@ export function About() {
       <Reveal>
         <div className="max-w-4xl space-y-5 text-base leading-relaxed text-muted-foreground">
           <p>
-            I&apos;m an ML Systems Engineer and Embodied AI Researcher working across machine
-            learning infrastructure, robot learning, and intelligent systems.
-          </p>
-          <p>
-            On the systems side, I work on the infrastructure behind production AI and software
-            systems, with a focus on reliability, deployment, observability, and scalable ML
-            infrastructure.
-          </p>
-          <p>
-            On the research side, I lead the Embodied AI Research Group at{" "}
+            I&apos;m an ML Systems Engineer and Embodied AI Researcher. On the systems side, I work
+            on the infrastructure behind production ML systems: reliability, deployment,
+            observability, and scalability. On the research side, I lead the Embodied AI Research
+            Group at{" "}
             <ExternalLink inline href="https://mlcollective.org/">
               ML Collective
             </ExternalLink>
-            , where I work on world-action models and efficient embodied intelligence. My interests
-            span world models, vision-language-action models, reinforcement learning, and the
-            intersection of machine learning and control.
+            , where we work on world-action models. My interests span world models, reinforcement
+            learning, and control theory.
           </p>
           <p>
             I graduated with a 4.85/5.0 GPA in Electrical Engineering from{" "}
             <ExternalLink inline href="https://www.covenantuniversity.edu.ng/">
               Covenant University
             </ExternalLink>
-            . While at Covenant, I led the Robotics Research Team for{" "}
+            . While at Covenant, I led the{" "}
             <ExternalLink
               inline
               href="https://gdg.community.dev/gdg-on-campus-covenant-university-ota-nigeria/"
             >
-              Google Developer Groups on Campus
+              Robotics Research Team
             </ExternalLink>
             , working on reinforcement learning, vision-language-action models, and low-cost robotic
             systems. I also worked with{" "}
@@ -379,24 +372,22 @@ export function About() {
             on autonomous driving and graph neural networks.
           </p>
           <p>
-            Beyond engineering and research, I care deeply about teaching and technical mentorship.
-            I taught machine learning to female engineering students of{" "}
-            <ExternalLink inline href="https://www.apwen.org.ng/">
-              APWEN
-            </ExternalLink>
-            . As president of{" "}
+            I care deeply about teaching and mentorship. As president of{" "}
             <ExternalLink inline href="https://www.instagram.com/aeies_cu/">
               AEIES
             </ExternalLink>
             , I founded a student mentorship program to help engineering students develop strong
-            first-principles understanding. I also founded The Classroom Project, an initiative
-            supporting underserved students with classroom infrastructure and STEM learning
-            resources.
+            first-principles thinking. I taught machine learning to female engineering students of{" "}
+            <ExternalLink inline href="https://www.apwen.org.ng/">
+              APWEN
+            </ExternalLink>
+            . I also founded The Classroom Project, an initiative supporting underserved students
+            with classroom infrastructure and STEM learning resources.
           </p>
           <p>
-            My long-term goal is to bridge machine learning systems, control theory, and cognitive
-            science to build embodied AI that can operate efficiently, remember, adapt, and learn
-            continuously in the real world.
+            Since I graduated, I&apos;ve realised that my priorities evolve as I learn, so for now
+            I&apos;m focused on continuing to learn, build ML systems, and use them to solve
+            meaningful problems.
           </p>
         </div>
       </Reveal>

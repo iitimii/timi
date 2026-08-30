@@ -86,7 +86,7 @@ export const profile = {
   avatar: "/timi.jpg",
   cv: "/timi-owolabi-full-cv.pdf",
   tagline:
-    "I build machine learning systems, from the infrastructure that makes AI reliable at scale to embodied models that perceive, reason, and act in the physical world.",
+    "I build machine learning systems, from the infrastructure that makes AI reliable at scale to robots that act in the physical world.",
 } as const;
 
 export const skillGroups = [
