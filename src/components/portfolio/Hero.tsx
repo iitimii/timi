@@ -27,7 +27,7 @@ export function Hero() {
           </div>
 
           <div className="grid gap-8 p-5 sm:p-6 md:grid-cols-[1fr_auto] md:items-center md:gap-10 md:p-10">
-            <div>
+            <div className="order-2 md:order-1">
               <p className="font-mono text-xs text-accent">
                 $ whoami<span className="caret ml-1">_</span>
               </p>
@@ -49,7 +49,7 @@ export function Hero() {
               </div>
             </div>
 
-            <div className="justify-self-center md:justify-self-end">
+            <div className="order-1 justify-self-center md:order-2 md:justify-self-end md:-translate-y-4">
               <div className="relative">
                 <div
                   className="absolute -inset-1 rounded-full opacity-30 blur-lg"
@@ -59,10 +59,10 @@ export function Hero() {
                 <img
                   src={profile.avatar}
                   alt={`${profile.shortName}, ML systems engineer and embodied AI researcher`}
-                  width={200}
-                  height={200}
+                  width={288}
+                  height={288}
                   loading="eager"
-                  className="relative h-40 w-40 rounded-full border border-border-strong object-cover md:h-52 md:w-52"
+                  className="relative h-52 w-52 rounded-full border border-border-strong object-cover sm:h-56 sm:w-56 md:h-64 md:w-64"
                 />
               </div>
             </div>

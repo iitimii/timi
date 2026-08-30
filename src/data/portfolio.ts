@@ -180,16 +180,6 @@ export const experience: TimelineItem[] = [
 
 export const projects: PortfolioProject[] = [
   {
-    name: "SmolWAM",
-    kind: "Efficient world-action models",
-    period: "Ongoing",
-    description:
-      "A compact world-action model based on NVIDIA Cosmos3 Policy, optimized for fast inference on resource-constrained edge devices and benchmarked across LIBERO and RoboCasa.",
-    tags: ["Python", "Embodied AI", "LIBERO", "RoboCasa", "Edge AI"],
-    collaborators: [{ name: "Timi Owolabi", self: true }],
-    links: [],
-  },
-  {
     name: "Humanoid",
     titleLink: "https://github.com/iitimii/Humanoid",
     kind: "Whole-body robot learning",

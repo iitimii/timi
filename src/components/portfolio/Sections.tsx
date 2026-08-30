@@ -28,9 +28,25 @@ import { Chip, Reveal, Section } from "./primitives";
 const linkClass =
   "font-mono text-xs text-accent underline-offset-4 transition-colors hover:text-accent-glow hover:underline";
 
-function ExternalLink({ href, children }: { href: string; children: ReactNode }) {
+const inlineLinkClass =
+  "font-mono text-[1em] text-accent underline-offset-4 transition-colors hover:text-accent-glow hover:underline";
+
+function ExternalLink({
+  href,
+  children,
+  inline = false,
+}: {
+  href: string;
+  children: ReactNode;
+  inline?: boolean;
+}) {
   return (
-    <a href={href} target="_blank" rel="noreferrer" className={linkClass}>
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className={inline ? inlineLinkClass : linkClass}
+    >
       {children}
     </a>
   );
@@ -323,28 +339,40 @@ export function About() {
         <div className="max-w-4xl space-y-5 text-base leading-relaxed text-muted-foreground">
           <p>
             I currently lead the Embodied AI Research Group at{" "}
-            <ExternalLink href="https://mlcollective.org/">ML Collective</ExternalLink> on
-            world-action models research. I graduated with a 4.85/5.0 GPA in Electrical Engineering
-            from{" "}
-            <ExternalLink href="https://www.covenantuniversity.edu.ng/">
+            <ExternalLink inline href="https://mlcollective.org/">
+              ML Collective
+            </ExternalLink>{" "}
+            on world-action models research. I graduated with a 4.85/5.0 GPA in Electrical
+            Engineering from{" "}
+            <ExternalLink inline href="https://www.covenantuniversity.edu.ng/">
               Covenant University
             </ExternalLink>
             . During my time at Covenant, I led the Robotics Research Team for{" "}
-            <ExternalLink href="https://gdg.community.dev/gdg-on-campus-covenant-university-ota-nigeria/">
+            <ExternalLink
+              inline
+              href="https://gdg.community.dev/gdg-on-campus-covenant-university-ota-nigeria/"
+            >
               Google Developer Groups on Campus
             </ExternalLink>
             , where we worked on reinforcement learning, vision-language-action models, and low-cost
             robotic systems. I also worked with{" "}
-            <ExternalLink href="https://danielomeiza.github.io/">Dr. Daniel Omeiza</ExternalLink> of
-            the <ExternalLink href="https://ori.ox.ac.uk/">Oxford Robotics Institute</ExternalLink>{" "}
+            <ExternalLink inline href="https://danielomeiza.github.io/">
+              Dr. Daniel Omeiza
+            </ExternalLink>{" "}
+            of the{" "}
+            <ExternalLink inline href="https://ori.ox.ac.uk/">
+              Oxford Robotics Institute
+            </ExternalLink>{" "}
             on autonomous driving and graph neural networks.
           </p>
           <p>
             I&apos;m passionate about teaching and mentorship. I currently teach machine learning to
             undergraduate and graduate women of{" "}
-            <ExternalLink href="https://www.apwen.org.ng/">APWEN</ExternalLink>. I was the president
-            of the{" "}
-            <ExternalLink href="https://www.instagram.com/aeies_cu/">
+            <ExternalLink inline href="https://www.apwen.org.ng/">
+              APWEN
+            </ExternalLink>
+            . I was the president of the{" "}
+            <ExternalLink inline href="https://www.instagram.com/aeies_cu/">
               Association of Electrical and Information Engineering Students
             </ExternalLink>{" "}
             and I founded the AEIES student mentorship program to help students master engineering
