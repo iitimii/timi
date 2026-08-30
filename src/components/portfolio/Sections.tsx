@@ -381,8 +381,12 @@ export function About() {
             <ExternalLink inline href="https://www.apwen.org.ng/">
               APWEN
             </ExternalLink>
-            . I also founded The Classroom Project, an initiative supporting underserved students
-            with classroom infrastructure and STEM learning resources.
+            . I also founded{" "}
+            <ExternalLink inline href="https://www.linkedin.com/company/113221087">
+              The Classroom Project
+            </ExternalLink>
+            , an initiative supporting underserved students with classroom infrastructure and STEM
+            learning resources.
           </p>
           <p>
             Since I graduated, I&apos;ve realised that my priorities evolve as I learn, so for now

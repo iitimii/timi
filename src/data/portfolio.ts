@@ -413,6 +413,16 @@ export const researchExperience: TimelineItem[] = [
     ],
   },
   {
+    role: "Undergraduate Research Assistant",
+    org: "WaySense · Oxford Robotics Institute",
+    location: "Oxford, United Kingdom · Remote",
+    period: "Mar 2024 - Sep 2024",
+    bullets: [
+      "Analyzed the Lyft Level 5 dataset for multi-agent vehicle state estimation, lane-change detection, and explainable autonomous driving.",
+      "Adapted the fast subset-scan algorithm to graph neural networks for statistically significant traffic anomaly detection.",
+    ],
+  },
+  {
     role: "Research Intern",
     org: "National Centre for Artificial Intelligence and Robotics (NCAIR)",
     location: "Abuja, Nigeria",
@@ -440,16 +450,6 @@ export const researchExperience: TimelineItem[] = [
     bullets: [
       "Collaborated on autonomous waste collection and epidemiological prediction projects for Sub-Saharan Africa.",
       "Built an NLP system that parses, summarizes, and clusters academic literature from Scopus alerts.",
-    ],
-  },
-  {
-    role: "Undergraduate Research Assistant",
-    org: "WaySense · Oxford Robotics Institute",
-    location: "Oxford, United Kingdom · Remote",
-    period: "Mar 2024 - Sep 2024",
-    bullets: [
-      "Analyzed the Lyft Level 5 dataset for multi-agent vehicle state estimation, lane-change detection, and explainable autonomous driving.",
-      "Adapted the fast subset-scan algorithm to graph neural networks for statistically significant traffic anomaly detection.",
     ],
   },
   {
