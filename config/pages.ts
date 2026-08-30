@@ -69,10 +69,12 @@ export const pagesConfig: PagesConfig = {
   },
   resume: {
     title: "Resume",
-    description: "Timi Owolabi's resume.",
+    description:
+      "Choose the version that best matches your interest in my work.",
     metadata: {
       title: "Resume",
-      description: "Timi Owolabi's resume.",
+      description:
+        "View Timi Owolabi's professional resume, research resume, or full curriculum vitae.",
     },
   },
   blogs: {

@@ -28,9 +28,9 @@ export const SocialLinks: SocialInterface[] = [
   },
   {
     name: "Gmail",
-    username: "timilehin.owolabi",
+    username: "timiiowolabi",
     icon: Icons.gmail,
-    link: "mailto:timilehin.owolabi@stu.cu.edu.ng",
+    link: "mailto:timiiowolabi@gmail.com",
   },
 ];
 
@@ -47,9 +47,9 @@ export const headerLinks: SocialInterface[] = [
   },
   {
     name: "Email",
-    username: "timilehin.owolabi",
+    username: "timiiowolabi",
     icon: Icons.gmail,
-    link: "mailto:timilehin.owolabi@stu.cu.edu.ng",
+    link: "mailto:timiiowolabi@gmail.com",
   },
   {
     name: "LinkedIn",

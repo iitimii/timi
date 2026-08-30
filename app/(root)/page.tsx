@@ -114,7 +114,6 @@ export default function IndexPage() {
             <AnimatedText delay={0.6}>
               <Link
                 href={"/resume"}
-                target="_blank"
                 className={cn(buttonVariants({ size: "lg" }))}
                 aria-label="View resume"
               >

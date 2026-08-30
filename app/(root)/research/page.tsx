@@ -3,7 +3,9 @@ import Image from "next/image";
 import React from "react";
 
 import { AnimatedSection } from "@/components/common/animated-section";
+import { Icons } from "@/components/common/icons";
 import PageContainer from "@/components/common/page-container";
+import { buttonVariants } from "@/components/ui/button";
 import { pagesConfig } from "@/config/pages";
 import {
   IntroSegment,
@@ -12,6 +14,7 @@ import {
   researchIntro,
 } from "@/config/research";
 import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: pagesConfig.research.metadata.title,
@@ -53,6 +56,19 @@ export default function ResearchPage() {
         {researchIntro.map((segments, i) => (
           <IntroParagraph key={i} segments={segments} />
         ))}
+        <a
+          href="/resumes/timi-owolabi-research-resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(
+            buttonVariants({ variant: "outline", size: "sm" }),
+            "mt-2 gap-2"
+          )}
+        >
+          <Icons.post className="h-4 w-4" aria-hidden="true" />
+          Research resume
+          <Icons.externalLink className="h-4 w-4" aria-hidden="true" />
+        </a>
       </AnimatedSection>
 
       <AnimatedSection direction="up" className="mt-12" id="publications">
