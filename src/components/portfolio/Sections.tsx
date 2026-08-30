@@ -338,24 +338,37 @@ export function About() {
       <Reveal>
         <div className="max-w-4xl space-y-5 text-base leading-relaxed text-muted-foreground">
           <p>
-            I currently lead the Embodied AI Research Group at{" "}
+            I&apos;m an ML Systems Engineer and Embodied AI Researcher working across machine
+            learning infrastructure, robot learning, and intelligent systems.
+          </p>
+          <p>
+            On the systems side, I work on the infrastructure behind production AI and software
+            systems, with a focus on reliability, deployment, observability, and scalable ML
+            infrastructure.
+          </p>
+          <p>
+            On the research side, I lead the Embodied AI Research Group at{" "}
             <ExternalLink inline href="https://mlcollective.org/">
               ML Collective
-            </ExternalLink>{" "}
-            on world-action models research. I graduated with a 4.85/5.0 GPA in Electrical
-            Engineering from{" "}
+            </ExternalLink>
+            , where I work on world-action models and efficient embodied intelligence. My interests
+            span world models, vision-language-action models, reinforcement learning, and the
+            intersection of machine learning and control.
+          </p>
+          <p>
+            I graduated with a 4.85/5.0 GPA in Electrical Engineering from{" "}
             <ExternalLink inline href="https://www.covenantuniversity.edu.ng/">
               Covenant University
             </ExternalLink>
-            . During my time at Covenant, I led the Robotics Research Team for{" "}
+            . While at Covenant, I led the Robotics Research Team for{" "}
             <ExternalLink
               inline
               href="https://gdg.community.dev/gdg-on-campus-covenant-university-ota-nigeria/"
             >
               Google Developer Groups on Campus
             </ExternalLink>
-            , where we worked on reinforcement learning, vision-language-action models, and low-cost
-            robotic systems. I also worked with{" "}
+            , working on reinforcement learning, vision-language-action models, and low-cost robotic
+            systems. I also worked with{" "}
             <ExternalLink inline href="https://danielomeiza.github.io/">
               Dr. Daniel Omeiza
             </ExternalLink>{" "}
@@ -366,22 +379,24 @@ export function About() {
             on autonomous driving and graph neural networks.
           </p>
           <p>
-            I&apos;m passionate about teaching and mentorship. I currently teach machine learning to
-            undergraduate and graduate women of{" "}
+            Beyond engineering and research, I care deeply about teaching and technical mentorship.
+            I taught machine learning to female engineering students of{" "}
             <ExternalLink inline href="https://www.apwen.org.ng/">
               APWEN
             </ExternalLink>
-            . I was the president of the{" "}
+            . As president of{" "}
             <ExternalLink inline href="https://www.instagram.com/aeies_cu/">
-              Association of Electrical and Information Engineering Students
-            </ExternalLink>{" "}
-            and I founded the AEIES student mentorship program to help students master engineering
-            concepts from first principles. I also founded The Classroom Project to bring classroom
-            furniture and STEM learning support to children at the Durumi IDP camp in Abuja.
+              AEIES
+            </ExternalLink>
+            , I founded a student mentorship program to help engineering students develop strong
+            first-principles understanding. I also founded The Classroom Project, an initiative
+            supporting underserved students with classroom infrastructure and STEM learning
+            resources.
           </p>
           <p>
-            My vision is to unify machine learning, control theory, and cognitive science to build
-            embodied AI systems that think, remember, and learn continuously.
+            My long-term goal is to bridge machine learning systems, control theory, and cognitive
+            science to build embodied AI that can operate efficiently, remember, adapt, and learn
+            continuously in the real world.
           </p>
         </div>
       </Reveal>

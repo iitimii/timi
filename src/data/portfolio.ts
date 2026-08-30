@@ -76,7 +76,7 @@ export const profile = {
   name: "Timi Owolabi",
   shortName: "Timi Owolabi",
   role: "ML Systems Engineer",
-  focus: "Embodied AI Research",
+  focus: "Embodied AI Researcher",
   location: "Lagos, Nigeria",
   email: "timiiowolabi@gmail.com",
   github: "https://github.com/iitimii",
@@ -86,7 +86,7 @@ export const profile = {
   avatar: "/timi.jpg",
   cv: "/timi-owolabi-full-cv.pdf",
   tagline:
-    "I work where machine learning meets control: building AI infrastructure and embodied systems that can perceive, adapt, and act in the real world.",
+    "I build machine learning systems, from the infrastructure that makes AI reliable at scale to embodied models that perceive, reason, and act in the physical world.",
 } as const;
 
 export const skillGroups = [

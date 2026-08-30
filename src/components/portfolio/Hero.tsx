@@ -35,7 +35,7 @@ export function Hero() {
                 {profile.name}
               </h1>
               <p className="mt-3 font-mono text-[13px] leading-relaxed text-accent sm:text-sm md:text-base">
-                {profile.role} . {profile.focus}
+                {profile.role} · {profile.focus}
               </p>
               <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:mt-5 sm:text-base">
                 {profile.tagline}
