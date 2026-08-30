@@ -125,6 +125,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     },
     image: ogImage,
     keywords: post.tags.join(", "),
+    ...(post.mediumUrl && { sameAs: post.mediumUrl }),
     wordCount: post.contentHtml.replace(/<[^>]*>/g, "").split(/\s+/).length,
     ...(post.readingTime && {
       timeRequired: `PT${post.readingTime}M`,
@@ -260,6 +261,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   {post.readingTime} min read
                 </span>
               )}
+              {post.mediumUrl && (
+                <a
+                  href={post.mediumUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 font-medium hover:text-foreground transition-colors"
+                >
+                  <Icons.externalLink className="w-4 h-4" />
+                  Read on Medium
+                </a>
+              )}
             </div>
           </header>
         </AnimatedSection>
@@ -294,7 +306,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           delay={0.15}
           className="mt-16 pt-8 border-t border-border"
         >
-          <footer className="flex items-center justify-between">
+          <footer className="flex flex-wrap items-center justify-between gap-4">
             <Link
               href="/blogs"
               className={cn(
@@ -305,17 +317,32 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <Icons.chevronLeft className="w-4 h-4" />
               All posts
             </Link>
-            <div className="text-sm text-muted-foreground">
-              Written by{" "}
-              <Link
-                href={siteConfig.links.twitter}
+            {post.mediumUrl ? (
+              <a
+                href={post.mediumUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-medium text-foreground hover:text-primary transition-colors"
+                className={cn(
+                  buttonVariants({ variant: "ghost" }),
+                  "rounded-lg gap-2"
+                )}
               >
-                {siteConfig.authorName}
-              </Link>
-            </div>
+                Original post on Medium
+                <Icons.externalLink className="w-4 h-4" />
+              </a>
+            ) : (
+              <div className="text-sm text-muted-foreground">
+                Written by{" "}
+                <Link
+                  href={siteConfig.links.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-foreground hover:text-primary transition-colors"
+                >
+                  {siteConfig.authorName}
+                </Link>
+              </div>
+            )}
           </footer>
         </AnimatedSection>
       </article>

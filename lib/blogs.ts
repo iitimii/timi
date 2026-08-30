@@ -13,6 +13,7 @@ export interface BlogFrontmatter {
   date: string;
   description: string;
   tags: string[];
+  mediumUrl?: string;
   coverImage?: string;
   readingTime?: number;
   featured?: boolean;
