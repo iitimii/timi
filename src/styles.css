@@ -6,7 +6,7 @@
 
 /*
  * Design system: dark terminal-tech.
- * Midnight-blue base, layered navy surfaces, one electric-blue accent.
+ * True-black base, layered neutral surfaces, one bright white accent.
  * All colors are oklch tokens; never hardcode colors in components.
  */
 
@@ -48,29 +48,29 @@
 
 :root {
   --radius: 4px;
-  --background: oklch(0.15 0.026 258);
-  --foreground: oklch(0.96 0.012 250);
-  --card: oklch(0.19 0.032 258);
-  --card-foreground: oklch(0.96 0.012 250);
-  --popover: oklch(0.19 0.032 258);
-  --popover-foreground: oklch(0.96 0.012 250);
-  --primary: oklch(0.72 0.19 252);
-  --primary-foreground: oklch(0.13 0.03 258);
-  --secondary: oklch(0.25 0.045 258);
-  --secondary-foreground: oklch(0.96 0.012 250);
-  --muted: oklch(0.23 0.035 258);
-  --muted-foreground: oklch(0.72 0.035 250);
-  --accent: oklch(0.72 0.19 252);
-  --accent-foreground: oklch(0.13 0.03 258);
-  --accent-glow: oklch(0.83 0.15 241);
-  --surface: oklch(0.18 0.03 258);
-  --surface-raised: oklch(0.22 0.042 258);
+  --background: oklch(0.1 0 0);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.15 0 0);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.15 0 0);
+  --popover-foreground: oklch(0.95 0 0);
+  --primary: oklch(0.95 0 0);
+  --primary-foreground: oklch(0.1 0 0);
+  --secondary: oklch(0.22 0 0);
+  --secondary-foreground: oklch(0.95 0 0);
+  --muted: oklch(0.18 0 0);
+  --muted-foreground: oklch(0.65 0 0);
+  --accent: oklch(0.9 0 0);
+  --accent-foreground: oklch(0.1 0 0);
+  --accent-glow: oklch(1 0 0);
+  --surface: oklch(0.13 0 0);
+  --surface-raised: oklch(0.18 0 0);
   --destructive: oklch(0.63 0.2 25);
-  --destructive-foreground: oklch(0.98 0.005 250);
-  --border: oklch(0.3 0.045 258);
-  --border-strong: oklch(0.43 0.075 254);
-  --input: oklch(0.3 0.045 258);
-  --ring: oklch(0.72 0.19 252);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.26 0 0);
+  --border-strong: oklch(0.42 0 0);
+  --input: oklch(0.26 0 0);
+  --ring: oklch(0.8 0 0);
   color-scheme: dark;
 }
 
