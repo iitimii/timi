@@ -2,7 +2,7 @@
 
 Single-page portfolio for Timi Owolabi, an ML systems engineer working across embodied AI, reinforcement learning, robot control, computer vision, and ML infrastructure.
 
-**Canonical site:** https://timi-iitimiis-projects.vercel.app/ and https://www.timiowolabi.com/
+**Canonical site:** https://www.timiowolabi.com/
 
 ## Sections
 
