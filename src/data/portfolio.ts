@@ -86,7 +86,7 @@ export const profile = {
   avatar: "/timi.jpg",
   cv: "/timi-owolabi-full-cv.pdf",
   tagline:
-    "I build machine learning systems, from the infrastructure that makes AI reliable at scale to robots that act in the physical world.",
+    "I like to think of my work as an ML sandwich. The bottom bread is the runtime infrastructure that models run on, things like inference engines and kernels. The middle, whether that's PB&J, chicken, or whatever filling you like, is the model research, architecting, data prep, and training. The top bread is the cloud infrastructure that monitors and serves those models to millions of people, using tools like Google Cloud, AWS, and Kubernetes. In short, I'm interested in building smart ML models and making them go vroom!",
 } as const;
 
 export const skillGroups = [
@@ -790,6 +790,30 @@ export const news: NewsItem[] = [
     before: "Became lead of the Embodied AI research group at ML Collective.",
   },
   { date: "May 2026", before: "Joined ML Collective." },
+  {
+    date: "Mar 2026",
+    before:
+      "Submitted “Smart Energy Metering and Monitoring System Using Internet of Things” to IEEE SAUPEC.",
+  },
+  {
+    date: "Jan 2026",
+    before: "Submitted ",
+    link: {
+      label:
+        "Coordinated Control of Quadrotor Swarms: Classical, Adaptive, and Learning-Based Methods ↗",
+      href: "https://github.com/iitimii/Coordinated-Control-of-Multi-Quadrotor-Swarms",
+    },
+    after: " to IJCAI.",
+  },
+  {
+    date: "Nov 2025",
+    before: "Our paper ",
+    link: {
+      label: "Fuzzy-PID Controller for Liquid Level Control of Tank Systems ↗",
+      href: "https://journals.nipes.org/index.php/jstrissue/article/download/2506/1612",
+    },
+    after: " was published in the NIPES-Journal of Science and Technology.",
+  },
   { date: "Aug 2025", before: "Joined African Robotics Network." },
   { date: "Aug 2025", before: "Graduated with First Class Honours." },
   {
@@ -800,6 +824,16 @@ export const news: NewsItem[] = [
   { date: "Apr 2025", before: "Joined Black in AI." },
   { date: "Apr 2025", before: "Joined Black in Robotics." },
   {
+    date: "Mar 2025",
+    before: "Our paper ",
+    link: {
+      label:
+        "Practical Trade-offs in Neural Network Optimization: Brute Force Search and Gradient Descent ↗",
+      href: "https://iopscience.iop.org/article/10.1088/2631-8695/adc5de/meta",
+    },
+    after: " was accepted and published in Engineering Research Express.",
+  },
+  {
     date: "Aug 2024",
     before: "Gave the talk ",
     link: {
@@ -807,6 +841,16 @@ export const news: NewsItem[] = [
       href: "/talks/nse-abeokuta-ai-training.pdf",
     },
     after: " to the Nigerian Society of Engineers.",
+  },
+  {
+    date: "Oct 2024",
+    before: "Our paper ",
+    link: {
+      label:
+        "Enhancing Radiological Imaging for Better Healthcare Outcomes Through High Performance Hybrid Approach ↗",
+      href: "https://asric.africa/sites/default/files/2025-02/10%20ES%20Vol.%205%202024.pdf",
+    },
+    after: " was published in the ASRIC Journal on Engineering Sciences.",
   },
   { date: "May 2024", before: "Joined the International Society of Automation." },
   {
@@ -823,6 +867,15 @@ export const news: NewsItem[] = [
     before: "Joined the Association of Professional Women Engineers of Nigeria.",
   },
   { date: "2024", before: "Was a finalist in the Pan-African Robotics Competition." },
+  {
+    date: "Dec 2023",
+    before: "Our paper ",
+    link: {
+      label: "Energy Optimization Algorithm for Reducing Energy Consumption in a Smart Home ↗",
+      href: "https://ieeexplore.ieee.org/abstract/document/10379321/",
+    },
+    after: " was published at IEEE ICMEAS.",
+  },
   { date: "Jun 2022", before: "Joined Data Science Nigeria." },
   { date: "Dec 2021", before: "Joined the Nigerian Society of Engineers." },
   {
