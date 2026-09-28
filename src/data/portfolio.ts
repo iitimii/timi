@@ -180,20 +180,6 @@ export const experience: TimelineItem[] = [
 
 export const projects: PortfolioProject[] = [
   {
-    name: "Humanoid",
-    titleLink: "https://github.com/iitimii/Humanoid",
-    kind: "Whole-body robot learning",
-    period: "2025 - Present",
-    description:
-      "Experiments with world models, vision-language-action policies, and continual learning for whole-body control of an H1 humanoid robot.",
-    tags: ["Python", "PyTorch", "MuJoCo", "Reinforcement Learning"],
-    image: "/projects/humanoid.jpg",
-    imageAlt: "H1 humanoid robot control experiment",
-    video: "/videos/humanoid.mp4",
-    collaborators: [{ name: "Timi Owolabi", self: true }],
-    links: [{ label: "Code", href: "https://github.com/iitimii/Humanoid" }],
-  },
-  {
     name: "ALOHA Replication with OpenVLA-OFT",
     titleLink: "https://github.com/iitimii/aloha-vla",
     kind: "Bimanual manipulation",
@@ -486,54 +472,6 @@ export const researchExperience: TimelineItem[] = [
 
 export const publications: Publication[] = [
   {
-    title:
-      "Coordinated Control of Quadrotor Swarms: Classical, Adaptive, and Learning-Based Methods",
-    titleLink: "https://github.com/iitimii/Coordinated-Control-of-Multi-Quadrotor-Swarms",
-    venue: "Under Review at IJCAI",
-    year: "2026",
-    description:
-      "Adaptive, optimal, and learning-based control for quadrotor swarms using gym-pybullet-drones.",
-    authors: [
-      { name: "Oluwatimilehin Owolabi", self: true },
-      {
-        name: "Chukwudumebi Chukwuma",
-        href: "https://ng.linkedin.com/in/chukwudumebi-chukwuma-b481bb275",
-      },
-      { name: "Oladele Omogboyega", href: "https://github.com/oladele-19" },
-      {
-        name: "Ayokunle Awelewa",
-        href: "https://scholar.google.com/citations?user=gU5hEtMAAAAJ&hl=en",
-      },
-    ],
-    links: [
-      {
-        label: "Code",
-        href: "https://github.com/iitimii/Coordinated-Control-of-Multi-Quadrotor-Swarms",
-      },
-      {
-        label: "PDF",
-        href: "https://drive.google.com/file/d/1p4L1eJT4DQ-hWlWvim1cZ8-Jzl6jkgz_/view?usp=sharing",
-      },
-    ],
-    image: "/research/quadrotor-swarms.png",
-    video: "/videos/multi-quadrotor.mp4",
-  },
-  {
-    title: "Smart Energy Metering and Monitoring System Using Internet of Things",
-    venue: "Under Review at IEEE SAUPEC",
-    year: "2026",
-    description:
-      "An Internet of Things approach to smart energy metering and monitoring for more observable and efficient electricity use.",
-    authors: [
-      { name: "Ayokunle Awelewa" },
-      { name: "Kayode Ojo" },
-      { name: "E. Edmond" },
-      { name: "Oluwatimilehin Owolabi", self: true },
-      { name: "I. Samuel" },
-    ],
-    links: [],
-  },
-  {
     title: "Fuzzy-PID Controller for Liquid Level Control of Tank Systems",
     titleLink:
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=mJOLhAcAAAAJ&authuser=1&citation_for_view=mJOLhAcAAAAJ:2osOgNQ5qMEC",
@@ -790,21 +728,6 @@ export const news: NewsItem[] = [
     before: "Became lead of the Embodied AI research group at ML Collective.",
   },
   { date: "May 2026", before: "Joined ML Collective." },
-  {
-    date: "Mar 2026",
-    before:
-      "Submitted “Smart Energy Metering and Monitoring System Using Internet of Things” to IEEE SAUPEC.",
-  },
-  {
-    date: "Jan 2026",
-    before: "Submitted ",
-    link: {
-      label:
-        "Coordinated Control of Quadrotor Swarms: Classical, Adaptive, and Learning-Based Methods ↗",
-      href: "https://github.com/iitimii/Coordinated-Control-of-Multi-Quadrotor-Swarms",
-    },
-    after: " to IJCAI.",
-  },
   {
     date: "Nov 2025",
     before: "Our paper ",
