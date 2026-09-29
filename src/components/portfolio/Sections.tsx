@@ -387,11 +387,6 @@ export function About() {
             , an initiative supporting underserved students with classroom infrastructure and STEM
             learning resources.
           </p>
-          <p>
-            Since I graduated, I&apos;ve realised that my priorities evolve as I learn, so for now
-            I&apos;m focused on continuing to learn, build ML systems, and use them to solve
-            meaningful problems.
-          </p>
         </div>
       </Reveal>
     </Section>
