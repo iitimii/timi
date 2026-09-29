@@ -338,10 +338,9 @@ export function About() {
       <Reveal>
         <div className="max-w-4xl space-y-5 text-base leading-relaxed text-muted-foreground">
           <p>
-            I&apos;m an ML Systems Engineer and Embodied AI Researcher. On the systems side, I work
-            on the infrastructure behind production ML systems: reliability, deployment,
-            observability, and scalability. On the research side, I lead the Embodied AI Research
-            Group at{" "}
+            I&apos;m an ML Systems Engineer. I work on the infrastructure behind production ML
+            systems: reliability, deployment, observability, and scalability. I also spend a good
+            portion of my time on embodied AI research. I lead the Embodied AI Research Group at{" "}
             <ExternalLink inline href="https://mlcollective.org/">
               ML Collective
             </ExternalLink>

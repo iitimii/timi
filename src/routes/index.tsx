@@ -16,7 +16,7 @@ import {
 import { profile } from "@/data/portfolio";
 
 const siteUrl = "https://timi-iitimiis-projects.vercel.app/";
-const title = "Timi Owolabi · ML Systems Engineer · Embodied AI Research";
+const title = "Timi Owolabi · ML Systems Engineer";
 const description =
   "Portfolio of Timi Owolabi, an ML systems engineer working on embodied AI, robot learning, real-world control, and machine learning infrastructure.";
 
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: `${siteUrl}timi.jpg` },
       {
         property: "og:image:alt",
-        content: "Timi Owolabi, ML systems engineer and embodied AI researcher",
+        content: "Timi Owolabi, ML systems engineer",
       },
       { property: "og:image:width", content: "978" },
       { property: "og:image:height", content: "978" },
@@ -46,7 +46,7 @@ export const Route = createFileRoute("/")({
       { name: "twitter:image", content: `${siteUrl}timi.jpg` },
       {
         name: "twitter:image:alt",
-        content: "Timi Owolabi, ML systems engineer and embodied AI researcher",
+        content: "Timi Owolabi, ML systems engineer",
       },
     ],
     links: [{ rel: "canonical", href: siteUrl }],

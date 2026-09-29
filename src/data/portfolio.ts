@@ -76,7 +76,6 @@ export const profile = {
   name: "Timi Owolabi",
   shortName: "Timi Owolabi",
   role: "ML Systems Engineer",
-  focus: "Embodied AI Researcher",
   location: "Lagos, Nigeria",
   email: "timiiowolabi@gmail.com",
   github: "https://github.com/iitimii",
