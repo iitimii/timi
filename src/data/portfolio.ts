@@ -471,6 +471,22 @@ export const researchExperience: TimelineItem[] = [
 
 export const publications: Publication[] = [
   {
+    title: "SmolWAM: A Latent World-Action Model for Robotic Manipulation on Edge Devices",
+    venue: "NeurIPS 2026 Robotics World Modeling Workshop",
+    year: "2026",
+    note: "Accepted",
+    description:
+      "A compact latent model that predicts robot actions and future visual states for edge-device manipulation.",
+    authors: [
+      { name: "Timi Owolabi", self: true },
+      { name: "Hikmah Olawore" },
+      { name: "Frances Adelakun" },
+      { name: "Ayotomiwa Oyewumi" },
+    ],
+    links: [],
+    image: "/research/smolwam-thumbnail.png",
+  },
+  {
     title: "Fuzzy-PID Controller for Liquid Level Control of Tank Systems",
     titleLink:
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=mJOLhAcAAAAJ&authuser=1&citation_for_view=mJOLhAcAAAAJ:2osOgNQ5qMEC",
@@ -717,6 +733,10 @@ export const writings: Writing[] = [
 ];
 
 export const news: NewsItem[] = [
+  {
+    date: "Oct 2026",
+    before: "SmolWAM was accepted to the NeurIPS 2026 Robotics World Modeling Workshop.",
+  },
   {
     date: "Jul 2026",
     before: "The State of Robotics in Africa (SORA) report was released. Check it out ",
