@@ -476,7 +476,7 @@ export const publications: Publication[] = [
     year: "2026",
     note: "Accepted",
     description:
-      "A compact latent model that predicts robot actions and future visual states for edge-device manipulation.",
+      "SmolWAM is a compact latent world-action model for robotic manipulation, achieving 95.5% success on LIBERO while running 11× faster and using 3.2× less GPU memory than its Cosmos Policy teacher, while retaining future-scene prediction.",
     authors: [
       { name: "Timi Owolabi", self: true },
       { name: "Hikmah Olawore" },
