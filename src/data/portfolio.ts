@@ -479,9 +479,12 @@ export const publications: Publication[] = [
       "SmolWAM is a compact latent world-action model for robotic manipulation, achieving 95.5% success on LIBERO while running 11× faster and using 3.2× less GPU memory than its Cosmos Policy teacher, while retaining future-scene prediction.",
     authors: [
       { name: "Timi Owolabi", self: true },
-      { name: "Hikmah Olawore" },
-      { name: "Frances Adelakun" },
-      { name: "Ayotomiwa Oyewumi" },
+      { name: "Hikmah Olawore", href: "https://iqmaa.vercel.app/" },
+      { name: "Frances Adelakun", href: "https://ng.linkedin.com/in/francesadelakun" },
+      {
+        name: "Ayotomiwa Oyewumi",
+        href: "https://ng.linkedin.com/in/ayotomiwa-oyewumi-300b45285",
+      },
     ],
     links: [],
     image: "/research/smolwam-thumbnail.png",
