@@ -510,7 +510,7 @@ export function Research() {
 
 export function Impact() {
   return (
-    <Section id="impact" index="06" title="teaching, leadership, & community impact">
+    <Section id="impact" index="07" title="teaching, leadership, & community impact">
       <div className="grid gap-5 md:grid-cols-2">
         {impact.map((item, index) => (
           <Reveal key={item.title} delay={(index % 2) * 50}>
@@ -524,7 +524,7 @@ export function Impact() {
 
 export function Writings() {
   return (
-    <Section id="writings" index="07" title="writings">
+    <Section id="writings" index="06" title="writings">
       <div className="grid gap-5 md:grid-cols-2">
         {writings.map((writing, index) => (
           <Reveal key={writing.href} delay={index * 60}>

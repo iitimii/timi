@@ -82,8 +82,8 @@ function Portfolio() {
         <Experience />
         <Projects />
         <Research />
-        <Impact />
         <Writings />
+        <Impact />
         <News />
         <Contact />
       </main>

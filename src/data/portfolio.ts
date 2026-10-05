@@ -89,10 +89,21 @@ export const profile = {
 } as const;
 
 export const skillGroups = [
-  { label: "Languages", items: ["Python", "C++", "SQL", "Rust", "Java"] },
+  { label: "Languages", items: ["Python", "C++", "SQL"] },
   {
     label: "Machine Learning",
-    items: ["PyTorch", "TensorFlow", "JAX", "Hugging Face", "MLflow", "LangChain"],
+    items: [
+      "PyTorch",
+      "TensorFlow",
+      "JAX",
+      "Hugging Face",
+      "MLflow",
+      "LangChain",
+      "FastAPI",
+      "LLM Inference",
+      "Model Compression",
+      "llama.cpp",
+    ],
   },
   {
     label: "Robotics & Control",
@@ -111,11 +122,18 @@ export const skillGroups = [
     items: [
       "AWS",
       "Google Cloud",
+      "Amazon SageMaker",
+      "Vertex AI",
       "Docker",
       "Kubernetes",
+      "Helm",
       "Terraform",
       "GitHub Actions",
       "Argo CD",
+      "GitOps",
+      "Karpenter",
+      "OpenTelemetry",
+      "Grafana",
     ],
   },
 ];
@@ -128,8 +146,8 @@ export const experience: TimelineItem[] = [
     period: "Jan 2026 - Present",
     bullets: [
       "Optimized AWS EKS autoscaling with Karpenter, increasing CPU utilization from 20% to 50% and memory utilization from 30% to 70%, reducing infrastructure costs by 8% while maintaining reliability.",
+      "Modernized legacy manual Kargo deployment workflows by migrating Node, Python, Go, and Java services to reusable GitHub Actions and Argo CD pipelines, helping achieve 98% automated deployment/failover coverage across 1,099 jobs.",
       "Instrumented the merchant platform with distributed tracing and logging using OpenTelemetry, enabling engineers to root-cause production incidents independently and reducing cross-team escalations.",
-      "Led the engineering track of QuidaxOS, an AI agent supporting Engineering, Product, and Design from discovery through deployment.",
     ],
   },
   {
@@ -138,7 +156,7 @@ export const experience: TimelineItem[] = [
     location: "San Francisco, California · Remote",
     period: "Jan 2026 - Feb 2026",
     bullets: [
-      "Served as founding engineer and ML team lead on a short-term contract, building the company's AI infrastructure on Google Cloud Vertex AI.",
+      "Served as founding engineer and ML team lead, building the company's AI infrastructure on Google Cloud Vertex AI.",
       "Shipped a production multi-agent defense system for phishing, deepfake audio, and synthetic video detection.",
       "Built a self-improving threat detection system using LangSmith-hosted agents and anomaly detection networks on Google Cloud Run, reducing verification time from about one hour to under 20 seconds.",
     ],
@@ -152,16 +170,6 @@ export const experience: TimelineItem[] = [
       "Led a three-person ML team and built the company's AI infrastructure on AWS SageMaker, covering the full MLOps lifecycle from data collection to production deployment.",
       "Designed an AI-powered phone inspection pipeline using fine-tuned YOLOv11, CLAHE, spectral analysis, and Google PaliGemma.",
       "Eliminated manual approval and reduced onboarding review time from five minutes to 18 seconds.",
-    ],
-  },
-  {
-    role: "Machine Learning Engineer",
-    org: "Peak Fiction",
-    location: "Belfast, United Kingdom · Remote",
-    period: "Apr 2024 - Jul 2024",
-    bullets: [
-      "Used latent diffusion models to create high-quality comic book scenes.",
-      "Engineered an image-generation workflow with ComfyUI that increased productivity by 50%.",
     ],
   },
   {
@@ -441,16 +449,6 @@ export const researchExperience: TimelineItem[] = [
     ],
   },
   {
-    role: "Research Student",
-    org: "Covenant University Centre for Research, Innovation and Discovery",
-    location: "Ogun, Nigeria",
-    period: "Sep 2024 - Aug 2025",
-    bullets: [
-      "Collaborated on autonomous waste collection and epidemiological prediction projects for Sub-Saharan Africa.",
-      "Built an NLP system that parses, summarizes, and clusters academic literature from Scopus alerts.",
-    ],
-  },
-  {
     role: "Machine Learning Research Intern",
     org: "Zummit Africa",
     location: "Lagos, Nigeria",
@@ -458,26 +456,6 @@ export const researchExperience: TimelineItem[] = [
     bullets: [
       "Developed a U-Net brain tumor segmentation application that achieved 95% accuracy on medical imaging data.",
       "Built a toxic-comment classifier for imbalanced social media data and benchmarked BERT against BiLSTM.",
-    ],
-  },
-  {
-    role: "Research Intern",
-    org: "Innovia Labs",
-    location: "Lagos, Nigeria",
-    period: "Mar 2024 - May 2024",
-    bullets: [
-      "Configured the Pixhawk4 flight controller for an autonomous electric VTOL search-and-rescue drone.",
-      "Developed a gesture-controlled home automation system with cascaded landmark detection and an MLP classifier.",
-    ],
-  },
-  {
-    role: "Research Intern",
-    org: "EPAIL Nigeria",
-    location: "Lagos, Nigeria",
-    period: "Aug 2023 - Oct 2023",
-    bullets: [
-      "Developed a vision-based firearm detection system and created a dataset of 10,000 annotated firearm segmentation images.",
-      "Developed a compact fixed-wing drone for surveillance operations.",
     ],
   },
 ];
@@ -742,18 +720,18 @@ export const writings: Writing[] = [
 export const news: NewsItem[] = [
   {
     date: "Oct 2026",
-    before: "SmolWAM was accepted to the NeurIPS 2026 Robotics World Modeling Workshop.",
+    before:
+      "Our paper “SmolWAM: A Latent World-Action Model for Robotic Manipulation on Edge Devices” was accepted to the NeurIPS 2026 Robotics World Modeling Workshop.",
+  },
+  {
+    date: "Sept 2026",
+    before: "Muta reached the finals of the Africa Deep Tech Challenge.",
   },
   {
     date: "Jul 2026",
     before: "The State of Robotics in Africa (SORA) report was released. Check it out ",
     link: { label: "here ↗", href: "https://afrob.org/report/" },
   },
-  {
-    date: "Jun 2026",
-    before: "Became lead of the Embodied AI research group at ML Collective.",
-  },
-  { date: "May 2026", before: "Joined ML Collective." },
   {
     date: "Nov 2025",
     before: "Our paper ",
@@ -763,15 +741,12 @@ export const news: NewsItem[] = [
     },
     after: " was published in the NIPES-Journal of Science and Technology.",
   },
-  { date: "Aug 2025", before: "Joined African Robotics Network." },
   { date: "Aug 2025", before: "Graduated with First Class Honours." },
   {
     date: "Aug 2025",
     before:
       "Gave the talk “From Campus to Career: Navigating the Engineering Journey” to the Redeemer's University Electrical Engineering Students Association.",
   },
-  { date: "Apr 2025", before: "Joined Black in AI." },
-  { date: "Apr 2025", before: "Joined Black in Robotics." },
   {
     date: "Mar 2025",
     before: "Our paper ",
@@ -783,15 +758,6 @@ export const news: NewsItem[] = [
     after: " was accepted and published in Engineering Research Express.",
   },
   {
-    date: "Aug 2024",
-    before: "Gave the talk ",
-    link: {
-      label: "AI: Our Current Reality and Future Trajectory ↗",
-      href: "/talks/nse-abeokuta-ai-training.pdf",
-    },
-    after: " to the Nigerian Society of Engineers.",
-  },
-  {
     date: "Oct 2024",
     before: "Our paper ",
     link: {
@@ -801,7 +767,19 @@ export const news: NewsItem[] = [
     },
     after: " was published in the ASRIC Journal on Engineering Sciences.",
   },
-  { date: "May 2024", before: "Joined the International Society of Automation." },
+  {
+    date: "Aug 2024",
+    before: "Gave the talk ",
+    link: {
+      label: "AI: Our Current Reality and Future Trajectory ↗",
+      href: "/talks/nse-abeokuta-ai-training.pdf",
+    },
+    after: " to the Nigerian Society of Engineers.",
+  },
+  {
+    date: "Jul 2024",
+    before: "Received a finalist award in the Pan-African Robotics Competition.",
+  },
   {
     date: "Apr 2024",
     before: "Gave the talk ",
@@ -812,11 +790,6 @@ export const news: NewsItem[] = [
     after: " to the Association of Professional Women Engineers of Nigeria.",
   },
   {
-    date: "Apr 2024",
-    before: "Joined the Association of Professional Women Engineers of Nigeria.",
-  },
-  { date: "2024", before: "Was a finalist in the Pan-African Robotics Competition." },
-  {
     date: "Dec 2023",
     before: "Our paper ",
     link: {
@@ -825,14 +798,12 @@ export const news: NewsItem[] = [
     },
     after: " was published at IEEE ICMEAS.",
   },
-  { date: "Jun 2022", before: "Joined Data Science Nigeria." },
-  { date: "Dec 2021", before: "Joined the Nigerian Society of Engineers." },
   {
-    date: "2021",
+    date: "Oct 2021",
     before: "Received the Founder's Award for Best WASSCE Result at Wellspring College.",
   },
   {
-    date: "2020",
+    date: "Oct 2020",
     before: "Graduated as valedictorian of the Department of Science at Wellspring College.",
   },
 ];
@@ -843,8 +814,8 @@ export const navItems = [
   { id: "experience", label: "experience" },
   { id: "projects", label: "projects" },
   { id: "research", label: "research" },
-  { id: "impact", label: "impact" },
   { id: "writings", label: "writings" },
+  { id: "impact", label: "impact" },
   { id: "news", label: "news" },
   { id: "contact", label: "contact" },
 ];
