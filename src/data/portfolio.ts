@@ -179,6 +179,19 @@ export const experience: TimelineItem[] = [
 
 export const projects: PortfolioProject[] = [
   {
+    name: "LLM Inference Engine",
+    titleLink: "https://github.com/iitimii/llm-engine",
+    kind: "LLM inference",
+    period: "2026 - Present",
+    description:
+      "An LLM inference engine being built from scratch in C++20, starting with zero-copy tensor views, stride-based reshape, transpose and slicing, aligned storage, and arena allocation.",
+    tags: ["C++20", "LLM Inference", "Tensors", "Memory Management"],
+    image: "/projects/llm-engine-arena.gif",
+    imageAlt: "Arena memory allocation and reset in the C++ inference engine",
+    collaborators: [{ name: "Timi Owolabi", self: true }],
+    links: [{ label: "Code", href: "https://github.com/iitimii/llm-engine" }],
+  },
+  {
     name: "ALOHA Replication with OpenVLA-OFT",
     titleLink: "https://github.com/iitimii/aloha-vla",
     kind: "Bimanual manipulation",
@@ -715,23 +728,14 @@ export const impact: ImpactItem[] = [
 
 export const writings: Writing[] = [
   {
-    title: "Weapon Detection with YOLOv8: Enhancing Public Safety",
-    date: "Apr 24, 2024",
+    title: "Tensors Are Just Lenses",
+    date: "Oct 5, 2026",
     description:
-      "How our team at Zummit Africa used YOLOv8 to build a flexible real-time weapon detection system for safer public spaces.",
-    tags: ["YOLOv8", "Object Detection", "Computer Vision", "Public Safety"],
-    readingTime: "4 min read",
-    href: "https://medium.com/@timiiowolabi/weapon-detection-with-yolov8-enhancing-public-safety-39e513688dcd",
-  },
-  {
-    title: "Early Brain Tumor Detection and Classification with Computer Vision",
-    date: "Sep 14, 2023",
-    description:
-      "How a U-Net-based computer vision model can support early brain tumor detection, classification, treatment planning, and clinical research.",
-    tags: ["Computer Vision", "AI", "Neuroscience", "Machine Learning"],
-    readingTime: "10 min read",
-    href: "https://medium.com/@timiiowolabi/early-brain-tumor-detection-and-classification-with-computer-vision-638a593267b2",
-    image: "/projects/brain-tumor.png",
+      "Building the tensor foundations of a C++ LLM inference engine: shared storage, strides, zero-copy views, and memory allocation, explained through animated examples.",
+    tags: ["C++", "Tensors", "LLM Inference", "Memory Management"],
+    readingTime: "9 min read",
+    href: "https://medium.com/@timiowolabi/tensors-are-just-lenses-881df81ceea8",
+    image: "/writings/tensors-are-just-lenses.gif",
   },
 ];
 
