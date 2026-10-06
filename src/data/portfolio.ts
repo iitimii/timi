@@ -46,6 +46,7 @@ export interface Publication {
 
 export interface NewsItem {
   date: string;
+  academic?: boolean;
   before?: string;
   link?: LinkItem;
   after?: string;
@@ -699,20 +700,24 @@ export const writings: Writing[] = [
 export const news: NewsItem[] = [
   {
     date: "Oct 2026",
+    academic: true,
     before:
       "Our paper “SmolWAM: A Latent World-Action Model for Robotic Manipulation on Edge Devices” was accepted to the NeurIPS 2026 Robotics World Modeling Workshop.",
   },
   {
     date: "Sept 2026",
+    academic: true,
     before: "Muta reached the finals of the Africa Deep Tech Challenge.",
   },
   {
     date: "Jul 2026",
+    academic: true,
     before: "The State of Robotics in Africa (SORA) report was released. Check it out ",
     link: { label: "here ↗", href: "https://afrob.org/report/" },
   },
   {
     date: "Nov 2025",
+    academic: true,
     before: "Our paper ",
     link: {
       label: "Fuzzy-PID Controller for Liquid Level Control of Tank Systems ↗",
@@ -720,7 +725,7 @@ export const news: NewsItem[] = [
     },
     after: " was published in the NIPES-Journal of Science and Technology.",
   },
-  { date: "Aug 2025", before: "Graduated with First Class Honours." },
+  { date: "Aug 2025", academic: true, before: "Graduated with First Class Honours." },
   {
     date: "Aug 2025",
     before:
@@ -728,6 +733,7 @@ export const news: NewsItem[] = [
   },
   {
     date: "Mar 2025",
+    academic: true,
     before: "Our paper ",
     link: {
       label:
@@ -738,6 +744,7 @@ export const news: NewsItem[] = [
   },
   {
     date: "Oct 2024",
+    academic: true,
     before: "Our paper ",
     link: {
       label:
@@ -748,6 +755,7 @@ export const news: NewsItem[] = [
   },
   {
     date: "Aug 2024",
+    academic: true,
     before: "Gave the talk ",
     link: {
       label: "AI: Our Current Reality and Future Trajectory ↗",
@@ -757,10 +765,12 @@ export const news: NewsItem[] = [
   },
   {
     date: "Jul 2024",
+    academic: true,
     before: "Received a finalist award in the Pan-African Robotics Competition.",
   },
   {
     date: "Apr 2024",
+    academic: true,
     before: "Gave the talk ",
     link: {
       label: "Deep Learning: Neural Networks ↗",
@@ -770,6 +780,7 @@ export const news: NewsItem[] = [
   },
   {
     date: "Dec 2023",
+    academic: true,
     before: "Our paper ",
     link: {
       label: "Energy Optimization Algorithm for Reducing Energy Consumption in a Smart Home ↗",
@@ -797,4 +808,12 @@ export const navItems = [
   { id: "impact", label: "impact" },
   { id: "news", label: "news" },
   { id: "contact", label: "contact" },
+];
+
+export const academicNavItems = [
+  { id: "about", label: "about" },
+  { id: "research", label: "publications" },
+  { id: "projects", label: "projects" },
+  { id: "writings", label: "articles" },
+  { id: "news", label: "news" },
 ];

@@ -46,18 +46,25 @@ export function Section({
   id,
   index,
   title,
+  compact = false,
   children,
 }: {
   id: string;
   index: string;
   title: string;
+  compact?: boolean;
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-20 border-t border-border py-14 sm:py-20 md:py-28">
+    <section
+      id={id}
+      className={`scroll-mt-20 border-t border-border ${compact ? "py-8 sm:py-10 md:py-12" : "py-14 sm:py-20 md:py-28"}`}
+    >
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
         <Reveal>
-          <div className="mb-8 flex items-baseline gap-3 sm:mb-10 sm:gap-4">
+          <div
+            className={`flex items-baseline gap-3 sm:gap-4 ${compact ? "mb-5 sm:mb-6" : "mb-8 sm:mb-10"}`}
+          >
             <span className="font-mono text-xs text-accent">{index}</span>
             <h2 className="font-mono text-lg font-semibold tracking-tight text-foreground sm:text-xl md:text-2xl">
               {title}

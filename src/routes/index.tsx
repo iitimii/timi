@@ -21,6 +21,8 @@ const description =
   "Portfolio of Timi Owolabi, an ML systems engineer working on embodied AI, robot learning, real-world control, and machine learning infrastructure.";
 
 export const Route = createFileRoute("/")({
+  validateSearch: (search: Record<string, unknown>): { view?: "academic" } =>
+    search["view"] === "academic" ? { view: "academic" } : {},
   head: () => ({
     meta: [
       { title },
@@ -72,22 +74,46 @@ export const Route = createFileRoute("/")({
 });
 
 function Portfolio() {
+  const { view } = Route.useSearch();
+  const navigate = Route.useNavigate();
+  const academic = view === "academic";
+
+  const toggleView = () => {
+    void navigate({
+      search: academic ? {} : { view: "academic" },
+      hash: "",
+      resetScroll: true,
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background">
-      <Nav />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Research />
-        <Writings />
-        <Impact />
-        <News />
-        <Contact />
+      <Nav key={academic ? "academic" : "full"} academic={academic} onToggleView={toggleView} />
+      <main id="portfolio-content">
+        {academic ? (
+          <div id="top">
+            <About academic />
+            <Research academic />
+            <Projects academic />
+            <Writings academic />
+            <News academic />
+          </div>
+        ) : (
+          <>
+            <Hero />
+            <About />
+            <Skills />
+            <Experience />
+            <Projects />
+            <Research />
+            <Writings />
+            <Impact />
+            <News />
+            <Contact />
+          </>
+        )}
       </main>
-      <Footer />
+      {academic ? null : <Footer />}
     </div>
   );
 }

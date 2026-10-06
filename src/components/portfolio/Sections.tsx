@@ -23,7 +23,7 @@ import {
   type PublicationAuthor,
   type TimelineItem,
 } from "@/data/portfolio";
-import { Chip, Reveal, Section } from "./primitives";
+import { Reveal, Section } from "./primitives";
 
 const linkClass =
   "font-mono text-xs text-accent underline-offset-4 transition-colors hover:text-accent-glow hover:underline";
@@ -139,12 +139,10 @@ function HoverMedia({
   image,
   video,
   alt,
-  className = "",
 }: {
   image: string;
-  video?: string;
+  video?: string | undefined;
   alt: string;
-  className?: string;
 }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -162,7 +160,7 @@ function HoverMedia({
 
   return (
     <div
-      className={`group/media relative aspect-[16/9] overflow-hidden border-b border-border bg-surface-raised ${className}`}
+      className="group/media relative aspect-square self-start overflow-hidden rounded-md border border-border bg-surface-raised"
       onMouseEnter={video ? play : undefined}
       onMouseLeave={video ? stop : undefined}
       data-hover-media
@@ -226,16 +224,16 @@ function Timeline({ items }: { items: TimelineItem[] }) {
 
 function ProjectCard({ project }: { project: PortfolioProject }) {
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-md border border-border bg-surface transition-colors hover:border-border-strong">
+    <article className="grid items-start gap-5 sm:grid-cols-[10rem_1fr]">
       {project.image ? (
         <HoverMedia image={project.image} video={project.video} alt={project.imageAlt ?? ""} />
       ) : (
         <div
-          className="grid-texture h-20 border-b border-border bg-surface-raised"
+          className="grid-texture aspect-square self-start rounded-md border border-border bg-surface-raised"
           aria-hidden="true"
         />
       )}
-      <div className="flex flex-1 flex-col p-5">
+      <div className="flex flex-col">
         <div className="flex items-start justify-between gap-4">
           <p className="font-mono text-[11px] uppercase tracking-widest text-accent">
             {project.kind}
@@ -262,11 +260,6 @@ function ProjectCard({ project }: { project: PortfolioProject }) {
         <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
           {project.description}
         </p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <Chip key={tag}>{tag}</Chip>
-          ))}
-        </div>
         {project.links.length > 0 ? (
           <div className="mt-5 flex flex-wrap gap-4 border-t border-border pt-4">
             {project.links.map((link) => (
@@ -283,18 +276,14 @@ function ProjectCard({ project }: { project: PortfolioProject }) {
 
 function ImpactCard({ item }: { item: ImpactItem }) {
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-md border border-border bg-surface">
+    <article className="grid items-start gap-5 sm:grid-cols-[10rem_1fr]">
       {item.image ? (
-        <div className="aspect-[16/8] overflow-hidden border-b border-border">
-          <img
-            src={item.image}
-            alt="Students and volunteers during The Classroom Project outreach"
-            loading="lazy"
-            className="h-full w-full object-cover"
-          />
-        </div>
+        <HoverMedia
+          image={item.image}
+          alt="Students and volunteers during The Classroom Project outreach"
+        />
       ) : null}
-      <div className="flex flex-1 flex-col p-5">
+      <div className="flex flex-col sm:col-start-2">
         <div className="flex items-start justify-between gap-3">
           <p className="font-mono text-xs text-accent">{item.role}</p>
           <span className="shrink-0 font-mono text-[11px] text-muted-foreground">
@@ -332,80 +321,121 @@ function ImpactCard({ item }: { item: ImpactItem }) {
   );
 }
 
-export function About() {
+export function About({ academic = false }: { academic?: boolean } = {}) {
+  const biography = (
+    <div className="max-w-4xl space-y-5 text-base leading-relaxed text-muted-foreground">
+      <p>
+        {academic
+          ? "I lead the Embodied AI Research Group at"
+          : "I'm an ML Systems Engineer. Professionally, I work on the infrastructure behind production ML systems. I also spend a good portion of my time on embodied AI research. I lead the Embodied AI Research Group at"}{" "}
+        <ExternalLink inline href="https://mlcollective.org/">
+          ML Collective
+        </ExternalLink>
+        {academic ? (
+          <>
+            , where we work on generalist robot policies. My interests span world models,
+            reinforcement learning, and control theory. I’m particularly interested in making
+            generalist robot policies more capable and making them run blazing fast on onboard
+            compute. Professionally, I work as an ML Systems Engineer, which has shaped a lot of how
+            I think about efficient ML systems.
+          </>
+        ) : (
+          <>
+            , where we work on generalist robot policies. I’m particularly interested in making
+            generalist robot policies more capable and making them run blazing fast on onboard
+            compute.
+          </>
+        )}
+      </p>
+      <p>
+        I graduated with a 4.85/5.0 GPA in Electrical Engineering from{" "}
+        <ExternalLink inline href="https://www.covenantuniversity.edu.ng/">
+          Covenant University
+        </ExternalLink>
+        {academic ? ". I led the " : ". While at Covenant, I led the "}
+        <ExternalLink
+          inline
+          href="https://gdg.community.dev/gdg-on-campus-covenant-university-ota-nigeria/"
+        >
+          Robotics Research Team
+        </ExternalLink>
+        {academic
+          ? ", working on vision-language-action models and low-cost robotic systems. I also worked with "
+          : ", working on reinforcement learning, vision-language-action models, and low-cost robotic systems. I also worked with "}
+        <ExternalLink inline href="https://danielomeiza.github.io/">
+          Dr. Daniel Omeiza
+        </ExternalLink>{" "}
+        of the{" "}
+        <ExternalLink inline href="https://ori.ox.ac.uk/">
+          Oxford Robotics Institute
+        </ExternalLink>{" "}
+        on autonomous driving and graph neural networks.
+      </p>
+      <p>
+        I care deeply about teaching and mentorship. As president of{" "}
+        <ExternalLink inline href="https://www.instagram.com/aeies_cu/">
+          AEIES
+        </ExternalLink>
+        , I founded a student mentorship program to help engineering students develop strong
+        first-principles thinking. I taught machine learning to female engineering students{" "}
+        {academic ? "through " : "of "}
+        <ExternalLink inline href="https://www.apwen.org.ng/">
+          APWEN
+        </ExternalLink>
+        {academic ? ", and I founded " : ". I also founded "}
+        <ExternalLink inline href="https://www.linkedin.com/company/113221087">
+          The Classroom Project
+        </ExternalLink>
+        , an initiative supporting underserved students with classroom infrastructure and STEM
+        learning resources.
+      </p>
+    </div>
+  );
+
+  if (academic) {
+    return (
+      <section id="about" className="scroll-mt-28 pt-26 pb-14 sm:pt-32 sm:pb-20">
+        <div className="mx-auto grid w-full max-w-6xl gap-8 px-5 sm:px-6 md:grid-cols-[1fr_16rem] md:gap-12">
+          <div className="order-2 md:order-1">
+            <h1 className="font-mono text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              {profile.name}
+            </h1>
+            <div className="mt-6">{biography}</div>
+            <div className="mt-7">
+              <SocialIconLinks />
+            </div>
+          </div>
+          <img
+            src={profile.avatar}
+            alt={profile.name}
+            width={256}
+            height={256}
+            loading="eager"
+            className="order-1 h-52 w-52 justify-self-center rounded-full border border-border-strong object-cover md:order-2 md:h-64 md:w-64"
+          />
+        </div>
+      </section>
+    );
+  }
+
   return (
     <Section id="about" index="01" title="about">
-      <Reveal>
-        <div className="max-w-4xl space-y-5 text-base leading-relaxed text-muted-foreground">
-          <p>
-            I&apos;m an ML Systems Engineer. I work on the infrastructure behind production ML
-            systems: reliability, deployment, observability, and scalability. I also spend a good
-            portion of my time on embodied AI research. I lead the Embodied AI Research Group at{" "}
-            <ExternalLink inline href="https://mlcollective.org/">
-              ML Collective
-            </ExternalLink>
-            , where we work on world-action models. My interests span world models, reinforcement
-            learning, and control theory.
-          </p>
-          <p>
-            I graduated with a 4.85/5.0 GPA in Electrical Engineering from{" "}
-            <ExternalLink inline href="https://www.covenantuniversity.edu.ng/">
-              Covenant University
-            </ExternalLink>
-            . While at Covenant, I led the{" "}
-            <ExternalLink
-              inline
-              href="https://gdg.community.dev/gdg-on-campus-covenant-university-ota-nigeria/"
-            >
-              Robotics Research Team
-            </ExternalLink>
-            , working on reinforcement learning, vision-language-action models, and low-cost robotic
-            systems. I also worked with{" "}
-            <ExternalLink inline href="https://danielomeiza.github.io/">
-              Dr. Daniel Omeiza
-            </ExternalLink>{" "}
-            of the{" "}
-            <ExternalLink inline href="https://ori.ox.ac.uk/">
-              Oxford Robotics Institute
-            </ExternalLink>{" "}
-            on autonomous driving and graph neural networks.
-          </p>
-          <p>
-            I care deeply about teaching and mentorship. As president of{" "}
-            <ExternalLink inline href="https://www.instagram.com/aeies_cu/">
-              AEIES
-            </ExternalLink>
-            , I founded a student mentorship program to help engineering students develop strong
-            first-principles thinking. I taught machine learning to female engineering students of{" "}
-            <ExternalLink inline href="https://www.apwen.org.ng/">
-              APWEN
-            </ExternalLink>
-            . I also founded{" "}
-            <ExternalLink inline href="https://www.linkedin.com/company/113221087">
-              The Classroom Project
-            </ExternalLink>
-            , an initiative supporting underserved students with classroom infrastructure and STEM
-            learning resources.
-          </p>
-        </div>
-      </Reveal>
+      <Reveal>{biography}</Reveal>
     </Section>
   );
 }
 
 export function Skills() {
   return (
-    <Section id="skills" index="02" title="skills">
-      <div className="grid gap-5 sm:grid-cols-2">
+    <Section id="skills" index="02" title="skills" compact>
+      <div className="space-y-3">
         {skillGroups.map((group, index) => (
           <Reveal key={group.label} delay={(index % 3) * 50}>
-            <div className="h-full rounded-md border border-border bg-surface p-5">
-              <p className="font-mono text-xs text-accent">// {group.label}</p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <Chip key={item}>{item}</Chip>
-                ))}
-              </div>
+            <div className="grid gap-1 sm:grid-cols-[10rem_1fr] sm:gap-5">
+              <p className="font-mono text-sm text-accent">// {group.label}</p>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {group.items.join(" · ")}
+              </p>
             </div>
           </Reveal>
         ))}
@@ -427,10 +457,10 @@ export function Experience() {
   );
 }
 
-export function Projects() {
+export function Projects({ academic = false }: { academic?: boolean } = {}) {
   return (
-    <Section id="projects" index="04" title="projects">
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <Section id="projects" index={academic ? "02" : "04"} title="projects">
+      <div className="space-y-5">
         {projects.map((project, index) => (
           <Reveal key={project.name} delay={(index % 3) * 50}>
             <ProjectCard project={project} />
@@ -441,28 +471,31 @@ export function Projects() {
   );
 }
 
-export function Research() {
+export function Research({ academic = false }: { academic?: boolean } = {}) {
   return (
-    <Section id="research" index="05" title="research">
-      <Subheading>publications & manuscripts</Subheading>
+    <Section
+      id="research"
+      index={academic ? "01" : "05"}
+      title={academic ? "publications" : "research"}
+    >
+      {academic ? null : <Subheading>publications & manuscripts</Subheading>}
       <div className="space-y-5">
         {publications.map((publication, index) => (
           <Reveal key={publication.title} delay={(index % 3) * 50}>
-            <article className="grid overflow-hidden rounded-md border border-border bg-surface sm:grid-cols-[10rem_1fr]">
+            <article className="grid items-start gap-5 sm:grid-cols-[10rem_1fr]">
               {publication.image ? (
                 <HoverMedia
                   image={publication.image}
                   video={publication.video}
                   alt={`Visual preview for ${publication.title}`}
-                  className="sm:aspect-auto sm:min-h-36 sm:border-r sm:border-b-0"
                 />
               ) : (
                 <div
-                  className="grid-texture hidden min-h-36 border-r border-border bg-surface-raised sm:block"
+                  className="grid-texture aspect-square self-start rounded-md border border-border bg-surface-raised"
                   aria-hidden="true"
                 />
               )}
-              <div className="p-5">
+              <div>
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] text-accent">
                   <span>{publication.venue}</span>
                   <span className="text-muted-foreground">{publication.year}</span>
@@ -511,7 +544,7 @@ export function Research() {
 export function Impact() {
   return (
     <Section id="impact" index="07" title="teaching, leadership, & community impact">
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="space-y-5">
         {impact.map((item, index) => (
           <Reveal key={item.title} delay={(index % 2) * 50}>
             <ImpactCard item={item} />
@@ -522,20 +555,24 @@ export function Impact() {
   );
 }
 
-export function Writings() {
+export function Writings({ academic = false }: { academic?: boolean } = {}) {
   return (
-    <Section id="writings" index="06" title="writings">
-      <div className="grid gap-5 md:grid-cols-2">
+    <Section
+      id="writings"
+      index={academic ? "03" : "06"}
+      title={academic ? "articles" : "writings"}
+    >
+      <div className="space-y-5">
         {writings.map((writing, index) => (
           <Reveal key={writing.href} delay={index * 60}>
             <a
               href={writing.href}
               target="_blank"
               rel="noreferrer"
-              className="group flex h-full flex-col overflow-hidden rounded-md border border-border bg-surface transition-colors hover:border-accent"
+              className="group grid items-start gap-5 sm:grid-cols-[10rem_1fr]"
             >
               {writing.image ? (
-                <div className="aspect-[16/8] overflow-hidden border-b border-border">
+                <div className="aspect-square self-start overflow-hidden rounded-md border border-border">
                   <img
                     src={writing.image}
                     alt=""
@@ -545,11 +582,11 @@ export function Writings() {
                 </div>
               ) : (
                 <div
-                  className="grid-texture h-28 border-b border-border bg-surface-raised"
+                  className="grid-texture aspect-square self-start rounded-md border border-border bg-surface-raised"
                   aria-hidden="true"
                 />
               )}
-              <article className="flex flex-1 flex-col p-5">
+              <article className="flex flex-col">
                 <div className="flex items-center justify-between gap-3 font-mono text-[11px] text-muted-foreground">
                   <span>{writing.date}</span>
                   <span>{writing.readingTime}</span>
@@ -560,11 +597,6 @@ export function Writings() {
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {writing.description}
                 </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {writing.tags.map((tag) => (
-                    <Chip key={tag}>{tag}</Chip>
-                  ))}
-                </div>
               </article>
             </a>
           </Reveal>
@@ -574,12 +606,14 @@ export function Writings() {
   );
 }
 
-export function News() {
+export function News({ academic = false }: { academic?: boolean } = {}) {
+  const items = academic ? news.filter((item) => item.academic) : news;
+
   return (
-    <Section id="news" index="08" title="news">
+    <Section id="news" index={academic ? "04" : "08"} title="news">
       <Reveal>
         <ol className="divide-y divide-border border-y border-border">
-          {news.map((item) => (
+          {items.map((item) => (
             <li
               key={`${item.date}-${item.before}-${item.link?.href ?? ""}`}
               className="grid grid-cols-[5.5rem_1fr] gap-4 py-4 text-sm sm:grid-cols-[7rem_1fr]"

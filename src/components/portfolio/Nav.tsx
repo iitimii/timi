@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { navItems, profile } from "@/data/portfolio";
+import { academicNavItems, navItems, profile } from "@/data/portfolio";
 
-export function Nav() {
+export function Nav({ academic, onToggleView }: { academic: boolean; onToggleView: () => void }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const items = academic ? academicNavItems : navItems;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -20,13 +21,23 @@ export function Nav() {
           : "border-b border-transparent"
       }`}
     >
-      <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between px-5 sm:h-16 sm:px-6">
-        <a href="#top" className="font-mono text-sm text-foreground">
-          <span className="text-accent">~/</span>timi
-        </a>
+      <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between gap-3 px-5 sm:h-16 sm:px-6">
+        <div className="flex min-w-0 items-center gap-3">
+          <a href="#top" className="shrink-0 font-mono text-sm text-foreground">
+            <span className="text-accent">~/</span>timi
+          </a>
+          <button
+            type="button"
+            aria-controls="portfolio-content"
+            onClick={onToggleView}
+            className="min-h-10 rounded-sm border border-accent bg-background px-3 py-2 font-mono text-[11px] text-accent transition-colors hover:bg-accent hover:text-accent-foreground sm:text-xs"
+          >
+            {academic ? "click to view full website" : "click to view academic website"}
+          </button>
+        </div>
 
         <nav aria-label="Primary navigation" className="hidden items-center gap-4 xl:flex">
-          {navItems.map((item) => (
+          {items.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
@@ -49,7 +60,7 @@ export function Nav() {
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="font-mono text-xs text-muted-foreground xl:hidden"
+          className="shrink-0 font-mono text-xs text-muted-foreground xl:hidden"
         >
           {open ? "[ close ]" : "[ menu ]"}
         </button>
@@ -61,7 +72,7 @@ export function Nav() {
             aria-label="Mobile navigation"
             className="mx-auto flex max-w-6xl flex-col gap-3.5 px-5 py-4 sm:px-6"
           >
-            {navItems.map((item) => (
+            {items.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
