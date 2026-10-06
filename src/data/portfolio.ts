@@ -172,17 +172,6 @@ export const experience: TimelineItem[] = [
       "Eliminated manual approval and reduced onboarding review time from five minutes to 18 seconds.",
     ],
   },
-  {
-    role: "Sustainability Intern",
-    org: "Schneider Electric",
-    location: "Lagos, Nigeria",
-    period: "Aug 2023 - Oct 2023",
-    bullets: [
-      "Conducted robotics workshops for young students on building a self-driving car.",
-      "Partnered with NGOs to deliver STEM tutoring aligned with Schneider Electric's global initiative to empower one million youths.",
-      "Reviewed NGO support budgets exceeding $60,000 each for alignment with sustainability objectives.",
-    ],
-  },
 ];
 
 export const projects: PortfolioProject[] = [
@@ -428,36 +417,6 @@ export const researchExperience: TimelineItem[] = [
       "Adapted the fast subset-scan algorithm to graph neural networks for statistically significant traffic anomaly detection.",
     ],
   },
-  {
-    role: "Research Intern",
-    org: "National Centre for Artificial Intelligence and Robotics (NCAIR)",
-    location: "Abuja, Nigeria",
-    period: "Dec 2025 - Present",
-    bullets: [
-      "Developed AI-powered assistive glasses for visually impaired users.",
-      "Deployed Qwen3.5-0.8B on a Raspberry Pi through llama.cpp for on-device scene understanding and real-time environmental descriptions.",
-    ],
-  },
-  {
-    role: "Robotics Research Team Lead",
-    org: "Google Developer Groups on Campus",
-    location: "Ogun, Nigeria",
-    period: "Sep 2024 - Aug 2025",
-    bullets: [
-      "Led a simulation replication of Stanford's ALOHA bimanual manipulation paper.",
-      "Developed MuJoCo and JAX vision-based manipulation policies and prototyped a low-cost 3D-printed robot arm.",
-    ],
-  },
-  {
-    role: "Machine Learning Research Intern",
-    org: "Zummit Africa",
-    location: "Lagos, Nigeria",
-    period: "Apr 2023 - May 2024",
-    bullets: [
-      "Developed a U-Net brain tumor segmentation application that achieved 95% accuracy on medical imaging data.",
-      "Built a toxic-comment classifier for imbalanced social media data and benchmarked BERT against BiLSTM.",
-    ],
-  },
 ];
 
 export const publications: Publication[] = [
@@ -613,6 +572,26 @@ export const publications: Publication[] = [
 ];
 
 export const impact: ImpactItem[] = [
+  {
+    title: "AI-Powered Assistive Glasses",
+    organization: "National Centre for Artificial Intelligence and Robotics (NCAIR)",
+    role: "Research Intern",
+    period: "Dec 2025 - Present",
+    description: "Developed AI-powered assistive glasses for visually impaired users.",
+    bullets: [
+      "Deployed Qwen3.5-0.8B on a Raspberry Pi through llama.cpp for on-device scene understanding and real-time environmental descriptions.",
+    ],
+  },
+  {
+    title: "Robotics Research Team",
+    organization: "Google Developer Groups on Campus",
+    role: "Robotics Research Team Lead",
+    period: "Sep 2024 - Aug 2025",
+    description: "Led a simulation replication of Stanford's ALOHA bimanual manipulation paper.",
+    bullets: [
+      "Developed MuJoCo and JAX vision-based manipulation policies and prototyped a low-cost 3D-printed robot arm.",
+    ],
+  },
   {
     title: "Engineering Innovation Empowerment Foundation",
     organization: "EIEF",
