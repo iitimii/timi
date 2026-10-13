@@ -423,6 +423,7 @@ export const researchExperience: TimelineItem[] = [
 export const publications: Publication[] = [
   {
     title: "SmolWAM: A Latent World-Action Model for Robotic Manipulation on Edge Devices",
+    titleLink: "https://arxiv.org/abs/2610.13740",
     venue: "NeurIPS 2026 Robotics World Modeling Workshop",
     year: "2026",
     note: "Accepted",
