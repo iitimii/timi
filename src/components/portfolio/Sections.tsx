@@ -348,11 +348,11 @@ export function About({ academic = false }: { academic?: boolean } = {}) {
         )}
       </p>
       <p>
-        I graduated with a 4.85/5.0 GPA in Electrical Engineering from{" "}
+        In 2025, I graduated in the top 4% of Electrical Engineering students at{" "}
         <ExternalLink inline href="https://www.covenantuniversity.edu.ng/">
           Covenant University
         </ExternalLink>
-        {academic ? ". I led the " : ". While at Covenant, I led the "}
+        , ranked 1st in Nigeria, with a 4.85/5.0 GPA. While at Covenant, I led the{" "}
         <ExternalLink
           inline
           href="https://gdg.community.dev/gdg-on-campus-covenant-university-ota-nigeria/"
