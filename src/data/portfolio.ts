@@ -190,41 +190,6 @@ export const projects: PortfolioProject[] = [
     links: [{ label: "Code", href: "https://github.com/iitimii/llm-engine" }],
   },
   {
-    name: "ALOHA Replication with OpenVLA-OFT",
-    titleLink: "https://github.com/iitimii/aloha-vla",
-    kind: "Bimanual manipulation",
-    period: "2025",
-    description:
-      "A simulation replication of Stanford's ALOHA work, integrating OpenVLA-OFT as the vision-language-action policy for bimanual robotic manipulation.",
-    tags: ["Python", "PyTorch", "MuJoCo", "VLA", "Robotics"],
-    image: "/projects/aloha-vla.png",
-    imageAlt: "Bimanual robot manipulation in simulation",
-    video: "/videos/aloha-replication.mp4",
-    collaborators: [
-      { name: "Timi Owolabi", self: true },
-      { name: "Jesse-Paul Osemeke", href: "https://jesse-paul.me/" },
-      {
-        name: "Omeyimi Mustapha",
-        href: "https://ng.linkedin.com/in/omeyimi-mustapha-7b9202289",
-      },
-    ],
-    links: [{ label: "Code", href: "https://github.com/iitimii/aloha-vla" }],
-  },
-  {
-    name: "Autonomous Quadcopter",
-    titleLink: "https://github.com/iitimii/Autonomous-Drone",
-    kind: "Embedded flight control",
-    period: "2025",
-    description:
-      "An ESP32 flight controller with modular sensor drivers, cascaded attitude/rate PID control, motor mixing, receiver decoding, telemetry, and GPS/barometer/IMU/compass sensor fusion.",
-    tags: ["C++", "ESP32", "PlatformIO", "PID Control", "Sensor Fusion"],
-    image: "/projects/autonomous-drone.jpg",
-    imageAlt: "Autonomous quadcopter platform",
-    video: "/videos/autonomous-drone.mp4",
-    collaborators: [{ name: "Timi Owolabi", self: true }],
-    links: [{ label: "Code", href: "https://github.com/iitimii/Autonomous-Drone" }],
-  },
-  {
     name: "Coordinated Control of Multi-Quadrotor Swarms",
     titleLink: "https://github.com/iitimii/Coordinated-Control-of-Multi-Quadrotor-Swarms",
     kind: "Classical and learning-based control",
@@ -253,6 +218,41 @@ export const projects: PortfolioProject[] = [
         href: "https://github.com/iitimii/Coordinated-Control-of-Multi-Quadrotor-Swarms",
       },
     ],
+  },
+  {
+    name: "Autonomous Quadcopter",
+    titleLink: "https://github.com/iitimii/Autonomous-Drone",
+    kind: "Embedded flight control",
+    period: "2025",
+    description:
+      "An ESP32 flight controller with modular sensor drivers, cascaded attitude/rate PID control, motor mixing, receiver decoding, telemetry, and GPS/barometer/IMU/compass sensor fusion.",
+    tags: ["C++", "ESP32", "PlatformIO", "PID Control", "Sensor Fusion"],
+    image: "/projects/autonomous-drone.jpg",
+    imageAlt: "Autonomous quadcopter platform",
+    video: "/videos/autonomous-drone.mp4",
+    collaborators: [{ name: "Timi Owolabi", self: true }],
+    links: [{ label: "Code", href: "https://github.com/iitimii/Autonomous-Drone" }],
+  },
+  {
+    name: "ALOHA Replication with OpenVLA-OFT",
+    titleLink: "https://github.com/iitimii/aloha-vla",
+    kind: "Bimanual manipulation",
+    period: "2025",
+    description:
+      "A simulation replication of Stanford's ALOHA work, integrating OpenVLA-OFT as the vision-language-action policy for bimanual robotic manipulation.",
+    tags: ["Python", "PyTorch", "MuJoCo", "VLA", "Robotics"],
+    image: "/projects/aloha-vla.png",
+    imageAlt: "Bimanual robot manipulation in simulation",
+    video: "/videos/aloha-replication.mp4",
+    collaborators: [
+      { name: "Timi Owolabi", self: true },
+      { name: "Jesse-Paul Osemeke", href: "https://jesse-paul.me/" },
+      {
+        name: "Omeyimi Mustapha",
+        href: "https://ng.linkedin.com/in/omeyimi-mustapha-7b9202289",
+      },
+    ],
+    links: [{ label: "Code", href: "https://github.com/iitimii/aloha-vla" }],
   },
   {
     name: "Affordable 3D-Printed Manipulator",
@@ -423,8 +423,9 @@ export const researchExperience: TimelineItem[] = [
 export const publications: Publication[] = [
   {
     title: "SmolWAM: A Latent World-Action Model for Robotic Manipulation on Edge Devices",
-    titleLink: "https://arxiv.org/abs/2610.13740",
-    venue: "NeurIPS 2026 Robotics World Modeling Workshop",
+    titleLink: "https://arxiv.org/html/2610.13740v1",
+    venue:
+      "NeurIPS 2026 Workshop on Robot Learning with World Models: Capabilities, Frontiers, and Challenges; CoRL 2026 Workshop on The Action Gap: Large Generative Models Learn Rich Knowledge; and CoRL 2026 Workshop on Do Robots Need World Models?",
     year: "2026",
     note: "Accepted",
     description:
@@ -703,7 +704,7 @@ export const news: NewsItem[] = [
     date: "Oct 2026",
     academic: true,
     before:
-      "Our paper “SmolWAM: A Latent World-Action Model for Robotic Manipulation on Edge Devices” was accepted to the NeurIPS 2026 Robotics World Modeling Workshop.",
+      "Our paper “SmolWAM: A Latent World-Action Model for Robotic Manipulation on Edge Devices” was accepted to the NeurIPS 2026 Workshop on Robot Learning with World Models: Capabilities, Frontiers, and Challenges; CoRL 2026 Workshop on The Action Gap: Large Generative Models Learn Rich Knowledge; and CoRL 2026 Workshop on Do Robots Need World Models?",
   },
   {
     date: "Sept 2026",

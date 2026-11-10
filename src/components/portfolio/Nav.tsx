@@ -48,7 +48,8 @@ export function Nav({ academic, onToggleView }: { academic: boolean; onToggleVie
           ))}
           <a
             href={profile.cv}
-            download="timi-owolabi-full-cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-sm border border-accent px-3 py-1.5 font-mono text-xs text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
           >
             resume.pdf
@@ -84,7 +85,8 @@ export function Nav({ academic, onToggleView }: { academic: boolean; onToggleVie
             ))}
             <a
               href={profile.cv}
-              download="timi-owolabi-full-cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-mono text-sm text-accent"
             >
               resume.pdf
