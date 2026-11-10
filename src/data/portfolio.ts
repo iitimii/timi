@@ -704,6 +704,12 @@ export const news: NewsItem[] = [
     date: "Oct 2026",
     academic: true,
     before:
+      "Muta finished as second runner-up in the Africa Deep Tech Challenge (ADTC) and won $5,000.",
+  },
+  {
+    date: "Oct 2026",
+    academic: true,
+    before:
       "Our paper “SmolWAM: A Latent World-Action Model for Robotic Manipulation on Edge Devices” was accepted to the NeurIPS 2026 Workshop on Robot Learning with World Models: Capabilities, Frontiers, and Challenges; CoRL 2026 Workshop on The Action Gap: Large Generative Models Learn Rich Knowledge; and CoRL 2026 Workshop on Do Robots Need World Models?",
   },
   {
