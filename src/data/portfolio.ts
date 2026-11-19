@@ -81,7 +81,8 @@ export const profile = {
   x: "https://x.com/iitiimii",
   scholar: "https://scholar.google.com/citations?user=mJOLhAcAAAAJ&hl=en",
   avatar: "/timi.jpg",
-  cv: "/timi-owolabi-full-cv.pdf",
+  cv: "/timi-owolabi-cv.pdf",
+  cvTitle: "Timi Owolabi's CV",
   tagline:
     "I like to think of my work as an ML sandwich. The bottom bread is the runtime infrastructure that models run on, things like inference engines and kernels. The middle, whether that's PB&J, chicken, or whatever filling you like, is the model research, architecting, data prep, and training. The top bread is the cloud infrastructure that monitors and serves those models to millions of people, using tools like Google Cloud, AWS, and Kubernetes. In short, I'm interested in building smart ML models and making them go vroom!",
 } as const;

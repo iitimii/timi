@@ -27,7 +27,7 @@ const socialLinks: Array<{
   { label: "LinkedIn", handle: "timi-owolabi", href: profile.linkedin, icon: Linkedin, dock: true },
   { label: "GitHub", handle: "iitimii", href: profile.github, icon: Github, dock: true },
   { label: "Google Scholar", handle: "Google Scholar", href: profile.scholar, icon: GraduationCap },
-  { label: "Full CV", handle: "Download CV", href: profile.cv, icon: FileText },
+  { label: profile.cvTitle, handle: profile.cvTitle, href: profile.cv, icon: FileText },
 ];
 
 export function SocialLinks({
@@ -47,8 +47,8 @@ export function SocialLinks({
           href={href}
           target={href.startsWith("mailto:") ? undefined : "_blank"}
           rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-          aria-label={iconOnly ? `${label}${label === "Full CV" ? "" : `: ${handle}`}` : undefined}
-          title={iconOnly ? `${label} · ${handle}` : undefined}
+          aria-label={iconOnly ? (href === profile.cv ? label : `${label}: ${handle}`) : undefined}
+          title={iconOnly ? (href === profile.cv ? label : `${label} · ${handle}`) : undefined}
           className={variant === "dock" && !dock ? "dock-secondary-social" : undefined}
         >
           <Icon size={variant === "icons" ? 19 : 17} aria-hidden="true" />

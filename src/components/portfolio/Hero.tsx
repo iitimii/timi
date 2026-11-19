@@ -11,7 +11,7 @@ export function Hero() {
           <p className="home-subtitle">Physical AI, ML Systems, and Everything in Between</p>
         </div>
         <a className="cv-link" href={profile.cv} target="_blank" rel="noopener noreferrer">
-          <FileText size={15} aria-hidden="true" /> Curriculum vitae
+          <FileText size={15} aria-hidden="true" /> {profile.cvTitle}
         </a>
       </header>
 
