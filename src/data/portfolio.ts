@@ -8,7 +8,14 @@ export interface TimelineItem {
   org: string;
   location: string;
   period: string;
-  bullets: string[];
+  bullets?: string[];
+  description?: string;
+  descriptionLink?: LinkItem;
+  image?: string;
+  imageAlt?: string;
+  monogram?: string;
+  organizationUrl?: string;
+  supervisor?: { name: string; href: string; affiliation: string; affiliationHref: string };
 }
 
 export interface PortfolioProject {
@@ -35,12 +42,13 @@ export interface Publication {
   title: string;
   titleLink?: string;
   venue: string;
+  venuePrefix?: string;
   year: string;
-  note?: string;
   description: string;
   authors: PublicationAuthor[];
   links: LinkItem[];
   image?: string;
+  imageAlt?: string;
   video?: string;
 }
 
@@ -50,17 +58,6 @@ export interface NewsItem {
   before?: string;
   link?: LinkItem;
   after?: string;
-}
-
-export interface ImpactItem {
-  title: string;
-  organization: string;
-  role: string;
-  period: string;
-  description: string;
-  bullets: string[];
-  image?: string;
-  organizationUrl?: string;
 }
 
 export interface Writing {
@@ -90,7 +87,7 @@ export const profile = {
 } as const;
 
 export const skillGroups = [
-  { label: "Languages", items: ["Python", "C++", "SQL"] },
+  { label: "Languages & Systems", items: ["Python", "C++", "SQL", "Linux", "Git"] },
   {
     label: "Machine Learning",
     items: [
@@ -99,6 +96,7 @@ export const skillGroups = [
       "JAX",
       "Hugging Face",
       "MLflow",
+      "W&B",
       "LangChain",
       "FastAPI",
       "LLM Inference",
@@ -116,6 +114,8 @@ export const skillGroups = [
       "MuJoCo",
       "CasADi",
       "Simulation",
+      "Gymnasium",
+      "Stable-Baselines3",
     ],
   },
   {
@@ -134,6 +134,7 @@ export const skillGroups = [
       "GitOps",
       "Karpenter",
       "OpenTelemetry",
+      "Prometheus",
       "Grafana",
     ],
   },
@@ -171,6 +172,17 @@ export const experience: TimelineItem[] = [
       "Led a three-person ML team and built the company's AI infrastructure on AWS SageMaker, covering the full MLOps lifecycle from data collection to production deployment.",
       "Designed an AI-powered phone inspection pipeline using fine-tuned YOLOv11, CLAHE, spectral analysis, and Google PaliGemma.",
       "Eliminated manual approval and reduced onboarding review time from five minutes to 18 seconds.",
+    ],
+  },
+  {
+    role: "Sustainability Intern",
+    org: "Schneider Electric",
+    location: "Lagos, Nigeria",
+    period: "Aug 2023 - Oct 2023",
+    organizationUrl: "https://www.se.com/",
+    bullets: [
+      "Ran self-driving-car robotics workshops and partnered with NGOs to deliver STEM tutoring aligned with Schneider Electric's global youth-empowerment initiative.",
+      "Reviewed NGO support budgets exceeding $60,000 each, ensuring alignment with sustainability program objectives.",
     ],
   },
 ];
@@ -401,7 +413,7 @@ export const researchExperience: TimelineItem[] = [
   {
     role: "Embodied AI Research Group Lead",
     org: "ML Collective",
-    location: "Lagos, Nigeria",
+    location: "Global · Remote",
     period: "Jun 2026 - Present",
     bullets: [
       "Optimize large world-action models for efficient inference on resource-constrained edge devices.",
@@ -410,9 +422,15 @@ export const researchExperience: TimelineItem[] = [
   },
   {
     role: "Undergraduate Research Assistant",
-    org: "WaySense · Oxford Robotics Institute",
+    org: "WaySense",
     location: "Oxford, United Kingdom · Remote",
     period: "Mar 2024 - Sep 2024",
+    supervisor: {
+      name: "Dr. Daniel Omeiza",
+      href: "https://danielomeiza.github.io/",
+      affiliation: "Oxford Robotics Institute",
+      affiliationHref: "https://ori.ox.ac.uk/",
+    },
     bullets: [
       "Analyzed the Lyft Level 5 dataset for multi-agent vehicle state estimation, lane-change detection, and explainable autonomous driving.",
       "Adapted the fast subset-scan algorithm to graph neural networks for statistically significant traffic anomaly detection.",
@@ -423,11 +441,10 @@ export const researchExperience: TimelineItem[] = [
 export const publications: Publication[] = [
   {
     title: "SmolWAM: A Latent World-Action Model for Robotic Manipulation on Edge Devices",
-    titleLink: "https://arxiv.org/html/2610.13740v1",
-    venue:
-      "NeurIPS 2026 Workshop on Robot Learning with World Models: Capabilities, Frontiers, and Challenges; CoRL 2026 Workshop on The Action Gap: Large Generative Models Learn Rich Knowledge; and CoRL 2026 Workshop on Do Robots Need World Models?",
+    titleLink: "https://smolwam.vercel.app/",
+    venuePrefix: "NeurIPS Workshop on",
+    venue: "Robot Learning with World Models: Capabilities, Frontiers, and Challenges",
     year: "2026",
-    note: "Accepted",
     description:
       "SmolWAM is a compact latent world-action model for robotic manipulation, achieving 95.5% success on LIBERO while running 11× faster and using 3.2× less GPU memory than its Cosmos Policy teacher, while retaining future-scene prediction.",
     authors: [
@@ -439,8 +456,15 @@ export const publications: Publication[] = [
         href: "https://ng.linkedin.com/in/ayotomiwa-oyewumi-300b45285",
       },
     ],
-    links: [],
-    image: "/research/smolwam-thumbnail.png",
+    links: [
+      { label: "Paper", href: "https://arxiv.org/abs/2610.13740" },
+      { label: "Code", href: "https://github.com/iitimii/SmolWAM" },
+      { label: "Model", href: "https://huggingface.co/timiiowolabi/SmolWAM" },
+      { label: "Website", href: "https://smolwam.vercel.app/" },
+    ],
+    image: "/research/thumbnails/smolwam-v2.webp",
+    imageAlt:
+      "A compact glowing core producing a robot's action trajectory and translucent future scenes of a tabletop grasp-and-place task.",
   },
   {
     title: "Fuzzy-PID Controller for Liquid Level Control of Tank Systems",
@@ -448,7 +472,6 @@ export const publications: Publication[] = [
       "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=mJOLhAcAAAAJ&authuser=1&citation_for_view=mJOLhAcAAAAJ:2osOgNQ5qMEC",
     venue: "NIPES-Journal of Science and Technology",
     year: "2025",
-    note: "Oral Presentation",
     description:
       "A Fuzzy-PID controller for single- and double-tank systems that improves handling of nonlinearity, uncertainty, and multivariable disturbances over conventional PID control.",
     authors: [
@@ -468,11 +491,13 @@ export const publications: Publication[] = [
     ],
     links: [
       {
-        label: "PDF",
+        label: "Paper",
         href: "https://journals.nipes.org/index.php/jstrissue/article/download/2506/1612",
       },
     ],
-    image: "/research/fuzzy-pid.png",
+    image: "/research/thumbnails/fuzzy-pid.webp",
+    imageAlt:
+      "Two coupled turquoise water tanks with fuzzy membership curves and a damped control response.",
   },
   {
     title:
@@ -495,15 +520,17 @@ export const publications: Publication[] = [
     ],
     links: [
       {
+        label: "Paper",
+        href: "https://iopscience.iop.org/article/10.1088/2631-8695/adc5de/pdf",
+      },
+      {
         label: "Code",
         href: "https://github.com/iitimii/Brute-Force-Optimization-for-Neural-Networks",
       },
-      {
-        label: "PDF",
-        href: "https://iopscience.iop.org/article/10.1088/2631-8695/adc5de/pdf",
-      },
     ],
-    image: "/research/nn-optimization.png",
+    image: "/research/thumbnails/nn-optimization.webp",
+    imageAlt:
+      "Copper sampling pins and a sparse white descent path across a sculpted optimization landscape.",
   },
   {
     title:
@@ -534,11 +561,13 @@ export const publications: Publication[] = [
     ],
     links: [
       {
-        label: "PDF",
+        label: "Paper",
         href: "https://asric.africa/sites/default/files/2025-02/10%20ES%20Vol.%205%202024.pdf",
       },
     ],
-    image: "/research/radiological-imaging.png",
+    image: "/research/thumbnails/radiological-imaging.webp",
+    imageAlt:
+      "An X-ray-style hand revealed with increasing clarity across layered image-processing planes.",
   },
   {
     title: "Energy Optimization Algorithm for Reducing Energy Consumption in a Smart Home",
@@ -566,123 +595,58 @@ export const publications: Publication[] = [
     ],
     links: [
       {
-        label: "PDF",
+        label: "Paper",
         href: "https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10379321",
       },
     ],
-    image: "/research/energy-optimization.png",
+    image: "/research/thumbnails/energy-optimization.webp",
+    imageAlt:
+      "A miniature smart home with an illuminated occupied room, dim unused room, and timed appliance circuits.",
   },
 ];
 
-export const impact: ImpactItem[] = [
+export const impact: TimelineItem[] = [
   {
-    title: "AI-Powered Assistive Glasses",
-    organization: "National Centre for Artificial Intelligence and Robotics (NCAIR)",
-    role: "Research Intern",
-    period: "Dec 2025 - Present",
-    description: "Developed AI-powered assistive glasses for visually impaired users.",
-    bullets: [
-      "Deployed Qwen3.5-0.8B on a Raspberry Pi through llama.cpp for on-device scene understanding and real-time environmental descriptions.",
-    ],
-  },
-  {
-    title: "Robotics Research Team",
-    organization: "Google Developer Groups on Campus",
-    role: "Robotics Research Team Lead",
-    period: "Sep 2024 - Aug 2025",
-    description: "Led a simulation replication of Stanford's ALOHA bimanual manipulation paper.",
-    bullets: [
-      "Developed MuJoCo and JAX vision-based manipulation policies and prototyped a low-cost 3D-printed robot arm.",
-    ],
-  },
-  {
-    title: "Engineering Innovation Empowerment Foundation",
-    organization: "EIEF",
-    role: "Co-Founder",
+    org: "The Classroom Project",
+    role: "Founder",
+    location: "Lagos and Abuja, Nigeria",
     period: "Dec 2024 - Present",
     description:
-      "Hands-on engineering education and support for students with limited access to practical STEM learning.",
-    bullets: [
-      "Designed and produced engineering kits for teaching core principles.",
-      "Organized technical training and mentoring programs.",
-      "Launched The Classroom Project and delivered classroom desks and STEM learning support to children at the Durumi IDP camp in Abuja.",
-    ],
-    image: "/impact/classroom-project.jpg",
+      "Provide mentorship, learning resources, and hands-on STEM support to underserved secondary schools in Lagos and children at the Durumi IDP camp in Abuja.",
+    descriptionLink: { label: "Outreach photo", href: "/impact/classroom-project.jpg" },
+    image: "/organizations/classroom-project.webp",
+    imageAlt: "The Classroom Project logo",
+    organizationUrl: "https://www.linkedin.com/company/113221087",
   },
   {
-    title: "Association of Electrical and Information Engineering Students",
-    organization: "Covenant University",
+    org: "Association of Electrical and Information Engineering Students",
     role: "President",
+    location: "Ogun, Nigeria",
     period: "Sep 2024 - Aug 2025",
     description:
-      "Led a 20-member executive team serving more than 2,000 students across projects, competitions, and academic support.",
-    bullets: [
-      "Coordinated student projects and engineering competitions.",
-      "Founded a mentorship program pairing junior students with seniors for academic and career guidance.",
-    ],
+      "Led a 20-member executive team serving 2,000+ engineering students and founded a mentorship program pairing junior students with seniors for academic and career guidance.",
+    image: "/organizations/covenant.png",
+    imageAlt: "Covenant University logo",
     organizationUrl: "https://www.instagram.com/aeies_cu/",
   },
   {
-    title: "Machine Learning Education",
-    organization: "Association of Professional Women Engineers of Nigeria",
-    role: "Machine Learning Tutor",
-    period: "Aug 2023 - Oct 2023",
+    org: "Machine Learning Education",
+    role: "Volunteer",
+    location: "Lagos, Nigeria",
+    period: "Aug 2023 - Present",
     description:
-      "Taught foundational machine learning to more than 50 female engineering students.",
-    bullets: [
-      "Covered supervised learning, model evaluation, and neural networks.",
-      "Developed hands-on Python exercises using real-world datasets.",
-    ],
-    organizationUrl: "https://www.apwen.org.ng/",
+      "Taught and mentored students in machine learning and robotics through the Association of Professional Women Engineers of Nigeria, Project Cage Technologies, Google Developer Groups, the Robotics and Artificial Intelligence Innovators Network, and the National Centre for Artificial Intelligence and Robotics.",
+    monogram: "ML",
   },
   {
-    title: "Hands-on Robotics Instruction",
-    organization: "Project Cage Technologies",
-    role: "Robotics Instructor",
-    period: "Aug 2023 - Oct 2023",
-    description:
-      "Taught robotics fundamentals and mentored students through complete hardware and software projects.",
-    bullets: [
-      "Covered electronics, sensors, actuators, embedded programming, and autonomous systems.",
-      "Guided system design, hardware integration, programming, and troubleshooting.",
-    ],
-  },
-  {
-    title: "Robotics and AI Team",
-    organization: "Robotics and Artificial Intelligence Innovators Network",
-    role: "Team Lead",
-    period: "Sep 2024 - Aug 2025",
-    description:
-      "Led applied deep-learning projects and organized model-building competitions for students.",
-    bullets: [
-      "Built a CNN-LSTM speech emotion recognition system with PyTorch Lightning.",
-      "Ran a fruit-classification competition comparing ResNet-18, MobileNet V2, and EfficientNet V2.",
-    ],
-  },
-  {
-    title: "National Championship Sustainability Projects",
-    organization: "Enactus",
-    role: "Member",
+    org: "Enactus",
+    role: "Member (National Champions)",
+    location: "Ogun, Nigeria",
     period: "May 2021 - May 2023",
     description:
-      "Contributed engineering work to the national champion team's circular-economy and sustainable-agriculture projects.",
-    bullets: [
-      "Designed a soil-nutrient sensor circuit for the Cow Blood to Manure initiative.",
-      "Contributed to projects turning recycled bottles into road tiles and biomass waste into reusable food packs.",
-    ],
-  },
-  {
-    title: "Youth Sustainability Initiatives",
-    organization: "Schneider Electric",
-    role: "Sustainability Intern",
-    period: "Aug 2023 - Oct 2023",
-    description:
-      "Combined robotics education with operational support for NGO partnerships aligned with a global youth-empowerment initiative.",
-    bullets: [
-      "Ran self-driving-car robotics workshops for young students.",
-      "Partnered with NGOs on STEM tutoring and reviewed program budgets exceeding $60,000 each.",
-    ],
-    organizationUrl: "https://www.se.com/",
+      "Contributed to the national champion team's sustainability projects, developing a soil-nutrient sensor and supporting recycled road tiles and reusable food packaging.",
+    image: "/organizations/enactus.webp",
+    organizationUrl: "https://enactus.org/",
   },
 ];
 
@@ -701,6 +665,12 @@ export const writings: Writing[] = [
 
 export const news: NewsItem[] = [
   {
+    date: "Nov 2026",
+    academic: true,
+    before:
+      "SmolWAM was also accepted to the CoRL 2026 workshops “Do Robots Need World Models?” and “The Action Gap: Large Generative Models Learn Rich Knowledge”.",
+  },
+  {
     date: "Oct 2026",
     academic: true,
     before:
@@ -710,7 +680,7 @@ export const news: NewsItem[] = [
     date: "Oct 2026",
     academic: true,
     before:
-      "Our paper “SmolWAM: A Latent World-Action Model for Robotic Manipulation on Edge Devices” was accepted to the NeurIPS 2026 Workshop on Robot Learning with World Models: Capabilities, Frontiers, and Challenges; CoRL 2026 Workshop on The Action Gap: Large Generative Models Learn Rich Knowledge; and CoRL 2026 Workshop on Do Robots Need World Models?",
+      "Our paper “SmolWAM: A Latent World-Action Model for Robotic Manipulation on Edge Devices” was accepted to the NeurIPS 2026 Workshop on Robot Learning with World Models: Capabilities, Frontiers, and Challenges.",
   },
   {
     date: "Sept 2026",
@@ -807,21 +777,66 @@ export const news: NewsItem[] = [
 ];
 
 export const navItems = [
-  { id: "about", label: "about" },
-  { id: "skills", label: "skills" },
-  { id: "experience", label: "experience" },
-  { id: "projects", label: "projects" },
-  { id: "research", label: "research" },
-  { id: "writings", label: "writings" },
-  { id: "impact", label: "impact" },
-  { id: "news", label: "news" },
-  { id: "contact", label: "contact" },
+  { id: "home", label: "Home" },
+  { id: "research", label: "Research" },
+  { id: "projects", label: "Projects" },
+  { id: "experience", label: "Experience" },
+  { id: "writings", label: "Writings" },
+  { id: "talks", label: "Talks" },
+  { id: "impact", label: "Impact" },
+  { id: "news", label: "News" },
+] as const;
+
+export const education: TimelineItem[] = [
+  {
+    role: "B.Eng. Electrical Engineering",
+    org: "Covenant University",
+    location: "Ota, Nigeria",
+    period: "Class of 2025",
+    bullets: [
+      "First Class Honours · GPA: 4.85/5.0 · Top 4% of Electrical Engineering students.",
+      "Led the Robotics Research Team, working on reinforcement learning, vision-language-action models, and low-cost robotic systems.",
+    ],
+  },
 ];
 
-export const academicNavItems = [
-  { id: "about", label: "about" },
-  { id: "research", label: "publications" },
-  { id: "projects", label: "projects" },
-  { id: "writings", label: "articles" },
-  { id: "news", label: "news" },
+export const talks = [
+  {
+    title: "SmolWAM: A Latent World-Action Model for Robotic Manipulation on Edge Devices",
+    organization: "The Action Gap Workshop, CoRL",
+    date: "Nov 2026",
+  },
+  {
+    title: "Muta: An Offline AI Tutor for African Students",
+    organization: "Moonshot by TechCabal",
+    date: "Oct 2026",
+  },
+  {
+    title: "Neural Networks",
+    organization: "TRI AI",
+    date: "Aug 2026",
+  },
+  {
+    title: "From Campus to Career: Navigating the Engineering Journey",
+    organization: "Redeemer’s University Electrical Engineering Students Association",
+    date: "Aug 2025",
+  },
+  {
+    title: "Fuzzy-PID Controller for Liquid Level Control of Tank Systems",
+    organization:
+      "International Conference on Science, Engineering and Business for Driving Sustainable Development Goals (SEB4SDG)",
+    date: "Jul 2025",
+  },
+  {
+    title: "AI: Our Current Reality and Future Trajectory",
+    organization: "Nigerian Society of Engineers",
+    date: "Aug 2024",
+    href: "/talks/nse-abeokuta-ai-training.pdf",
+  },
+  {
+    title: "Deep Learning: Neural Networks",
+    organization: "Association of Professional Women Engineers of Nigeria",
+    date: "Apr 2024",
+    href: "/talks/deep-learning-neural-networks.pdf",
+  },
 ];

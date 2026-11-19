@@ -6,7 +6,9 @@ Single-page portfolio for Timi Owolabi, an ML systems engineer working across em
 
 ## Sections
 
-About, Skills, Experience, Projects, Research, Impact, Writings, News, and Contact are presented together on one responsive page. The portfolio includes a downloadable Full CV and local copies of two invited-talk slide decks.
+Home, Research, Projects, Experience, Writings, Talks, Impact, and News are presented together on one responsive page. Home includes the biography, contact information, and social profiles. Professional experience, research experience, education, and skills appear as collapsed subsections of Experience. The portfolio includes a downloadable Full CV and local copies of two invited-talk slide decks.
+
+The former `/?view=academic` URL serves the same complete portfolio. There is no separate academic view; both URLs use `https://www.timiowolabi.com/` as the canonical page.
 
 ## Tech Stack
 

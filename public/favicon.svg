@@ -1,18 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Timi Owolabi terminal mark">
-  <defs>
-    <linearGradient id="panel" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1a1a1a" />
-      <stop offset="1" stop-color="#050505" />
-    </linearGradient>
-    <filter id="glow" x="-35%" y="-35%" width="170%" height="170%">
-      <feGaussianBlur stdDeviation="1.7" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
-  </defs>
-  <rect x="2" y="2" width="60" height="60" rx="12" fill="url(#panel)" stroke="#3d3d3d" stroke-width="2" />
-  <path d="M14 17h31v8H34v23h-9V25H14z" fill="#e3e3e3" filter="url(#glow)" />
-  <path d="M39 41h12v7H39z" fill="#ffffff" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- T in Lora Bold (SIL Open Font License), outlined to match Nelson's favicon style. -->
+  <style>path { fill: #111; } @media (prefers-color-scheme: dark) { path { fill: #f2efe9; } }</style>
+  <path transform="matrix(0.082857 0 0 -0.082857 5.1129 61.0000)" d="M567 474Q567 528 552.0 563.5Q537 599 509.5 616.5Q482 634 444 633H396V164Q396 137 395.0 112.0Q394 87 392 74Q409 76 435.5 76.5Q462 77 472 77V0H180V66Q203 67 218.5 72.0Q234 77 242.5 95.0Q251 113 251 153V632H205Q148 631 115.0 593.0Q82 555 82 474H16L21 700H627L633 474Z"/>
 </svg>

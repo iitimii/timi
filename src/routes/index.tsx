@@ -2,27 +2,23 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
 import {
-  About,
-  Contact,
   Experience,
   Footer,
   Impact,
   News,
   Projects,
   Research,
-  Skills,
+  Talks,
   Writings,
 } from "@/components/portfolio/Sections";
 import { profile } from "@/data/portfolio";
 
-const siteUrl = "https://timi-iitimiis-projects.vercel.app/";
+const siteUrl = "https://www.timiowolabi.com/";
 const title = "Timi Owolabi · ML Systems Engineer";
 const description =
   "Portfolio of Timi Owolabi, an ML systems engineer working on embodied AI, robot learning, real-world control, and machine learning infrastructure.";
 
 export const Route = createFileRoute("/")({
-  validateSearch: (search: Record<string, unknown>): { view?: "academic" } =>
-    search["view"] === "academic" ? { view: "academic" } : {},
   head: () => ({
     meta: [
       { title },
@@ -74,46 +70,23 @@ export const Route = createFileRoute("/")({
 });
 
 function Portfolio() {
-  const { view } = Route.useSearch();
-  const navigate = Route.useNavigate();
-  const academic = view === "academic";
-
-  const toggleView = () => {
-    void navigate({
-      search: academic ? {} : { view: "academic" },
-      hash: "",
-      resetScroll: true,
-    });
-  };
-
   return (
-    <div className="min-h-screen bg-background">
-      <Nav key={academic ? "academic" : "full"} academic={academic} onToggleView={toggleView} />
-      <main id="portfolio-content">
-        {academic ? (
-          <div id="top">
-            <About academic />
-            <Research academic />
-            <Projects academic />
-            <Writings academic />
-            <News academic />
-          </div>
-        ) : (
-          <>
-            <Hero />
-            <About />
-            <Skills />
-            <Experience />
-            <Projects />
-            <Research />
-            <Writings />
-            <Impact />
-            <News />
-            <Contact />
-          </>
-        )}
+    <div className="portfolio">
+      <a href="#portfolio-content" className="skip-link">
+        Skip to content
+      </a>
+      <Nav />
+      <main id="portfolio-content" tabIndex={-1}>
+        <Hero />
+        <Research />
+        <Projects />
+        <Experience />
+        <Writings />
+        <Talks />
+        <Impact />
+        <News />
       </main>
-      {academic ? null : <Footer />}
+      <Footer />
     </div>
   );
 }

@@ -1,87 +1,28 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
-
-export function Reveal({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            observer.disconnect();
-          }
-        }
-      },
-      { rootMargin: "-40px 0px", threshold: 0.05 },
-    );
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      ref={ref}
-      data-visible={visible}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={`reveal ${className}`}
-    >
-      {children}
-    </div>
-  );
-}
+import type { ReactNode } from "react";
 
 export function Section({
   id,
-  index,
   title,
-  compact = false,
+  description,
   children,
+  extra,
 }: {
   id: string;
-  index: string;
   title: string;
-  compact?: boolean;
+  description: string;
   children: ReactNode;
+  extra?: ReactNode;
 }) {
   return (
-    <section
-      id={id}
-      className={`scroll-mt-20 border-t border-border ${compact ? "py-8 sm:py-10 md:py-12" : "py-14 sm:py-20 md:py-28"}`}
-    >
-      <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
-        <Reveal>
-          <div
-            className={`flex items-baseline gap-3 sm:gap-4 ${compact ? "mb-5 sm:mb-6" : "mb-8 sm:mb-10"}`}
-          >
-            <span className="font-mono text-xs text-accent">{index}</span>
-            <h2 className="font-mono text-lg font-semibold tracking-tight text-foreground sm:text-xl md:text-2xl">
-              {title}
-            </h2>
-            <span className="h-px flex-1 bg-border" aria-hidden="true" />
-          </div>
-        </Reveal>
-        {children}
-      </div>
-    </section>
-  );
-}
-
-export function Chip({ children }: { children: ReactNode }) {
-  return (
-    <span className="rounded-sm border border-border bg-surface-raised px-2.5 py-1 font-mono text-xs text-muted-foreground">
+    <section id={id} className="section page-width" tabIndex={-1} aria-labelledby={`${id}-title`}>
+      <header className="section-heading">
+        <div>
+          <h2 id={`${id}-title`}>{title}</h2>
+          <p>{description}</p>
+        </div>
+        {extra}
+      </header>
       {children}
-    </span>
+    </section>
   );
 }

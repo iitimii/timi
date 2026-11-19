@@ -1,14 +1,7 @@
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { ChevronDown } from "lucide-react";
 import {
-  FileText,
-  Github,
-  GraduationCap,
-  Linkedin,
-  Mail,
-  Twitter,
-  type LucideIcon,
-} from "lucide-react";
-import {
+  education,
   experience,
   impact,
   news,
@@ -17,115 +10,52 @@ import {
   publications,
   researchExperience,
   skillGroups,
+  talks,
   writings,
-  type ImpactItem,
-  type PortfolioProject,
+  type LinkItem,
   type PublicationAuthor,
   type TimelineItem,
 } from "@/data/portfolio";
-import { Reveal, Section } from "./primitives";
-
-const linkClass =
-  "font-mono text-xs text-accent underline-offset-4 transition-colors hover:text-accent-glow hover:underline";
-
-const inlineLinkClass =
-  "font-mono text-[1em] text-accent underline-offset-4 transition-colors hover:text-accent-glow hover:underline";
+import { Section } from "./primitives";
 
 function ExternalLink({
   href,
   children,
-  inline = false,
+  className = "",
 }: {
   href: string;
   children: ReactNode;
-  inline?: boolean;
+  className?: string;
 }) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      className={inline ? inlineLinkClass : linkClass}
-    >
+    <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
       {children}
     </a>
   );
 }
 
-function Subheading({ children }: { children: ReactNode }) {
-  return (
-    <div className="mb-6 flex items-center gap-3">
-      <p className="font-mono text-sm font-medium text-foreground">{children}</p>
-      <span className="h-px flex-1 bg-border" aria-hidden="true" />
+function ResourceLinks({ links }: { links: LinkItem[] }) {
+  return links.length ? (
+    <div className="resource-links">
+      {links.map(({ label, href }) => (
+        <ExternalLink key={href} href={href}>
+          {label.replace(/\s*↗/g, "")}
+        </ExternalLink>
+      ))}
     </div>
-  );
-}
-
-const socialLinks: Array<{
-  label: string;
-  href: string;
-  icon: LucideIcon;
-  download?: string;
-}> = [
-  {
-    label: "Download full CV",
-    href: profile.cv,
-    icon: FileText,
-    download: "timi-owolabi-full-cv.pdf",
-  },
-  { label: "GitHub", href: profile.github, icon: Github },
-  { label: "LinkedIn", href: profile.linkedin, icon: Linkedin },
-  { label: "Email", href: `mailto:${profile.email}`, icon: Mail },
-  { label: "X", href: profile.x, icon: Twitter },
-  { label: "Google Scholar", href: profile.scholar, icon: GraduationCap },
-];
-
-export function SocialIconLinks() {
-  return (
-    <div className="flex flex-wrap items-center gap-2.5" aria-label="Profile links">
-      {socialLinks.map((link) => {
-        const Icon = link.icon;
-        const external = link.href.startsWith("http");
-        return (
-          <a
-            key={link.label}
-            href={link.href}
-            download={link.download}
-            target={external ? "_blank" : undefined}
-            rel={external ? "noreferrer" : undefined}
-            aria-label={link.label}
-            title={link.label}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-border text-muted-foreground transition-colors hover:border-accent hover:bg-accent/10 hover:text-accent"
-          >
-            <Icon size={18} strokeWidth={1.8} aria-hidden="true" />
-          </a>
-        );
-      })}
-    </div>
-  );
+  ) : null;
 }
 
 function PeopleList({ people }: { people: PublicationAuthor[] }) {
   return (
-    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+    <p className="people">
       {people.map((person, index) => (
         <span key={`${person.name}-${index}`}>
-          {index > 0 ? ", " : ""}
-          {person.href ? (
-            <a
-              href={person.href}
-              target="_blank"
-              rel="noreferrer"
-              className="underline-offset-2 transition-colors hover:text-accent hover:underline"
-            >
-              {person.self ? (
-                <strong className="text-foreground">{person.name}</strong>
-              ) : (
-                person.name
-              )}
-            </a>
-          ) : person.self ? (
-            <strong className="text-foreground">{person.name}</strong>
+          {index ? ", " : ""}
+          {person.self ? (
+            <strong>{person.name}</strong>
+          ) : person.href ? (
+            <ExternalLink href={person.href}>{person.name}</ExternalLink>
           ) : (
             person.name
           )}
@@ -135,309 +65,285 @@ function PeopleList({ people }: { people: PublicationAuthor[] }) {
   );
 }
 
-function HoverMedia({
-  image,
-  video,
-  alt,
-}: {
-  image: string;
-  video?: string | undefined;
-  alt: string;
-}) {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
+function Media({ image, video, alt }: { image: string; video?: string | undefined; alt: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
   const play = () => {
-    const node = videoRef.current;
-    if (node) void node.play().catch(() => undefined);
+    const node = ref.current;
+    if (node) void node.play().catch(() => setPlaying(false));
   };
-
   const stop = () => {
-    const node = videoRef.current;
+    const node = ref.current;
     if (!node) return;
     node.pause();
     node.currentTime = 0;
   };
 
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry?.isIntersecting) {
+        node.pause();
+        node.currentTime = 0;
+      }
+    });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [video]);
+
+  const toggle = () => {
+    const node = ref.current;
+    if (!node) return;
+    if (playing) node.pause();
+    else play();
+  };
   return (
     <div
-      className="group/media relative aspect-square self-start overflow-hidden rounded-md border border-border bg-surface-raised"
-      onMouseEnter={video ? play : undefined}
-      onMouseLeave={video ? stop : undefined}
-      data-hover-media
-      data-video-src={video}
+      className={`record-media${playing ? " is-playing" : ""}`}
+      onPointerEnter={(event) => {
+        if (
+          event.pointerType === "mouse" &&
+          !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        )
+          play();
+      }}
+      onPointerLeave={(event) => {
+        if (event.pointerType === "mouse") stop();
+      }}
     >
-      <img
-        src={image}
-        alt={alt}
-        loading="lazy"
-        className="h-full w-full object-cover opacity-90 transition duration-300 group-hover/media:opacity-100"
-      />
+      <img src={image} alt={alt} loading="lazy" width={320} height={240} />
       {video ? (
-        <video
-          ref={videoRef}
-          src={video}
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-200 group-hover/media:opacity-100"
-        />
+        <>
+          <video
+            ref={ref}
+            src={video}
+            muted
+            loop
+            playsInline
+            preload="none"
+            aria-label={alt}
+            onPlay={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
+          />
+          <button
+            type="button"
+            className="media-toggle"
+            aria-label={`${playing ? "Pause" : "Play"} ${alt}`}
+            onClick={toggle}
+          />
+        </>
       ) : null}
     </div>
   );
 }
 
+const organizationLogos: Record<string, { src: string; name: string }[]> = {
+  "Quidax Technologies": [{ src: "quidax.png", name: "Quidax" }],
+  "Trotta Technologies, Inc": [{ src: "trotta.png", name: "Trotta" }],
+  "Scrella Technologies": [{ src: "scrella.ico", name: "Scrella" }],
+  "ML Collective": [{ src: "ml-collective.ico", name: "ML Collective" }],
+  WaySense: [{ src: "waysense.webp", name: "WaySense" }],
+  "Covenant University": [{ src: "covenant.png", name: "Covenant University" }],
+  "Schneider Electric": [{ src: "schneider.png", name: "Schneider Electric" }],
+};
+
 function Timeline({ items }: { items: TimelineItem[] }) {
   return (
-    <ol className="relative border-l border-border pl-6 md:pl-8">
-      {items.map((item, index) => (
-        <li key={`${item.org}-${item.period}`} className="relative pb-10 last:pb-0">
-          <span
-            className="absolute top-1.5 -left-[29px] h-2.5 w-2.5 rounded-full bg-accent md:-left-[37px]"
-            aria-hidden="true"
-          />
-          <Reveal delay={(index % 4) * 50}>
-            <p className="font-mono text-xs text-muted-foreground">{item.period}</p>
-            <h3 className="mt-1 font-mono text-lg text-foreground">{item.role}</h3>
-            <p className="text-sm text-accent">{item.org}</p>
-            <p className="mt-0.5 text-xs text-muted-foreground">{item.location}</p>
-            <ul className="mt-3 space-y-2">
-              {item.bullets.map((bullet) => (
-                <li
-                  key={bullet}
-                  className="flex gap-3 text-sm leading-relaxed text-muted-foreground"
-                >
-                  <span className="font-mono text-accent" aria-hidden="true">
-                    ›
-                  </span>
-                  <span>{bullet}</span>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
+    <ol className="timeline">
+      {items.map((item) => (
+        <li key={`${item.org}-${item.period}`}>
+          <div className="organization-logos">
+            {item.monogram ? (
+              <span className="organization-monogram" aria-hidden="true">
+                {item.monogram}
+              </span>
+            ) : item.image ? (
+              <img
+                src={item.image}
+                alt={item.imageAlt ?? `${item.org} logo`}
+                width={44}
+                height={44}
+                loading="lazy"
+              />
+            ) : (
+              organizationLogos[item.org]?.map(({ src, name }) => (
+                <img
+                  key={src}
+                  src={`/organizations/${src}`}
+                  alt={`${name} logo`}
+                  width={44}
+                  height={44}
+                  loading="lazy"
+                />
+              ))
+            )}
+          </div>
+          <div className="timeline-body">
+            <div className="record-meta">
+              <span>
+                {item.organizationUrl ? (
+                  <ExternalLink href={item.organizationUrl}>{item.org}</ExternalLink>
+                ) : (
+                  item.org
+                )}
+              </span>
+              <span>{item.period}</span>
+            </div>
+            <h3>{item.role}</h3>
+            {item.supervisor ? (
+              <p className="timeline-supervisor">
+                — <ExternalLink href={item.supervisor.href}>{item.supervisor.name}</ExternalLink>,{" "}
+                <ExternalLink href={item.supervisor.affiliationHref}>
+                  {item.supervisor.affiliation}
+                </ExternalLink>
+                <img src="/organizations/oxford.png" alt="" width={18} height={18} loading="lazy" />
+              </p>
+            ) : null}
+            <p className="timeline-location">{item.location}</p>
+            {item.description ? (
+              <p className="record-description">
+                {item.description}
+                {item.descriptionLink ? (
+                  <>
+                    {" "}
+                    <ExternalLink href={item.descriptionLink.href}>
+                      {item.descriptionLink.label}
+                    </ExternalLink>
+                    .
+                  </>
+                ) : null}
+              </p>
+            ) : null}
+            {item.bullets?.length ? (
+              <ul className="bullet-list">
+                {item.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
         </li>
       ))}
     </ol>
   );
 }
 
-function ProjectCard({ project }: { project: PortfolioProject }) {
+function ExperienceGroup({
+  title,
+  summary,
+  children,
+}: {
+  title: string;
+  summary: string;
+  children: ReactNode;
+}) {
   return (
-    <article className="grid items-start gap-5 sm:grid-cols-[10rem_1fr]">
-      {project.image ? (
-        <HoverMedia image={project.image} video={project.video} alt={project.imageAlt ?? ""} />
-      ) : (
-        <div
-          className="grid-texture aspect-square self-start rounded-md border border-border bg-surface-raised"
-          aria-hidden="true"
-        />
-      )}
-      <div className="flex flex-col">
-        <div className="flex items-start justify-between gap-4">
-          <p className="font-mono text-[11px] uppercase tracking-widest text-accent">
-            {project.kind}
-          </p>
-          <span className="shrink-0 font-mono text-[11px] text-muted-foreground">
-            {project.period}
-          </span>
-        </div>
-        <h3 className="mt-2 font-mono text-lg text-foreground">
-          {project.titleLink ? (
-            <a
-              href={project.titleLink}
-              target="_blank"
-              rel="noreferrer"
-              className="underline-offset-4 transition-colors hover:text-accent hover:underline"
-            >
-              {project.name} ↗
-            </a>
-          ) : (
-            project.name
-          )}
-        </h3>
-        <PeopleList people={project.collaborators} />
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-          {project.description}
-        </p>
-        {project.links.length > 0 ? (
-          <div className="mt-5 flex flex-wrap gap-4 border-t border-border pt-4">
-            {project.links.map((link) => (
-              <ExternalLink key={link.href} href={link.href}>
-                {link.label} ↗
-              </ExternalLink>
-            ))}
-          </div>
-        ) : null}
-      </div>
-    </article>
+    <details className="experience-group">
+      <summary>
+        <span>
+          <span className="experience-group-title">{title}</span>
+          <span className="experience-group-description">{summary}</span>
+        </span>
+        <ChevronDown size={18} aria-hidden="true" />
+      </summary>
+      <div className="experience-group-content">{children}</div>
+    </details>
   );
 }
 
-function ImpactCard({ item }: { item: ImpactItem }) {
+export function Research() {
   return (
-    <article className="grid items-start gap-5 sm:grid-cols-[10rem_1fr]">
-      {item.image ? (
-        <HoverMedia
-          image={item.image}
-          alt="Students and volunteers during The Classroom Project outreach"
-        />
-      ) : null}
-      <div className="flex flex-col sm:col-start-2">
-        <div className="flex items-start justify-between gap-3">
-          <p className="font-mono text-xs text-accent">{item.role}</p>
-          <span className="shrink-0 font-mono text-[11px] text-muted-foreground">
-            {item.period}
-          </span>
-        </div>
-        <h3 className="mt-2 font-mono text-base text-foreground">{item.title}</h3>
-        <p className="mt-1 text-xs text-muted-foreground">
-          {item.organizationUrl ? (
-            <a
-              href={item.organizationUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="transition-colors hover:text-accent"
-            >
-              {item.organization} ↗
-            </a>
-          ) : (
-            item.organization
-          )}
-        </p>
-        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
-        <ul className="mt-4 space-y-2 border-t border-border pt-4">
-          {item.bullets.map((bullet) => (
-            <li key={bullet} className="flex gap-2 text-xs leading-relaxed text-muted-foreground">
-              <span className="text-accent" aria-hidden="true">
-                ›
-              </span>
-              {bullet}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </article>
-  );
-}
-
-export function About({ academic = false }: { academic?: boolean } = {}) {
-  const biography = (
-    <div className="max-w-4xl space-y-5 text-base leading-relaxed text-muted-foreground">
-      <p>
-        {academic
-          ? "I lead the Embodied AI Research Group at"
-          : "I'm an ML Systems Engineer. Professionally, I work on the infrastructure behind production ML systems. I also spend a good portion of my time on embodied AI research. I lead the Embodied AI Research Group at"}{" "}
-        <ExternalLink inline href="https://mlcollective.org/">
-          ML Collective
+    <Section
+      id="research"
+      title="Research"
+      description="Publications & manuscripts"
+      extra={
+        <ExternalLink href={profile.scholar} className="section-link">
+          Google Scholar
         </ExternalLink>
-        {academic ? (
-          <>
-            , where we work on generalist robot policies. My interests span world models,
-            reinforcement learning, and control theory. I’m particularly interested in making
-            generalist robot policies more capable and making them run blazing fast on onboard
-            compute. Professionally, I work as an ML Systems Engineer, which has shaped a lot of how
-            I think about efficient ML systems.
-          </>
-        ) : (
-          <>
-            , where we work on generalist robot policies. I’m particularly interested in making
-            generalist robot policies more capable and making them run blazing fast on onboard
-            compute.
-          </>
-        )}
-      </p>
-      <p>
-        In 2025, I graduated in the top 4% of Electrical Engineering students at{" "}
-        <ExternalLink inline href="https://www.covenantuniversity.edu.ng/">
-          Covenant University
-        </ExternalLink>
-        , ranked 1st in Nigeria, with a 4.85/5.0 GPA. While at Covenant, I led the{" "}
-        <ExternalLink
-          inline
-          href="https://gdg.community.dev/gdg-on-campus-covenant-university-ota-nigeria/"
-        >
-          Robotics Research Team
-        </ExternalLink>
-        {academic
-          ? ", working on vision-language-action models and low-cost robotic systems. I also worked with "
-          : ", working on reinforcement learning, vision-language-action models, and low-cost robotic systems. I also worked with "}
-        <ExternalLink inline href="https://danielomeiza.github.io/">
-          Dr. Daniel Omeiza
-        </ExternalLink>{" "}
-        of the{" "}
-        <ExternalLink inline href="https://ori.ox.ac.uk/">
-          Oxford Robotics Institute
-        </ExternalLink>{" "}
-        on autonomous driving and graph neural networks.
-      </p>
-      <p>
-        I care deeply about teaching and mentorship. As president of{" "}
-        <ExternalLink inline href="https://www.instagram.com/aeies_cu/">
-          AEIES
-        </ExternalLink>
-        , I founded a student mentorship program to help engineering students develop strong
-        first-principles thinking. I taught machine learning to female engineering students{" "}
-        {academic ? "through " : "of "}
-        <ExternalLink inline href="https://www.apwen.org.ng/">
-          APWEN
-        </ExternalLink>
-        {academic ? ", and I founded " : ". I also founded "}
-        <ExternalLink inline href="https://www.linkedin.com/company/113221087">
-          The Classroom Project
-        </ExternalLink>
-        , an initiative supporting underserved students with classroom infrastructure and STEM
-        learning resources.
-      </p>
-    </div>
-  );
-
-  if (academic) {
-    return (
-      <section id="about" className="scroll-mt-28 pt-26 pb-14 sm:pt-32 sm:pb-20">
-        <div className="mx-auto grid w-full max-w-6xl gap-8 px-5 sm:px-6 md:grid-cols-[1fr_16rem] md:gap-12">
-          <div className="order-2 md:order-1">
-            <h1 className="font-mono text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              {profile.name}
-            </h1>
-            <div className="mt-6">{biography}</div>
-            <div className="mt-7">
-              <SocialIconLinks />
+      }
+    >
+      <div className="records">
+        {publications.map((publication) => (
+          <article key={publication.title} className="record research-record">
+            {publication.image ? (
+              <Media
+                image={publication.image}
+                video={publication.video}
+                alt={publication.imageAlt ?? `Research illustration: ${publication.title}`}
+              />
+            ) : null}
+            <div className="record-body">
+              <h3>
+                {publication.titleLink ? (
+                  <ExternalLink href={publication.titleLink}>{publication.title}</ExternalLink>
+                ) : (
+                  publication.title
+                )}
+              </h3>
+              <PeopleList people={publication.authors} />
+              <p className="publication-venue">
+                {publication.venuePrefix ? `${publication.venuePrefix} ` : null}
+                <em>{publication.venue}</em>, {publication.year}
+              </p>
+              <p className="record-description">{publication.description}</p>
+              <ResourceLinks
+                links={
+                  publication.links.length
+                    ? publication.links
+                    : publication.titleLink
+                      ? [{ label: "Paper", href: publication.titleLink }]
+                      : []
+                }
+              />
             </div>
-          </div>
-          <img
-            src={profile.avatar}
-            alt={profile.name}
-            width={256}
-            height={256}
-            loading="eager"
-            className="order-1 h-52 w-52 justify-self-center rounded-full border border-border-strong object-cover md:order-2 md:h-64 md:w-64"
-          />
-        </div>
-      </section>
-    );
-  }
-
-  return (
-    <Section id="about" index="01" title="about">
-      <Reveal>{biography}</Reveal>
+          </article>
+        ))}
+      </div>
     </Section>
   );
 }
 
-export function Skills() {
+export function Projects() {
   return (
-    <Section id="skills" index="02" title="skills" compact>
-      <div className="space-y-3">
-        {skillGroups.map((group, index) => (
-          <Reveal key={group.label} delay={(index % 3) * 50}>
-            <div className="grid gap-1 sm:grid-cols-[10rem_1fr] sm:gap-5">
-              <p className="font-mono text-sm text-accent">// {group.label}</p>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {group.items.join(" · ")}
-              </p>
+    <Section
+      id="projects"
+      title="Projects"
+      description="From inference engines to robots in the real world"
+      extra={
+        <ExternalLink href={profile.github} className="section-link">
+          GitHub
+        </ExternalLink>
+      }
+    >
+      <div className="records">
+        {projects.map((project) => (
+          <article key={project.name} className="record project-record">
+            {project.image ? (
+              <Media
+                image={project.image}
+                video={project.video}
+                alt={project.imageAlt ?? project.name}
+              />
+            ) : null}
+            <div className="record-body">
+              <div className="record-heading">
+                <h3>
+                  {project.titleLink ? (
+                    <ExternalLink href={project.titleLink}>{project.name}</ExternalLink>
+                  ) : (
+                    project.name
+                  )}
+                </h3>
+                <span className="record-date">{project.period}</span>
+              </div>
+              <PeopleList people={project.collaborators} />
+              <p className="record-description">{project.description}</p>
+              <p className="project-tags">{[project.kind, ...project.tags].join(" · ")}</p>
+              <ResourceLinks links={project.links} />
             </div>
-          </Reveal>
+          </article>
         ))}
       </div>
     </Section>
@@ -446,231 +352,132 @@ export function Skills() {
 
 export function Experience() {
   return (
-    <Section id="experience" index="03" title="experience">
-      <Subheading>professional experience</Subheading>
-      <Timeline items={experience} />
-      <div className="mt-16">
-        <Subheading>research experience</Subheading>
-        <Timeline items={researchExperience} />
+    <Section
+      id="experience"
+      title="Experience"
+      description="Engineering, research, and the foundations behind my work"
+    >
+      <div className="experience-groups">
+        <ExperienceGroup
+          title="Professional Experience"
+          summary="Quidax · Trotta · Scrella · Schneider Electric"
+        >
+          <Timeline items={experience} />
+        </ExperienceGroup>
+        <ExperienceGroup title="Research Experience" summary="ML Collective · WaySense">
+          <Timeline items={researchExperience} />
+        </ExperienceGroup>
+        <ExperienceGroup title="Education" summary="Covenant University · Electrical Engineering">
+          <Timeline items={education} />
+        </ExperienceGroup>
+        <ExperienceGroup
+          title="Skills"
+          summary="Machine learning · Robotics & control · Cloud & MLOps"
+        >
+          <dl className="skills-list">
+            {skillGroups.map((group) => (
+              <div key={group.label}>
+                <dt>{group.label}</dt>
+                <dd>{group.items.join(" · ")}</dd>
+              </div>
+            ))}
+          </dl>
+        </ExperienceGroup>
       </div>
     </Section>
   );
 }
 
-export function Projects({ academic = false }: { academic?: boolean } = {}) {
+export function Writings() {
   return (
-    <Section id="projects" index={academic ? "02" : "04"} title="projects">
-      <div className="space-y-5">
-        {projects.map((project, index) => (
-          <Reveal key={project.name} delay={(index % 3) * 50}>
-            <ProjectCard project={project} />
-          </Reveal>
+    <Section id="writings" title="Writings" description="Notes on what I’m learning and building">
+      <div className="records">
+        {writings.map((writing) => (
+          <article key={writing.href} className="record writing-record">
+            {writing.image ? (
+              <Media image={writing.image} alt="Animated tensor memory views" />
+            ) : null}
+            <div className="record-body">
+              <div className="record-heading">
+                <h3>
+                  <ExternalLink href={writing.href}>{writing.title}</ExternalLink>
+                </h3>
+                <time className="record-date">{writing.date}</time>
+              </div>
+              <p className="record-description">{writing.description}</p>
+              <p className="project-tags">{writing.tags.join(" · ")}</p>
+            </div>
+          </article>
         ))}
       </div>
     </Section>
   );
 }
 
-export function Research({ academic = false }: { academic?: boolean } = {}) {
+export function Talks() {
   return (
     <Section
-      id="research"
-      index={academic ? "01" : "05"}
-      title={academic ? "publications" : "research"}
+      id="talks"
+      title="Talks"
+      description="Sharing ideas, from neural networks to the engineering journey"
     >
-      {academic ? null : <Subheading>publications & manuscripts</Subheading>}
-      <div className="space-y-5">
-        {publications.map((publication, index) => (
-          <Reveal key={publication.title} delay={(index % 3) * 50}>
-            <article className="grid items-start gap-5 sm:grid-cols-[10rem_1fr]">
-              {publication.image ? (
-                <HoverMedia
-                  image={publication.image}
-                  video={publication.video}
-                  alt={`Visual preview for ${publication.title}`}
-                />
-              ) : (
-                <div
-                  className="grid-texture aspect-square self-start rounded-md border border-border bg-surface-raised"
-                  aria-hidden="true"
-                />
-              )}
-              <div>
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] text-accent">
-                  <span>{publication.venue}</span>
-                  <span className="text-muted-foreground">{publication.year}</span>
-                  {publication.note ? (
-                    <span className="rounded-sm border border-red-500/70 bg-red-500/10 px-2 py-0.5 text-red-400">
-                      {publication.note}
-                    </span>
-                  ) : null}
-                </div>
-                <h3 className="mt-2 font-mono text-base leading-snug text-foreground">
-                  {publication.titleLink ? (
-                    <a
-                      href={publication.titleLink}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="underline-offset-4 transition-colors hover:text-accent hover:underline"
-                    >
-                      {publication.title} ↗
-                    </a>
-                  ) : (
-                    publication.title
-                  )}
-                </h3>
-                <PeopleList people={publication.authors} />
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {publication.description}
-                </p>
-                {publication.links.length > 0 ? (
-                  <div className="mt-4 flex flex-wrap gap-4">
-                    {publication.links.map((link) => (
-                      <ExternalLink key={link.href} href={link.href}>
-                        {link.label} ↗
-                      </ExternalLink>
-                    ))}
-                  </div>
-                ) : null}
-              </div>
-            </article>
-          </Reveal>
+      <ol className="talk-list">
+        {talks.map((talk) => (
+          <li key={talk.title}>
+            <time>{talk.date}</time>
+            <div>
+              <h3>
+                {"href" in talk ? (
+                  <ExternalLink href={talk.href}>{talk.title}</ExternalLink>
+                ) : (
+                  talk.title
+                )}
+              </h3>
+              <p>{talk.organization}</p>
+            </div>
+          </li>
         ))}
-      </div>
+      </ol>
     </Section>
   );
 }
 
 export function Impact() {
   return (
-    <Section id="impact" index="07" title="teaching, leadership, & community impact">
-      <div className="space-y-5">
-        {impact.map((item, index) => (
-          <Reveal key={item.title} delay={(index % 2) * 50}>
-            <ImpactCard item={item} />
-          </Reveal>
+    <Section id="impact" title="Impact" description="Teaching, leadership & community">
+      <Timeline items={impact} />
+    </Section>
+  );
+}
+
+export function News() {
+  return (
+    <Section id="news" title="News" description="Recent milestones & updates">
+      <ol className="news-list">
+        {news.map((item) => (
+          <li key={`${item.date}-${item.before}-${item.link?.href ?? ""}`}>
+            <time>{item.date}</time>
+            <p>
+              {item.before}
+              {item.link ? (
+                <ExternalLink href={item.link.href}>
+                  {item.link.label.replace(/\s*↗/g, "")}
+                </ExternalLink>
+              ) : null}
+              {item.after}
+            </p>
+          </li>
         ))}
-      </div>
-    </Section>
-  );
-}
-
-export function Writings({ academic = false }: { academic?: boolean } = {}) {
-  return (
-    <Section
-      id="writings"
-      index={academic ? "03" : "06"}
-      title={academic ? "articles" : "writings"}
-    >
-      <div className="space-y-5">
-        {writings.map((writing, index) => (
-          <Reveal key={writing.href} delay={index * 60}>
-            <a
-              href={writing.href}
-              target="_blank"
-              rel="noreferrer"
-              className="group grid items-start gap-5 sm:grid-cols-[10rem_1fr]"
-            >
-              {writing.image ? (
-                <div className="aspect-square self-start overflow-hidden rounded-md border border-border">
-                  <img
-                    src={writing.image}
-                    alt=""
-                    loading="lazy"
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025]"
-                  />
-                </div>
-              ) : (
-                <div
-                  className="grid-texture aspect-square self-start rounded-md border border-border bg-surface-raised"
-                  aria-hidden="true"
-                />
-              )}
-              <article className="flex flex-col">
-                <div className="flex items-center justify-between gap-3 font-mono text-[11px] text-muted-foreground">
-                  <span>{writing.date}</span>
-                  <span>{writing.readingTime}</span>
-                </div>
-                <h3 className="mt-3 font-mono text-lg leading-snug text-foreground transition-colors group-hover:text-accent">
-                  {writing.title} ↗
-                </h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {writing.description}
-                </p>
-              </article>
-            </a>
-          </Reveal>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-export function News({ academic = false }: { academic?: boolean } = {}) {
-  const items = academic ? news.filter((item) => item.academic) : news;
-
-  return (
-    <Section id="news" index={academic ? "04" : "08"} title="news">
-      <Reveal>
-        <ol className="divide-y divide-border border-y border-border">
-          {items.map((item) => (
-            <li
-              key={`${item.date}-${item.before}-${item.link?.href ?? ""}`}
-              className="grid grid-cols-[5.5rem_1fr] gap-4 py-4 text-sm sm:grid-cols-[7rem_1fr]"
-            >
-              <time className="font-mono text-xs text-accent">{item.date}</time>
-              <p className="leading-relaxed text-foreground">
-                {item.before}
-                {item.link ? (
-                  <a
-                    href={item.link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-accent underline-offset-4 hover:underline"
-                  >
-                    {item.link.label}
-                  </a>
-                ) : null}
-                {item.after}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </Reveal>
-    </Section>
-  );
-}
-
-export function Contact() {
-  return (
-    <Section id="contact" index="09" title="contact">
-      <Reveal>
-        <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
-          Collaborations I am interested in are: robotics and embodied AI research and machine
-          learning systems projects.
-        </p>
-        <a
-          href={`mailto:${profile.email}`}
-          className="mt-6 inline-block break-all font-mono text-lg text-accent underline-offset-4 hover:underline sm:text-2xl md:text-3xl"
-        >
-          {profile.email}
-        </a>
-        <div className="mt-7 sm:mt-8">
-          <SocialIconLinks />
-        </div>
-      </Reveal>
+      </ol>
     </Section>
   );
 }
 
 export function Footer() {
   return (
-    <footer className="border-t border-border py-8">
-      <div className="mx-auto flex max-w-6xl px-5 sm:px-6">
-        <p className="font-mono text-xs text-muted-foreground">
-          © 2026 Timi Owolabi · ML Systems Engineer.
-        </p>
-      </div>
+    <footer className="footer page-width">
+      <span>© 2026 {profile.name}</span>
+      <a href="#home">Back to top</a>
     </footer>
   );
 }

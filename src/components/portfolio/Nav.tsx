@@ -1,102 +1,165 @@
-import { useEffect, useState } from "react";
-import { academicNavItems, navItems, profile } from "@/data/portfolio";
+import { useEffect, useRef, useState } from "react";
+import { ChevronUp, Grid2X2, X } from "lucide-react";
+import { navItems } from "@/data/portfolio";
+import { SocialLinks } from "./SocialLinks";
 
-export function Nav({ academic, onToggleView }: { academic: boolean; onToggleView: () => void }) {
-  const [scrolled, setScrolled] = useState(false);
+type SectionId = (typeof navItems)[number]["id"];
+const legacySections: Record<string, SectionId> = {
+  top: "home",
+  about: "home",
+  contact: "home",
+  skills: "experience",
+};
+
+export function Nav() {
+  const [active, setActive] = useState<SectionId>("home");
   const [open, setOpen] = useState(false);
-  const items = academic ? academicNavItems : navItems;
+  const [indicator, setIndicator] = useState({ left: 0, width: 0 });
+  const dockRef = useRef<HTMLDivElement>(null);
+  const sectionsRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const sections = navItems.map(({ id }) => document.getElementById(id));
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const readingLine = Math.min(window.innerHeight * 0.25, 180);
+      let current: SectionId = "home";
+      for (let i = 0; i < sections.length; i++) {
+        if ((sections[i]?.getBoundingClientRect().top ?? Infinity) <= readingLine)
+          current = navItems[i]!.id;
+      }
+      if (
+        window.scrollY > 0 &&
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4
+      )
+        current = "news";
+      setActive(current);
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    const legacy = legacySections[window.location.hash.slice(1)];
+    if (legacy) {
+      window.history.replaceState(
+        null,
+        "",
+        `${window.location.pathname}${window.location.search}#${legacy}`,
+      );
+      document.getElementById(legacy)?.scrollIntoView({ behavior: "instant" });
+    }
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    const observer = new ResizeObserver(schedule);
+    const main = document.querySelector("main");
+    if (main) observer.observe(main);
+    return () => {
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
+  useEffect(() => {
+    const row = sectionsRef.current;
+    if (!row) return;
+    const measure = () => {
+      const link = row.querySelector<HTMLElement>('[aria-current="location"]');
+      if (link) setIndicator({ left: link.offsetLeft, width: link.offsetWidth });
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(row);
+    return () => observer.disconnect();
+  }, [active]);
+
+  useEffect(() => {
+    if (!open) return;
+    const closeOnOutside = (event: PointerEvent) => {
+      if (!dockRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    document.addEventListener("pointerdown", closeOnOutside);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutside);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [open]);
+
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors ${
-        scrolled
-          ? "border-b border-border bg-background/85 backdrop-blur"
-          : "border-b border-transparent"
-      }`}
-    >
-      <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between gap-3 px-5 sm:h-16 sm:px-6">
-        <div className="flex min-w-0 items-center gap-3">
-          <a href="#top" className="shrink-0 font-mono text-sm text-foreground">
-            <span className="text-accent">~/</span>timi
-          </a>
-          <button
-            type="button"
-            aria-controls="portfolio-content"
-            onClick={onToggleView}
-            className="min-h-10 rounded-sm border border-accent bg-background px-3 py-2 font-mono text-[11px] text-accent transition-colors hover:bg-accent hover:text-accent-foreground sm:text-xs"
-          >
-            {academic ? "click to view full website" : "click to view academic website"}
-          </button>
-        </div>
-
-        <nav aria-label="Primary navigation" className="hidden items-center gap-4 xl:flex">
-          {items.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className="font-mono text-xs text-muted-foreground transition-colors hover:text-accent"
-            >
-              {item.label}
-            </a>
-          ))}
-          <a
-            href={profile.cv}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-sm border border-accent px-3 py-1.5 font-mono text-xs text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
-          >
-            resume.pdf
-          </a>
-        </nav>
-
-        <button
-          type="button"
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="shrink-0 font-mono text-xs text-muted-foreground xl:hidden"
-        >
-          {open ? "[ close ]" : "[ menu ]"}
-        </button>
-      </div>
-
+    <div ref={dockRef} className="dock-container">
       {open ? (
-        <div className="border-t border-border bg-background xl:hidden">
-          <nav
-            aria-label="Mobile navigation"
-            className="mx-auto flex max-w-6xl flex-col gap-3.5 px-5 py-4 sm:px-6"
-          >
-            {items.map((item) => (
+        <div id="section-menu" className="dock-menu">
+          <div className="dock-menu-heading">
+            <span>Explore</span>
+            <button
+              type="button"
+              aria-label="Close navigation"
+              onClick={() => {
+                setOpen(false);
+                toggleRef.current?.focus();
+              }}
+            >
+              <X size={17} aria-hidden="true" />
+            </button>
+          </div>
+          <nav aria-label="All sections" className="dock-menu-sections">
+            {navItems.map(({ id, label }) => (
               <a
-                key={item.id}
-                href={`#${item.id}`}
+                key={id}
+                href={`#${id}`}
+                aria-current={active === id ? "location" : undefined}
                 onClick={() => setOpen(false)}
-                className="font-mono text-sm text-muted-foreground"
               >
-                {item.label}
+                {label}
               </a>
             ))}
-            <a
-              href={profile.cv}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-sm text-accent"
-            >
-              resume.pdf
-            </a>
-            <a href={`mailto:${profile.email}`} className="font-mono text-sm text-muted-foreground">
-              email
-            </a>
           </nav>
+          <SocialLinks variant="menu" />
         </div>
       ) : null}
-    </header>
+      <nav className="glass-dock" aria-label="Primary navigation">
+        <div className="dock-sections" ref={sectionsRef}>
+          <span
+            className="dock-selection"
+            aria-hidden="true"
+            style={{
+              transform: `translateX(${indicator.left}px)`,
+              width: indicator.width,
+              opacity: indicator.width ? 1 : 0,
+            }}
+          />
+          {navItems.map(({ id, label }) => (
+            <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined}>
+              {label}
+            </a>
+          ))}
+        </div>
+        <button
+          ref={toggleRef}
+          className="dock-menu-toggle"
+          type="button"
+          aria-expanded={open}
+          aria-controls="section-menu"
+          aria-label={`Navigation: ${navItems.find(({ id }) => id === active)?.label}`}
+          onClick={() => setOpen((value) => !value)}
+        >
+          <Grid2X2 size={17} aria-hidden="true" />
+          <span>{navItems.find(({ id }) => id === active)?.label}</span>
+          <ChevronUp size={14} aria-hidden="true" className={open ? "is-open" : ""} />
+        </button>
+        <span className="dock-divider" aria-hidden="true" />
+        <SocialLinks variant="dock" />
+      </nav>
+    </div>
   );
 }

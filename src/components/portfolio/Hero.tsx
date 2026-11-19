@@ -1,73 +1,98 @@
+import { FileText } from "lucide-react";
 import { profile } from "@/data/portfolio";
-import { SocialIconLinks } from "./Sections";
+import { SocialLinks } from "./SocialLinks";
 
 export function Hero() {
   return (
-    <section
-      id="top"
-      className="relative overflow-hidden pt-26 pb-14 sm:pt-32 sm:pb-20 md:pt-40 md:pb-28"
-    >
-      <div
-        className="grid-texture pointer-events-none absolute inset-0 opacity-40"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute -top-40 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full opacity-20 blur-3xl"
-        style={{ background: "var(--color-accent)" }}
-        aria-hidden="true"
-      />
-
-      <div className="relative mx-auto w-full max-w-6xl px-5 sm:px-6">
-        <div className="scanlines relative overflow-hidden rounded-md border border-border bg-surface/80 backdrop-blur">
-          <div className="flex items-center gap-2 border-b border-border bg-surface-raised px-4 py-2.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-border-strong" />
-            <span className="h-2.5 w-2.5 rounded-full bg-border-strong" />
-            <span className="h-2.5 w-2.5 rounded-full bg-accent" />
-            <span className="ml-3 font-mono text-xs text-muted-foreground">~/portfolio</span>
-          </div>
-
-          <div className="grid gap-8 p-5 sm:p-6 md:grid-cols-[1fr_auto] md:items-center md:gap-10 md:p-10">
-            <div className="order-2 md:order-1">
-              <p className="font-mono text-xs text-accent">
-                $ whoami<span className="caret ml-1">_</span>
-              </p>
-              <h1 className="mt-3 font-mono text-[1.75rem] font-bold leading-[1.15] tracking-tight text-foreground sm:mt-4 sm:text-4xl md:text-5xl">
-                {profile.name}
-              </h1>
-              <p className="mt-3 font-mono text-[13px] leading-relaxed text-accent sm:text-sm md:text-base">
-                {profile.role}
-              </p>
-              <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:mt-5 sm:text-base">
-                {profile.tagline}
-              </p>
-              <p className="mt-4 font-mono text-xs leading-relaxed text-muted-foreground">
-                // {profile.location}
-              </p>
-
-              <div className="mt-7 sm:mt-8">
-                <SocialIconLinks />
-              </div>
-            </div>
-
-            <div className="order-1 justify-self-center md:order-2 md:justify-self-end md:-translate-y-4">
-              <div className="relative">
-                <div
-                  className="absolute -inset-1 rounded-full opacity-30 blur-lg"
-                  style={{ background: "var(--color-accent)" }}
-                  aria-hidden="true"
-                />
-                <img
-                  src={profile.avatar}
-                  alt={`${profile.shortName}, ML systems engineer`}
-                  width={288}
-                  height={288}
-                  loading="eager"
-                  className="relative h-52 w-52 rounded-full border border-border-strong object-cover sm:h-56 sm:w-56 md:h-64 md:w-64"
-                />
-              </div>
-            </div>
-          </div>
+    <section id="home" className="home page-width" tabIndex={-1} aria-labelledby="home-title">
+      <header className="home-heading">
+        <div>
+          <h1 id="home-title">{profile.name}</h1>
+          <p className="home-subtitle">Physical AI, ML Systems, and Everything in Between</p>
         </div>
+        <a className="cv-link" href={profile.cv} target="_blank" rel="noopener noreferrer">
+          <FileText size={15} aria-hidden="true" /> Curriculum vitae
+        </a>
+      </header>
+
+      <div className="home-biography prose">
+        <img
+          src={profile.avatar}
+          alt="Timi Owolabi"
+          width={240}
+          height={240}
+          fetchPriority="high"
+          className="portrait"
+        />
+        <p>
+          I lead the Embodied AI Research Group at{" "}
+          <a href="https://mlcollective.org/" target="_blank" rel="noopener noreferrer">
+            ML Collective
+          </a>
+          , where we develop generalist robot policies. I'm particularly interested in making world
+          models more capable and efficient enough for real-time inference on onboard compute.
+        </p>
+        <p>
+          I'm also a cofounder and ML systems engineer at a stealth AI startup, where we make LLMs
+          run blazing fast on mobile devices.
+        </p>
+        <p>
+          In 2025, I graduated with a 4.85/5.0 GPA, placing in the top 4% of my Electrical
+          Engineering class at{" "}
+          <a
+            href="https://www.covenantuniversity.edu.ng/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Covenant University
+          </a>
+          , ranked 1st in Nigeria. I also researched explainability in autonomous driving using
+          graph neural networks at WaySense. My supervisor was{" "}
+          <a href="https://danielomeiza.github.io/" target="_blank" rel="noopener noreferrer">
+            Dr. Daniel Omeiza
+          </a>
+          , then a postdoctoral researcher at the{" "}
+          <a href="https://ori.ox.ac.uk/" target="_blank" rel="noopener noreferrer">
+            Oxford Robotics Institute
+          </a>
+          .
+        </p>
+        <p>
+          I also care about impacting communities, so I founded{" "}
+          <a
+            href="https://www.linkedin.com/company/113221087"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            The Classroom Project
+          </a>{" "}
+          to provide mentorship and learning resources to underserved secondary schools in Lagos.
+        </p>
+      </div>
+      <details className="personal-note">
+        <summary>
+          I live and breathe these words <span aria-hidden="true">+</span>
+        </summary>
+        <blockquote className="prose personal-quote">
+          <p>
+            “It is not the critic who counts; not the man who points out how the strong man
+            stumbles, or where the doer of deeds could have done them better. The credit belongs to
+            the man who is actually in the arena, whose face is marred by dust and sweat and blood;
+            who strives valiantly; who errs, who comes short again and again, because there is no
+            effort without error and shortcoming; but who does actually strive to do the deeds; who
+            knows great enthusiasms, the great devotions; who spends himself in a worthy cause; who
+            at the best knows in the end the triumph of high achievement, and who at the worst, if
+            he fails, at least fails while daring greatly, so that his place shall never be with
+            those cold and timid souls who neither know victory nor defeat.”
+          </p>
+          <footer>
+            <cite>The Man in the Arena</cite>
+            <span>Theodore Roosevelt</span>
+          </footer>
+        </blockquote>
+      </details>
+      <div className="home-contact">
+        <SocialLinks variant="icons" />
       </div>
     </section>
   );
