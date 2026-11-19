@@ -8,7 +8,9 @@ export function Hero() {
       <header className="home-heading">
         <div>
           <h1 id="home-title">{profile.name}</h1>
-          <p className="home-subtitle">Physical AI, ML Systems, and Everything in Between</p>
+          <p className="home-subtitle">
+            Physical AI, efficient models, and the systems behind them.
+          </p>
         </div>
         <a className="cv-link" href={profile.cv} target="_blank" rel="noopener noreferrer">
           <FileText size={15} aria-hidden="true" /> {profile.cvTitle}
