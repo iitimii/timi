@@ -464,9 +464,9 @@ export const publications: Publication[] = [
       { label: "Model", href: "https://huggingface.co/timiiowolabi/SmolWAM" },
       { label: "Website", href: "https://smolwam.vercel.app/" },
     ],
-    image: "/research/thumbnails/smolwam-panda-v3.webp",
+    image: "/research/thumbnails/smolwam-panda-mujoco.webp",
     imageAlt:
-      "Illustration of a Franka Panda arm grasping a patterned bowl from an open drawer in a LIBERO-style tabletop scene.",
+      "A locally rendered MuJoCo scene with a Franka Panda arm reaching toward a red cube in a tabletop tray.",
     video: "/videos/smolwam-vs-cosmos.mp4",
     videoLabel: "SmolWAM and Cosmos Policy side-by-side comparison across four LIBERO tasks",
   },
