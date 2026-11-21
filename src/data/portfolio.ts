@@ -56,6 +56,7 @@ export interface Publication {
 export interface NewsItem {
   date: string;
   academic?: boolean;
+  content?: (string | LinkItem)[];
   before?: string;
   link?: LinkItem;
   after?: string;
@@ -683,6 +684,17 @@ export const writings: Writing[] = [
 ];
 
 export const news: NewsItem[] = [
+  {
+    date: "Nov 2026",
+    academic: true,
+    content: [
+      "I presented the SmolWAM ",
+      { label: "poster", href: "/talks/smolwam-action-gap-poster.pdf" },
+      " at ",
+      { label: "The Action Gap workshop", href: "https://actiongapworkshop.github.io/" },
+      " at CoRL.",
+    ],
+  },
   {
     date: "Nov 2026",
     academic: true,

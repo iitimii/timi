@@ -481,6 +481,15 @@ export function News() {
           <li key={`${item.date}-${item.before}-${item.link?.href ?? ""}`}>
             <time>{item.date}</time>
             <p>
+              {item.content?.map((part, index) =>
+                typeof part === "string" ? (
+                  part
+                ) : (
+                  <ExternalLink key={`${part.href}-${index}`} href={part.href}>
+                    {part.label}
+                  </ExternalLink>
+                ),
+              )}
               {item.before}
               {item.link ? (
                 <ExternalLink href={item.link.href}>
