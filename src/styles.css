@@ -463,9 +463,9 @@ h3 a:hover {
 }
 .people {
   margin: 0.15rem 0;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   color: var(--muted-foreground);
-  line-height: 1.4;
+  line-height: 1.7;
 }
 .people strong {
   font-weight: 500;
@@ -483,8 +483,8 @@ h3 a:hover {
 .publication-venue {
   margin: 0.15rem 0;
   font-family: var(--font-serif);
-  font-size: 0.875rem;
-  line-height: 1.4;
+  font-size: 0.85rem;
+  line-height: 1.7;
   color: #c1c1b9;
 }
 .record-description,
@@ -493,8 +493,8 @@ h3 a:hover {
 .talk-list p,
 .news-list p {
   font-family: var(--font-serif);
-  font-size: 0.875rem;
-  line-height: 1.4;
+  font-size: 0.85rem;
+  line-height: 1.6;
 }
 .record-description {
   margin: 0.15rem 0 0;
