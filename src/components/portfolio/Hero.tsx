@@ -32,8 +32,8 @@ export function Hero() {
             ML Collective
           </a>
           , where we develop generalist robot policies. I'm particularly interested in making
-          physical AI models more capable and efficient enough for real-time inference on onboard
-          compute.
+          physical AI models more capable, safer, and efficient enough for real-time inference on
+          onboard compute.
         </p>
         <p>
           I'm also a cofounder and ML systems engineer at a stealth AI startup, where we make LLMs
