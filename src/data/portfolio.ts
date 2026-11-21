@@ -688,7 +688,7 @@ export const news: NewsItem[] = [
     date: "Nov 2026",
     academic: true,
     content: [
-      "I presented the SmolWAM ",
+      "I presented SmolWAM as a ",
       { label: "poster", href: "/talks/smolwam-action-gap-poster.pdf" },
       " at ",
       { label: "The Action Gap workshop", href: "https://actiongapworkshop.github.io/" },
