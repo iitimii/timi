@@ -40,8 +40,8 @@ export function Hero() {
           generative AI models run blazing fast on mobile devices.
         </p>
         <p>
-          In 2025, I graduated with a 4.85/5.0 GPA, placing in the top 4% of my Electrical
-          Engineering class at{" "}
+          In 2025, I graduated with a 4.85/5.0 GPA, in the top 4% of my Electrical Engineering class
+          at{" "}
           <a
             href="https://www.covenantuniversity.edu.ng/"
             target="_blank"
@@ -49,7 +49,7 @@ export function Hero() {
           >
             Covenant University
           </a>
-          , ranked 1st in Nigeria. I also researched explainability in autonomous driving using
+          , which ranks 1st in Nigeria. I also researched explainability in autonomous driving using
           graph neural networks at WaySense. My supervisor was{" "}
           <a href="https://danielomeiza.github.io/" target="_blank" rel="noopener noreferrer">
             Dr. Daniel Omeiza
