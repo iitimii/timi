@@ -201,19 +201,27 @@ function Timeline({ items }: { items: TimelineItem[] }) {
               </p>
             ) : null}
             <p className="timeline-location">{item.location}</p>
-            {item.description ? (
-              <p className="record-description">
-                {item.description}
-                {item.descriptionLink ? (
-                  <>
-                    {" "}
-                    <ExternalLink href={item.descriptionLink.href}>
-                      {item.descriptionLink.label}
-                    </ExternalLink>
-                    .
-                  </>
-                ) : null}
-              </p>
+            {item.description ? <p className="record-description">{item.description}</p> : null}
+            {item.photos?.length ? (
+              <details className="outreach-photos">
+                <summary>Outreach photos ({item.photos.length})</summary>
+                <div className="outreach-gallery">
+                  {item.photos.map((photo) => (
+                    <figure key={photo.src}>
+                      <ExternalLink href={photo.src}>
+                        <img
+                          src={photo.src}
+                          alt={photo.alt}
+                          width={photo.width}
+                          height={photo.height}
+                          loading="lazy"
+                        />
+                      </ExternalLink>
+                      <figcaption>{photo.caption}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </details>
             ) : null}
             {item.bullets?.length ? (
               <ul className="bullet-list">

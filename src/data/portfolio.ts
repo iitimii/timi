@@ -10,7 +10,7 @@ export interface TimelineItem {
   period: string;
   bullets?: string[];
   description?: string;
-  descriptionLink?: LinkItem;
+  photos?: { src: string; alt: string; caption: string; width: number; height: number }[];
   image?: string;
   imageAlt?: string;
   monogram?: string;
@@ -614,7 +614,22 @@ export const impact: TimelineItem[] = [
     period: "Dec 2024 - Present",
     description:
       "Provide mentorship, learning resources, and hands-on STEM support to underserved secondary schools in Lagos and children at the Durumi IDP camp in Abuja.",
-    descriptionLink: { label: "Outreach photo", href: "/impact/classroom-project.jpg" },
+    photos: [
+      {
+        src: "/impact/classroom-project.jpg",
+        alt: "The Classroom Project team with children and donated desks at the Durumi IDP camp.",
+        caption: "Durumi IDP camp, Abuja",
+        width: 1280,
+        height: 960,
+      },
+      {
+        src: "/impact/classroom-project-2.jpg",
+        alt: "The Classroom Project team with learning resources outside Okun Ajah Community Senior Secondary School.",
+        caption: "Okun Ajah, Lagos",
+        width: 2000,
+        height: 1500,
+      },
+    ],
     image: "/organizations/classroom-project.webp",
     imageAlt: "The Classroom Project logo",
     organizationUrl: "https://www.linkedin.com/company/113221087",
@@ -806,6 +821,7 @@ export const talks = [
     title: "SmolWAM: A Latent World-Action Model for Robotic Manipulation on Edge Devices",
     organization: "The Action Gap Workshop, CoRL",
     date: "Nov 2026",
+    href: "/talks/smolwam-action-gap-poster.pdf",
   },
   {
     title: "Muta: An Offline AI Tutor for African Students",

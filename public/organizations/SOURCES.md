@@ -13,4 +13,4 @@ Organization marks used beside experience and education entries. Assets are stor
 
 - The Classroom Project: user-provided `The Classroom Project Logo.png`, resized to WebP.
 
-The Classroom Project's description links to the existing `/impact/classroom-project.jpg` outreach photo. Impact uses Covenant University's mark for its student association and an ML text mark for Machine Learning Education. LinkedIn's public profile was unavailable when checking for additional photos, so affiliation marks are used for the remaining entries.
+The Classroom Project's outreach gallery includes the existing `/impact/classroom-project.jpg` photo from Durumi IDP camp and `/impact/classroom-project-2.jpg`, converted from the user-provided `IMG_0841.HEIC` photo at Okun Ajah Community Senior Secondary School. Impact uses Covenant University's mark for its student association and an ML text mark for Machine Learning Education. LinkedIn's public profile was unavailable when checking for additional photos, so affiliation marks are used for the remaining entries.
