@@ -50,6 +50,7 @@ export interface Publication {
   image?: string;
   imageAlt?: string;
   video?: string;
+  videoLabel?: string;
 }
 
 export interface NewsItem {
@@ -463,9 +464,11 @@ export const publications: Publication[] = [
       { label: "Model", href: "https://huggingface.co/timiiowolabi/SmolWAM" },
       { label: "Website", href: "https://smolwam.vercel.app/" },
     ],
-    image: "/research/thumbnails/smolwam-v2.webp",
+    image: "/research/thumbnails/smolwam-panda-v3.webp",
     imageAlt:
-      "A compact glowing core producing a robot's action trajectory and translucent future scenes of a tabletop grasp-and-place task.",
+      "Illustration of a Franka Panda arm grasping a patterned bowl from an open drawer in a LIBERO-style tabletop scene.",
+    video: "/videos/smolwam-vs-cosmos.mp4",
+    videoLabel: "SmolWAM and Cosmos Policy side-by-side comparison across four LIBERO tasks",
   },
   {
     title: "Fuzzy-PID Controller for Liquid Level Control of Tank Systems",

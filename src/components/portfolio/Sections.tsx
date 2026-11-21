@@ -65,7 +65,17 @@ function PeopleList({ people }: { people: PublicationAuthor[] }) {
   );
 }
 
-function Media({ image, video, alt }: { image: string; video?: string | undefined; alt: string }) {
+function Media({
+  image,
+  video,
+  alt,
+  videoLabel = alt,
+}: {
+  image: string;
+  video?: string | undefined;
+  alt: string;
+  videoLabel?: string | undefined;
+}) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const play = () => {
@@ -122,14 +132,15 @@ function Media({ image, video, alt }: { image: string; video?: string | undefine
             loop
             playsInline
             preload="none"
-            aria-label={alt}
-            onPlay={() => setPlaying(true)}
+            aria-label={videoLabel}
+            onPlaying={() => setPlaying(true)}
             onPause={() => setPlaying(false)}
           />
           <button
             type="button"
             className="media-toggle"
-            aria-label={`${playing ? "Pause" : "Play"} ${alt}`}
+            aria-label={`${playing ? "Pause" : "Play"} ${videoLabel}`}
+            aria-pressed={playing}
             onClick={toggle}
           />
         </>
@@ -279,6 +290,7 @@ export function Research() {
               <Media
                 image={publication.image}
                 video={publication.video}
+                videoLabel={publication.videoLabel}
                 alt={publication.imageAlt ?? `Research illustration: ${publication.title}`}
               />
             ) : null}

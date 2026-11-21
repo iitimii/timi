@@ -397,6 +397,10 @@ h2 {
 .research-record .record-media img {
   object-fit: contain;
 }
+.research-record .record-media video {
+  object-fit: contain;
+  background: var(--background);
+}
 .media-toggle {
   position: absolute;
   inset: 0;
