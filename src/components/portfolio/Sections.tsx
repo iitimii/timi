@@ -284,8 +284,11 @@ export function Research() {
               </h3>
               <PeopleList people={publication.authors} />
               <p className="publication-venue">
-                {publication.venuePrefix ? `${publication.venuePrefix} ` : null}
-                <em>{publication.venue}</em>, {publication.year}
+                <em>
+                  {publication.venuePrefix ? `${publication.venuePrefix} ` : null}
+                  {publication.venue}
+                </em>
+                , {publication.year}
               </p>
               <p className="record-description">{publication.description}</p>
               <ResourceLinks
