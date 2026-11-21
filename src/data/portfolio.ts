@@ -704,6 +704,11 @@ export const news: NewsItem[] = [
   {
     date: "Oct 2026",
     academic: true,
+    before: "I presented Muta at Moonshot by TechCabal.",
+  },
+  {
+    date: "Oct 2026",
+    academic: true,
     before:
       "Muta finished as second runner-up in the Africa Deep Tech Challenge (ADTC) and won $5,000.",
   },
