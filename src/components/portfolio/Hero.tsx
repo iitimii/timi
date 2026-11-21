@@ -37,7 +37,7 @@ export function Hero() {
         </p>
         <p>
           I'm also a cofounder and ML systems engineer at a stealth AI startup, where we make
-          generative AI run blazing fast on mobile devices.
+          generative AI models run blazing fast on mobile devices.
         </p>
         <p>
           In 2025, I graduated with a 4.85/5.0 GPA, placing in the top 4% of my Electrical
