@@ -77,11 +77,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Timi Owolabi · ML Systems Engineer" },
+      { title: "Timi Owolabi" },
       {
         name: "description",
-        content:
-          "Portfolio of Timi Owolabi, an ML systems engineer working on embodied AI, robot learning, and real-world control.",
+        content: "Hi, I'm Timi. I work on making physical AI and generative AI more efficient.",
       },
       { name: "author", content: "Timi Owolabi" },
       { property: "og:type", content: "website" },

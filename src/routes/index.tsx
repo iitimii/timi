@@ -14,9 +14,8 @@ import {
 import { profile } from "@/data/portfolio";
 
 const siteUrl = "https://www.timiowolabi.com/";
-const title = "Timi Owolabi · ML Systems Engineer";
-const description =
-  "Portfolio of Timi Owolabi, an ML systems engineer working on embodied AI, robot learning, real-world control, and machine learning infrastructure.";
+const title = "Timi Owolabi";
+const description = "Hi, I'm Timi. I work on making physical AI and generative AI more efficient.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
