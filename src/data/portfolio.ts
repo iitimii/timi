@@ -813,7 +813,7 @@ export const education: TimelineItem[] = [
     location: "Ota, Nigeria",
     period: "Class of 2025",
     bullets: [
-      "First Class Honours · GPA: 4.85/5.0 · Top 4% of Electrical Engineering students.",
+      "First Class Honours · GPA: 4.85/5.0 · Top 2% of my department.",
       "Led the Robotics Research Team, working on reinforcement learning, vision-language-action models, and low-cost robotic systems.",
     ],
   },

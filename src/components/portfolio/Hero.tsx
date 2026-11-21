@@ -40,8 +40,7 @@ export function Hero() {
           generative AI models run blazing fast on mobile devices.
         </p>
         <p>
-          In 2025, I graduated with a 4.85/5.0 GPA, in the top 4% of my Electrical Engineering class
-          at{" "}
+          In 2025, I graduated with a 4.85/5.0 GPA, in the top 2% of my department at{" "}
           <a
             href="https://www.covenantuniversity.edu.ng/"
             target="_blank"
