@@ -192,6 +192,20 @@ export const experience: TimelineItem[] = [
 
 export const projects: PortfolioProject[] = [
   {
+    name: "Spatial Engine",
+    titleLink: "https://github.com/iitimii/spatial",
+    kind: "Spatial-temporal world engine",
+    period: "2026 - Present",
+    description:
+      "A native runtime being built from scratch in C++20 and Metal for spatial-temporal world models, unifying spatial understanding and generation so anyone can reconstruct and explore physical reality or imagination from edge devices to datacenters.",
+    tags: ["C++20", "Metal", "World Models", "Spatial AI"],
+    image: "/projects/spatial-engine.webp",
+    imageAlt:
+      "A sculpted miniature landscape reconstructing from a sparse spatial lattice into solid ivory terrain across translucent temporal slices.",
+    collaborators: [{ name: "Timi Owolabi", self: true }],
+    links: [{ label: "Code", href: "https://github.com/iitimii/spatial" }],
+  },
+  {
     name: "LLM Inference Engine",
     titleLink: "https://github.com/iitimii/llm-engine",
     kind: "LLM inference",
